@@ -1,6 +1,16 @@
 @import url(./CardWork.css);
 @import url(./ContainerWork.css);
 @import url(./Search.css);
+@import url(./Header.css);
+@import url(./Menu.css);
+@import url(./Logo.css);
+@import url(./App.css);
+@import url(./ButtonMore.css);
+@import url(./Loader.css);
+@import url(./Contact.css);
+@import url(./Form.css);
+@import url(./FormContact.css);
+@import url(./Fonts.css);
 html,
 body {
   font-family: system-ui, Segoe UI, Helvetica Neue, Arial;
@@ -23,6 +33,10 @@ body {
 img {
   max-width: 100%;
   width: auto;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 h1,

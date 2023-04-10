@@ -1,0 +1,17 @@
+.page__contact {
+  padding: 0 1rem;
+  flex: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page__contact-body {
+  margin-top: -85px;
+}
+
+.page__contact-body-header {
+}
+
+.page__contact-body-header h2 {
+  margin: 0;
+}

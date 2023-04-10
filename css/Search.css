@@ -1,64 +1,39 @@
 .component__search {
-  position: relative;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin: 2rem auto 2rem;
+  margin: 0 auto 0;
   z-index: 100;
 }
-.component__search-button {
-  display: none;
-  background-color: transparent;
-  border: 1px solid #0072c6;
-  height: 38px;
-  width: 38px;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  cursor: pointer;
-  transition: 0.25s all;
-}
-.component__search-button--active,
-.component__search-button:hover {
-  background-color: #0072c6;
-}
-.component__search-button--active:hover {
-  background-color: #0060a7;
-  border-color: #0060a7;
-}
-.component__search-button svg {
-  height: 38px;
-  width: 38px;
-}
-.component__search-button svg path:nth-child(2) {
-  stroke: #0072c6;
-  fill: transparent;
-  stroke-width: 1px;
-  transition: 0.25s all;
-}
-.component__search-button--active svg path:nth-child(2),
-.component__search-button:hover svg path:nth-child(2) {
-  stroke: #ffffff;
-  stroke-width: 1px;
-}
-.component__search-select-container {
+.component__search-container {
+  overflow-x: hidden;
+  padding-top: 20px;
+  margin-right: 20px;
+  width: 350px;
+  min-height: 50px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-end;
 }
 .component__search-select {
-  min-width: 25rem;
-  width: fit-content;
-  max-width: 100%;
+  width: 300px;
   outline: none !important;
 }
+.component__search-select-container {
+  transform: translateX(375px);
+}
 .component__search-select-button {
+  z-index: 100;
   cursor: pointer;
   padding: 0;
   border: none;
   background-color: #0072c6;
-  height: 38px;
-  width: 38px;
+  height: 50px;
+  width: 50px;
   transition: 0.25s;
   display: flex;
   align-items: center;
@@ -77,19 +52,19 @@
   transform: rotate(180deg);
   transform-origin: center center;
 }
-
 .component__search__control {
+  min-height: 50px !important;
   box-shadow: none !important;
   border: none !important;
-  border-bottom: 1px solid !important;
+  border-bottom: none !important;
   border-radius: 0 !important;
   border-color: lightgray !important;
   cursor: text !important;
 }
+.component__search__menu {
+  position: static !important;
+}
 .component__search__indicators {
   display: none !important;
   cursor: pointer !important;
-}
-.component__search-select--active {
-  display: block;
 }

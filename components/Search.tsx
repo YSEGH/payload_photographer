@@ -2,13 +2,39 @@ import React, { useContext, useEffect, useState, useRef, memo } from "react";
 import { MdFilterAlt, MdKeyboardArrowDown } from "react-icons/md";
 import Select from "react-select";
 import { DataContext } from "../context/DataContext";
-import { DataState } from "../context/InitialStates/DataState";
+import { motion, useScroll } from "framer-motion";
+
+const MIN = 0;
+const MAX = 375;
+
+const MIN_Y = -200;
+const MAX_Y = 0;
 
 const Search: React.FC = () => {
-  const selectInput = useRef(null);
-  const { state } = useContext(DataContext);
-  const [display, setDisplay] = useState(false);
+  const { state, actions } = useContext(DataContext);
+  const [displayBar, setDisplayBar] = useState(false);
+  const [displayOptions, setDisplayOptions] = useState(false);
+  const [posY, setPosY] = useState(true);
   const [style, setStyle] = useState({});
+  const { scrollY } = useScroll();
+
+  scrollY.on("change", () => {
+    if (scrollY.get() === 0 || scrollY.get() < scrollY.getPrevious()) {
+      if (!posY) {
+        setPosY(true);
+      }
+      return;
+    }
+    if (displayBar) {
+      if (!posY) {
+        setPosY(true);
+      }
+      return;
+    }
+    if (posY) {
+      setPosY(false);
+    }
+  });
 
   const updateStyle = () => ({
     control: (styles, state) => ({
@@ -39,66 +65,83 @@ const Search: React.FC = () => {
   });
 
   const onClickHandler = () => {
-    setDisplay(!display);
+    setDisplayOptions(!displayOptions);
   };
 
-  const onChangeHandler = (values, action) => {};
-
-  const menuIsOpenHandler = () => {
-    if (selectInput.current) {
-      if (selectInput.current.inputRef.value) {
-        setDisplay(true);
-        return;
-      }
+  const onChangeHandler = (values, action) => {
+    if (!values) {
+      values = [];
     }
-    setDisplay(false);
+    actions.getPhotos(values, true, 1);
+    actions.setSelectedCategories(values);
+  };
+
+  const onInputChangeHandler = (value, action) => {
+    if (value) {
+      setDisplayOptions(true);
+      return;
+    }
+    setDisplayOptions(false);
   };
 
   useEffect(() => {
+    actions.getCategories();
     setStyle(updateStyle());
     return () => {};
   }, []);
 
   return (
     <div className={`component__search container__large`}>
-      {state.tags ? (
-        <div className="component__search-select-container">
+      <div className="component__search-container">
+        <motion.div
+          className="component__search-select-container"
+          animate={
+            displayBar
+              ? { transform: `translateX(${MIN}px)` }
+              : { transform: `translateX(${MAX}px)` }
+          }
+        >
           <Select
-            id={1}
-            ref={selectInput}
-            className={`component__search-select ${
-              display ? "component__search-select--active" : ""
-            }`}
+            id="long-value-select"
+            instanceId="long-value-select"
+            className={`component__search-select`}
             classNamePrefix={`component__search`}
             placeholder="Rechercher"
             noOptionsMessage={() => "Aucune correspondance"}
             isMulti
-            menuIsOpen={display}
-            onInputChange={menuIsOpenHandler}
-            options={state.tags}
+            menuIsOpen={displayOptions}
+            onInputChange={onInputChangeHandler}
+            options={state.categories}
             styles={style}
             onChange={onChangeHandler}
+            defaultValue={state.selectedCategories}
           />
-          <button
-            className={`component__search-select-button ${
-              display ? "component__search-select-button--rotate" : ""
-            }`}
-            onClick={() => setDisplay(!display)}
-          >
-            <MdKeyboardArrowDown />
-          </button>
-        </div>
-      ) : null}
-      <button
+        </motion.div>
+        <motion.button
+          animate={
+            posY
+              ? { transform: `translateY(${MAX_Y}px)` }
+              : { transform: `translateY(${MIN_Y}px)` }
+          }
+          initial={{ transform: `translateY(${MIN_Y}px)` }}
+          className={`component__search-select-button ${
+            displayOptions ? "component__search-select-button--rotate" : ""
+          }`}
+          onClick={() => setDisplayBar(!displayBar)}
+        >
+          <MdFilterAlt />
+        </motion.button>
+      </div>
+      {/* <button
         className={`component__search-button ${
-          display ? "component__search-button--active" : ""
+          displayBar ? "component__search-button--active" : ""
         }`}
         onClick={onClickHandler}
       >
         <MdFilterAlt />
-      </button>
+      </button> */}
     </div>
   );
 };
 
-export default memo(Search);
+export default Search;

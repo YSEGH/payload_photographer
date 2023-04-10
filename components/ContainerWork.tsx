@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import CardWork from "./CardWork";
+import CardWork, { Photo } from "./CardWork";
 import { motion, AnimatePresence } from "framer-motion";
 import { DataContext } from "../context/DataContext";
 
@@ -14,27 +14,14 @@ export interface Slider {
   id: string;
   photo: Photo;
 }
-export interface Photo {
-  alt: string;
-  createdAt: string;
-  filename: string;
-  filesize: number;
-  height: number;
-  id: string;
-  mimeType: string;
-  url: string;
-}
+
 const ContainerWork: React.FC = () => {
   const { state, actions } = useContext(DataContext);
+
   useEffect(() => {
-    console.log(state.photos);
-
-    console.log("useeffect");
-
-    actions.getPhotos("");
-
     return () => {};
   }, []);
+
   return (
     <motion.div layout className="container__work container__large">
       <AnimatePresence>

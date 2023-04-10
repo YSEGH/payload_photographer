@@ -3,6 +3,9 @@ import Logo from "./Logo";
 import Menu from "./Menu";
 import { motion, useScroll } from "framer-motion";
 
+const MAX = 80;
+const MIN = 60;
+
 const Header: React.FC = () => {
   const [size, setSize] = useState(true);
   const { scrollY } = useScroll();
@@ -19,7 +22,10 @@ const Header: React.FC = () => {
     <div className="component__header">
       <motion.div
         animate={{
-          height: size ? 60 : 40,
+          height: size ? MAX : MIN,
+        }}
+        initial={{
+          height: MAX,
         }}
         className="component__header-container"
       >

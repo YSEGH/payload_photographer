@@ -1,7 +1,17 @@
 import { CollectionConfig } from "payload/types";
+import { admins } from "../access/admins";
 
 const Photo: CollectionConfig = {
   slug: "photo",
+  admin: {
+    useAsTitle: "title",
+  },
+  access: {
+    read: () => true,
+    create: admins,
+    update: admins,
+    delete: admins,
+  },
   fields: [
     {
       name: "title",
@@ -38,10 +48,6 @@ const Photo: CollectionConfig = {
       ],
     },
   ],
-  admin: {
-    useAsTitle: "title",
-  },
-  auth: false,
 };
 
 export default Photo;

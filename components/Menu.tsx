@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { motion, useScroll } from "framer-motion";
+import Link from "next/link";
 
 const Menu: React.FC = () => {
   const { scrollY } = useScroll();
@@ -15,38 +16,23 @@ const Menu: React.FC = () => {
   });
 
   return (
-    <ul className="nav">
-      <motion.li animate={{ opacity: display ? 1 : 0 }} className="nav--item">
-        <NavLink
-          to={`/work`}
-          className={({ isActive, isPending }) =>
-            isActive ? "active" : isPending ? "pending" : ""
-          }
-        >
+    <motion.ul animate={{ opacity: display ? 1 : 0 }} className="nav">
+      <li className="nav--item">
+        <Link href={`/work`} scroll={false}>
           Work
-        </NavLink>
-      </motion.li>
-      <motion.li animate={{ opacity: display ? 1 : 0 }} className="nav--item">
-        <NavLink
-          to={`/about`}
-          className={({ isActive, isPending }) =>
-            isActive ? "active" : isPending ? "pending" : ""
-          }
-        >
+        </Link>
+      </li>
+      <li className="nav--item">
+        <Link href={`/about`} scroll={false}>
           About
-        </NavLink>
-      </motion.li>
-      <motion.li animate={{ opacity: display ? 1 : 0 }} className="nav--item">
-        <NavLink
-          to={`/contact`}
-          className={({ isActive, isPending }) =>
-            isActive ? "active" : isPending ? "pending" : ""
-          }
-        >
+        </Link>
+      </li>
+      <li className="nav--item">
+        <Link href={`/contact`} scroll={false}>
           Contact
-        </NavLink>
-      </motion.li>
-    </ul>
+        </Link>
+      </li>
+    </motion.ul>
   );
 };
 

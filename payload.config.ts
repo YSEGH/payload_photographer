@@ -1,13 +1,14 @@
 import { buildConfig } from "payload/config";
 import dotenv from "dotenv";
-import Page from "./collections/Page";
 import Media from "./collections/Media";
 import Photo from "./collections/Photo";
 import Categories from "./collections/Categories";
+import Users from "./collections/Users/Users";
 
 dotenv.config();
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-  collections: [Page, Media, Photo, Categories],
+  collections: [Users, Media, Photo, Categories],
+  csrf: ["http://localhost:3000"],
 });
