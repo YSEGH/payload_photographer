@@ -2,25 +2,29 @@ import React, { useState } from "react";
 import { motion, useScroll } from "framer-motion";
 
 const Logo: React.FC = () => {
-  const bigSize = 1;
-  const smallSize = 0.8;
-  const [big, setBig] = useState<boolean>(true);
+  const MAX = 1;
+  const MIN = 0.8;
+  const [displayLogo, setDisplayLogo] = useState<boolean>(true);
   const { scrollY } = useScroll();
+
+  const animate = {
+    hidden: { scale: MIN },
+    show: { scale: MAX },
+  };
 
   scrollY.on("change", () => {
     if (scrollY.get() === 0 || scrollY.get() < scrollY.getPrevious()) {
-      setBig(true);
+      setDisplayLogo(true);
       return;
     }
-    if (scrollY.get() >= 80) {
-      setBig(false);
-    }
+    setDisplayLogo(false);
   });
+
   return (
     <motion.div
       className="component__logo"
-      initial={{ scale: bigSize }}
-      animate={big ? { scale: bigSize } : { scale: smallSize }}
+      initial={animate.show}
+      animate={displayLogo ? animate.show : animate.hidden}
     >
       <h2>
         Chléo<span>Butterfly</span>

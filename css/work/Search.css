@@ -48,3 +48,16 @@
 .component__search__value-container {
   padding: 0.25rem !important;
 }
+
+.display_button__icon {
+  position: absolute;
+  bottom: -2rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 1rem;
+  width: 1rem;
+  background-color: #1aace7;
+  cursor: pointer;
+  fill: #ffffff;
+}

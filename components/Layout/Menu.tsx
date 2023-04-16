@@ -12,9 +12,7 @@ const Menu: React.FC = () => {
       setDisplay(true);
       return;
     }
-    if (scrollY.get() >= 80) {
-      setDisplay(false);
-    }
+    setDisplay(false);
   });
 
   return (

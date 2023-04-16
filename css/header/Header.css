@@ -1,8 +1,9 @@
-.component__header {
-  height: 140px;
+.component_header {
   width: 100%;
+  min-height: 80px;
+  overflow: hidden;
 }
-.component__header-container {
+.component_header__container {
   width: 100%;
   position: fixed;
   top: 0;
@@ -12,7 +13,7 @@
   background-color: #fffffff2;
   backdrop-filter: blur(8px);
 }
-.component__header-container-content {
+.component_header__content {
   max-height: 100%;
   display: flex;
   justify-content: space-between;
