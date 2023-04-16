@@ -1,0 +1,11 @@
+.component__logo {
+}
+.component__logo h2 {
+  font-family: "Exo";
+  font-weight: 600;
+  font-size: 28px;
+}
+.component__logo h2 span {
+  font-family: "Exo";
+  font-weight: 300;
+}

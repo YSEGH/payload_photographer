@@ -1,4 +1,5 @@
 import React, { useReducer } from "react";
+import { filters } from "../utilities/types";
 import {
   getCategories,
   getPhotos,
@@ -28,7 +29,6 @@ export interface DataContext {
   actions: DataActions;
   state: any;
 }
-
 export const DataContext = React.createContext(null);
 const { Provider } = DataContext;
 
@@ -40,8 +40,8 @@ export const DataProvider = ({ children }) => {
   );
   const [form, dispatchForm] = useReducer(formReducer, formState);
 
-  const getPhotosHandler = (category, reset, page) => {
-    getPhotos(category, reset, page, dispatchPhotos);
+  const getPhotosHandler = (filters, reset, page) => {
+    getPhotos(filters, reset, page, dispatchPhotos);
   };
 
   const getCategoriesHandler = () => {
@@ -74,8 +74,8 @@ export const DataProvider = ({ children }) => {
       errorGetCategories: categories.error,
     },
     actions: {
-      getPhotos: (category: [] | null, reset: boolean, page: number) =>
-        getPhotosHandler(category, reset, page),
+      getPhotos: (filters: filters, reset: boolean, page: number) =>
+        getPhotosHandler(filters, reset, page),
       getCategories: () => getCategoriesHandler(),
       setSelectedCategories: (categories: []) =>
         setSelectedCategoriesHandler(categories),

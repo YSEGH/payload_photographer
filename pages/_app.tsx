@@ -1,10 +1,17 @@
-import React from "react";
 import type { AppProps } from "next/app";
-
+import Layout from "../components/Layout/Layout";
+import { DataProvider } from "../context/DataContext";
 import "../css/style.css";
 
-const MyApp = ({ Component, pageProps }: AppProps): React.ReactElement => (
-  <Component {...pageProps} />
-);
-
-export default MyApp;
+export default function MyApp({
+  Component,
+  pageProps,
+}: AppProps): React.ReactElement {
+  return (
+    <DataProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </DataProvider>
+  );
+}

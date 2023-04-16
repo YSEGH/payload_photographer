@@ -1,0 +1,98 @@
+.component__search {
+  position: fixed;
+  top: 100px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 900;
+  width: fit-content;
+  height: fit-content;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.component__search-container {
+  max-width: 90vw;
+  min-height: 50px;
+  position: relative;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.component__search-container::before {
+  content: "";
+  width: 100%;
+  height: 50px;
+  background-color: #0072c6;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.component__search-select {
+  width: 100%;
+  max-width: 100%;
+  outline: none !important;
+}
+.component__search-select-container {
+  width: 100%;
+}
+.component__search-select-button {
+  z-index: 100;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  background-color: #0072c6;
+  height: 50px;
+  width: 50px;
+  position: relative;
+}
+.component__search-select-button:hover {
+  background-color: #0060a7;
+}
+.component__search-select-button:focus {
+  background-color: #0072c6;
+}
+.component__search-select-button svg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 15px;
+  height: 50px;
+  width: 50px;
+  fill: #ffffff;
+}
+.component__search-title {
+  font-family: "Exo";
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+}
+.component__search-description {
+  font-family: "Exo";
+  font-weight: 600;
+  font-size: 12px;
+  margin: 0.25rem 0 0.25rem 0;
+  color: #737373;
+}
+.component__search__control {
+  width: 100% !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-bottom: none !important;
+  border-radius: 0 !important;
+  border-color: lightgray !important;
+  cursor: text !important;
+  background-color: #d9d9d94e !important;
+}
+.component__search__menu {
+}
+.component__search__indicators {
+  display: none !important;
+  cursor: pointer !important;
+}
+.component__search__value-container {
+  padding: 0.25rem !important;
+}

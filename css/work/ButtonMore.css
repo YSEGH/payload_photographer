@@ -1,0 +1,33 @@
+.button_more__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+}
+.button_more__text p {
+  font-family: "Exo";
+  font-size: 16px;
+  color: #000000;
+}
+.button_more__button {
+  font-family: "Exo";
+  width: 10rem;
+  height: 50px;
+  border: 1px solid #000000;
+  background-color: transparent;
+  color: #000000;
+  padding: 0.75rem 2rem;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button_more__button:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+.button_more__button:hover svg {
+  fill: #ffffff;
+}

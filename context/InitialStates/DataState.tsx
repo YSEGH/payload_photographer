@@ -1,26 +1,15 @@
-import { WorkItem } from "../../components/ContainerWork";
 import { v4 as uuidv4 } from "uuid";
-
-export interface PhotosState {
-  photos: WorkItem[];
-  hasNextPage: boolean;
-  page: number;
-  loading: Boolean;
-  error: string;
-}
-
-export interface CategoriesState {
-  categories: [];
-  selectedCategories: any[];
-  loading: Boolean;
-  error: string;
-}
+import {
+  CategoriesState,
+  PhotosState,
+  TitleState,
+} from "../../utilities/types";
 
 const photosState: PhotosState = {
   photos: [],
   hasNextPage: true,
   page: 1,
-  loading: false,
+  loading: true,
   error: null,
 };
 
@@ -36,10 +25,11 @@ const formState = {
     lastname: {
       id: uuidv4(),
       type: "input",
-      input_type: "text",
+      html_tag: "input",
       col: "12",
       label: "Nom",
       name: "lastname",
+      required: true,
       value: "",
       description: "Saisissez votre nom",
       error: null,
@@ -47,10 +37,11 @@ const formState = {
     firstname: {
       id: uuidv4(),
       type: "input",
-      input_type: "text",
+      html_tag: "input",
       col: "12",
       label: "Prénom",
       name: "firstname",
+      required: true,
       value: "",
       description: "Saisissez votre prénom",
       error: null,
@@ -58,10 +49,11 @@ const formState = {
     email: {
       id: uuidv4(),
       type: "input",
-      input_type: "text",
+      html_tag: "input",
       col: "12",
       label: "Email",
       name: "email",
+      required: true,
       value: "",
       description: "Saisissez votre email",
       error: null,
@@ -69,10 +61,11 @@ const formState = {
     message: {
       id: uuidv4(),
       type: "textarea",
-      input_type: "",
+      html_tag: "textarea",
       col: "12",
       label: "Message",
       name: "message",
+      required: true,
       value: "",
       description: "Saisissez votre message",
       error: null,

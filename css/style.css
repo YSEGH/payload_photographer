@@ -1,16 +1,18 @@
-@import url(./CardWork.css);
-@import url(./ContainerWork.css);
-@import url(./Search.css);
-@import url(./Header.css);
-@import url(./Menu.css);
-@import url(./Logo.css);
-@import url(./App.css);
-@import url(./ButtonMore.css);
+@import url(./work/CardWork.css);
+@import url(./work/ContainerWork.css);
+@import url(./work/Search.css);
+@import url(./work/ButtonMore.css);
+@import url(./header/Header.css);
+@import url(./header/Menu.css);
+@import url(./header/Logo.css);
+@import url(./pages/App.css);
+@import url(./pages/Contact.css);
+@import url(./form/Form.css);
+@import url(./form/FormContact.css);
 @import url(./Loader.css);
-@import url(./Contact.css);
-@import url(./Form.css);
-@import url(./FormContact.css);
-@import url(./Fonts.css);
+@import url(./pages/Work.css);
+/* @import url(./Fonts.css);
+ */
 html,
 body {
   font-family: system-ui, Segoe UI, Helvetica Neue, Arial;
@@ -19,7 +21,12 @@ body {
   line-height: 1.5;
   color: var(--color-dark-gray);
 }
-
+main {
+  flex: auto;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
 :root {
   --max-width-s: 640px;
   --max-width-m: 1024px;

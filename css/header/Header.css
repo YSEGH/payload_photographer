@@ -1,0 +1,21 @@
+.component__header {
+  height: 140px;
+  width: 100%;
+}
+.component__header-container {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #fffffff2;
+  backdrop-filter: blur(8px);
+}
+.component__header-container-content {
+  max-height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}

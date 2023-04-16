@@ -1,4 +1,8 @@
-import { CategoriesState, PhotosState } from "../InitialStates/DataState";
+import {
+  CategoriesState,
+  PhotosState,
+  TitleState,
+} from "../../utilities/types";
 
 const photosReducer = (state: PhotosState, action) => {
   let newState;
@@ -37,7 +41,12 @@ const categoriesReducer = (state: CategoriesState, action) => {
       return newState;
     case "GET_CATEGORIES":
       let categories = action.data.map((category) => {
-        return { label: category.name, value: category.name.toLowerCase() };
+        return {
+          label: category.name,
+          value: category.name.toLowerCase(),
+          bgColor: category.backgroundColor,
+          textColor: category.textColor,
+        };
       });
       newState = { ...state, loading: false, categories: categories };
       return newState;
@@ -65,7 +74,6 @@ const formReducer = (state, action) => {
       let fields = state.fields;
       fields[action.key].value = action.value;
       newState = { ...state, fields: fields };
-      console.log(newState);
 
       return newState;
     default:

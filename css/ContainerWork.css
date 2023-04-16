@@ -1,9 +1,0 @@
-.container__work {
-  height: auto;
-  margin: auto;
-  flex: auto;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}

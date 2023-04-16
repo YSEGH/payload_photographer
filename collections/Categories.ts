@@ -1,4 +1,8 @@
 import { CollectionConfig } from "payload/types";
+import {
+  backgroundColorField,
+  textColorField,
+} from "../config/colorField/config";
 
 const Categories: CollectionConfig = {
   slug: "categories",
@@ -14,6 +18,8 @@ const Categories: CollectionConfig = {
       label: "Nom",
       type: "text",
     },
+    backgroundColorField,
+    textColorField,
   ],
   timestamps: false,
 };
