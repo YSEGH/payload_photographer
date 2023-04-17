@@ -1,20 +1,12 @@
-import React, { useState } from "react";
-import { motion, useScroll } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { exo } from "./Layout";
 
-const Menu: React.FC = () => {
-  const { scrollY } = useScroll();
-  const [display, setDisplay] = useState<Boolean>(true);
-
-  scrollY.on("change", () => {
-    if (scrollY.get() === 0 || scrollY.get() < scrollY.getPrevious()) {
-      setDisplay(true);
-      return;
-    }
-    setDisplay(false);
-  });
-
+interface Props {
+  display: boolean;
+}
+const Menu: React.FC<Props> = ({ display }) => {
   return (
     <motion.ul
       animate={{ opacity: display ? 1 : 0 }}

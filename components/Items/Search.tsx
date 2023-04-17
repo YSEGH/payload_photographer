@@ -5,39 +5,24 @@ import { MdClear, MdKeyboardArrowDown } from "react-icons/md";
 import { AnimatePresence, motion, useScroll } from "framer-motion";
 
 interface Props {
-  setSize: Function;
+  setHeaderSize: Function;
+  display: boolean;
 }
 
-const animate = {
-  hidden: {
-    height: 60,
-  },
-  initial: {
-    height: 80,
-  },
-  interval: {
-    height: 120,
-  },
+const animateIcon = {
   show: {
-    height: 140,
+    scale: 1,
+  },
+  hidden: {
+    scale: 0,
   },
 };
 
-const Search: React.FC<Props> = ({ setSize }) => {
+const Search: React.FC<Props> = ({ setHeaderSize, display }) => {
   const { state, actions } = useContext(DataContext);
   const [active, setActive] = useState(false);
-  const [searchBarStyle, setSearchBarStyle] = useState(true);
   const [style, setStyle] = useState({});
   const [values, setValues] = useState(state.selectedCategories);
-  const { scrollY } = useScroll();
-
-  scrollY.on("change", () => {
-    if (scrollY.get() === 0 || scrollY.get() < scrollY.getPrevious()) {
-      setSearchBarStyle(true);
-      return;
-    }
-    setSearchBarStyle(false);
-  });
 
   const updateStyle = () => ({
     control: (styles, state) => ({
@@ -84,8 +69,8 @@ const Search: React.FC<Props> = ({ setSize }) => {
 
   const displayHandler = () => {
     let activeState = !active;
-    setActive(!active);
-    setSize(activeState);
+    setActive(activeState);
+    setHeaderSize(activeState);
   };
 
   useEffect(() => {
@@ -96,22 +81,9 @@ const Search: React.FC<Props> = ({ setSize }) => {
 
   return (
     <AnimatePresence>
-      {active && (
-        <motion.div
-          className="component_search"
-          initial={{ transform: "translateY(0px)" }}
-          animate={
-            searchBarStyle
-              ? { transform: "translateY(0px)" }
-              : { transform: "translateY(-20px)" }
-          }
-          exit={{ transform: "translateY(-60px)" }}
-        >
-          <motion.div
-            className="component_search__content container--large"
-            /*         animate={{ opacity: displaySearchBar ? 1 : 0 }}
-             */
-          >
+      {active && display && (
+        <div className="component_search">
+          <div className="component_search__content container--large">
             <div className="filters_container">
               {values.map((value) => (
                 <div
@@ -144,13 +116,19 @@ const Search: React.FC<Props> = ({ setSize }) => {
                 defaultValue={state.selectedCategories}
               />
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       )}
-      <MdKeyboardArrowDown
-        onClick={() => displayHandler()}
+      <motion.div
         className="display_button__icon"
-      />
+        animate={display ? animateIcon.show : animateIcon.hidden}
+      >
+        {active ? (
+          <p onClick={() => displayHandler()}>x</p>
+        ) : (
+          <MdKeyboardArrowDown onClick={() => displayHandler()} />
+        )}
+      </motion.div>
     </AnimatePresence>
   );
 };

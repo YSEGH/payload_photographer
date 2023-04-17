@@ -35,15 +35,18 @@
   width: 100% !important;
   box-shadow: none !important;
   border: none !important;
-  border-bottom: none !important;
+  border-bottom: 1px solid #1aace7 !important;
   border-radius: 0 !important;
   border-color: lightgray !important;
   cursor: text !important;
-  background-color: #d9d9d94e !important;
+  background-color: transparent !important;
 }
 .component__search__indicators {
-  display: none !important;
+  display: block !important;
   cursor: pointer !important;
+}
+.component__search__clear-indicator {
+  display: none !important;
 }
 .component__search__value-container {
   padding: 0.25rem !important;

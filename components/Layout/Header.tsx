@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "./Logo";
 import Menu from "./Menu";
 import { motion, useScroll } from "framer-motion";
@@ -12,9 +12,6 @@ const animate = {
   initial: {
     height: 80,
   },
-  interval: {
-    height: 120,
-  },
   show: {
     height: 140,
   },
@@ -22,63 +19,48 @@ const animate = {
 
 const Header: React.FC = () => {
   const { pathname } = useRouter();
+  const [displayHeader, setDisplayHeader] = useState(true);
   const [headerStyle, setHeaderStyle] = useState(animate.initial);
-  const [menuSize, setMenuSize] = useState(animate.initial);
-  const [activateSearchBar, setActivateSearchBar] = useState(false);
+  const [searchBarIsActive, setSearchBarIsActive] = useState(false);
   const { scrollY } = useScroll();
 
   scrollY.on("change", () => {
     if (scrollY.get() === 0 || scrollY.get() < scrollY.getPrevious()) {
-      if (activateSearchBar) {
+      setDisplayHeader(true);
+      if (searchBarIsActive) {
         setHeaderStyle(animate.show);
-        return;
+      } else {
+        setHeaderStyle(animate.initial);
       }
-      setHeaderStyle(animate.initial);
       return;
     }
-    if (activateSearchBar) {
-      setHeaderStyle(animate.interval);
-      return;
-    }
+    setDisplayHeader(false);
     setHeaderStyle(animate.hidden);
   });
 
-  const setSize = (activeSearchBar) => {
-    console.log(headerStyle.height);
-
-    setActivateSearchBar(activeSearchBar);
+  const setHeaderSize = (activeSearchBar) => {
+    setSearchBarIsActive(activeSearchBar);
     if (activeSearchBar) {
-      if (headerStyle.height === 60) {
-        setHeaderStyle(animate.interval);
-        return;
-      }
       setHeaderStyle(animate.show);
     } else {
-      if (headerStyle.height === 120) {
-        setHeaderStyle(animate.hidden);
-        return;
-      }
       setHeaderStyle(animate.initial);
     }
   };
 
   return (
-    <motion.div className={`component_header`}>
+    <div className={`component_header`}>
       <motion.div
         animate={headerStyle}
         initial={animate.initial}
         className="component_header__container"
       >
-        <motion.div
-          className="component_header__content container--large"
-          animate={menuSize}
-        >
-          <Logo />
-          <Menu />
-        </motion.div>
-        <Search setSize={setSize} />
+        <div className="component_header__content container--large">
+          <Logo display={displayHeader} />
+          <Menu display={displayHeader} />
+        </div>
+        <Search setHeaderSize={setHeaderSize} display={displayHeader} />
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 
