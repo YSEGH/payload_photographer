@@ -4,6 +4,7 @@ import Menu from "./Menu";
 import { motion, useScroll } from "framer-motion";
 import { useRouter } from "next/router";
 import Search from "../Items/Search";
+import { WORK_LINK } from "../../utilities/link";
 
 const animate = {
   hidden: {
@@ -38,14 +39,21 @@ const Header: React.FC = () => {
     setHeaderStyle(animate.hidden);
   });
 
-  const setHeaderSize = (activeSearchBar) => {
+  const setHeaderSize = (activeSearchBar, reset) => {
     setSearchBarIsActive(activeSearchBar);
     if (activeSearchBar) {
       setHeaderStyle(animate.show);
     } else {
       setHeaderStyle(animate.initial);
     }
+    if (reset) {
+      setHeaderStyle(animate.initial);
+    }
   };
+
+  useEffect(() => {
+    return () => {};
+  }, []);
 
   return (
     <div className={`component_header`}>
@@ -58,7 +66,9 @@ const Header: React.FC = () => {
           <Logo display={displayHeader} />
           <Menu display={displayHeader} />
         </div>
-        <Search setHeaderSize={setHeaderSize} display={displayHeader} />
+        {pathname === WORK_LINK && (
+          <Search setHeaderSize={setHeaderSize} display={displayHeader} />
+        )}
       </motion.div>
     </div>
   );
