@@ -1,6 +1,6 @@
 import React from "react";
 import FormContact from "../components/Form/FormContact";
-import { exo } from "../components/Layout/Layout";
+import { exo, kasei } from "../components/Layout/Layout";
 import { DataProvider } from "../context/DataContext";
 
 const contact: React.FC = () => {
@@ -8,8 +8,10 @@ const contact: React.FC = () => {
     <DataProvider>
       <div className="page_contact__container container--large">
         <div className="page_contact__text">
-          <h3 className="page_contact__text--title">Gardons contact.</h3>
-          <p className={`page_contact__text--description`}>
+          <h3 className={`page_contact__text--title ${kasei.className}`}>
+            Gardons contact.
+          </h3>
+          <p className={`page_contact__text--description ${kasei.className}`}>
             N'hésitez pas à me contacter, je vous répondrai dès que possible.
           </p>
           <div className="page_contact__joinme">
@@ -30,14 +32,16 @@ const contact: React.FC = () => {
               </svg>
             </div>
             <div className="page_contact__joinme--email">
-              <p className={exo.className}>
+              <p className={kasei.className}>
                 Mail me at <br /> <span>youssef.seghrouchni@gmail.com</span>
               </p>
             </div>
           </div>
         </div>
         <div className="page_contact__form">
-          <h4 className="page_contact__form--title">Send me a message.</h4>
+          <h4 className={`page_contact__form--title ${kasei.className}`}>
+            Send me a message.
+          </h4>
           <FormContact />
         </div>
       </div>

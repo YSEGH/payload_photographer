@@ -1,3 +1,5 @@
+import { FileData } from "payload/dist/uploads/types";
+
 export interface PhotosState {
   photos: Doc[];
   hasNextPage: boolean;
@@ -45,14 +47,6 @@ export interface Slider {
   id: string;
   photo: File;
 }
-export interface File {
-  alt: string;
-  createdAt: string;
-  filename: string;
-  filesize: number;
-  height: number;
-  id: string;
-  mimeType: string;
+export interface File extends FileData {
   url: string;
-  sizes: Size;
 }

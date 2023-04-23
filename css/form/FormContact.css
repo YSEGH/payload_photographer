@@ -32,7 +32,7 @@
 .form_contact__field_title {
   margin: 0;
   height: 30px;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 16px;
   transition: 0.25s;
   color: #000000;
@@ -138,11 +138,11 @@
   height: 20px;
 }
 .form_contact__field_message p {
-  font-size: 12px;
+  font-size: 10px;
   margin-top: 3px;
   margin-bottom: 0;
-  color: #a1a1a1;
-  font-weight: 500;
+  color: #000000;
+  font-weight: 400;
 }
 .form_contact__field_wrapper.is_error .form_contact__field_message p {
   color: #ff5a35;

@@ -43,13 +43,24 @@
 }
 /* FORM */
 .page_contact__form {
+  border: 1px solid #000000;
+  padding: 2rem;
+  position: relative;
+  overflow: auto;
+}
+.page_contact__form::before {
+  content: "";
+  width: 200px;
+  height: 300px;
   background-color: #fbfbfb;
-  padding: 4rem;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .page_contact__form--title {
   font-weight: 700;
-  font-size: 25px;
-  margin: 0 0 1rem;
+  font-size: 30px;
+  margin: 0;
 }
 .page_contact__text--description {
   margin: 2rem 0;

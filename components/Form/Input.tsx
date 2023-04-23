@@ -1,5 +1,6 @@
 import React, { memo, useContext, useEffect, useRef, useState } from "react";
 import { DataContext } from "../../context/DataContext";
+import { kasei } from "../Layout/Layout";
 
 const Input = ({ field }) => {
   const { actions } = useContext(DataContext);
@@ -35,9 +36,12 @@ const Input = ({ field }) => {
         field.error ? "is_error" : ""
       }`}
     >
-      <h4 className="form_contact__field_title">{field.label}</h4>
+      <h4 className={`form_contact__field_title ${kasei.className}`}>
+        {field.label}
+      </h4>
       <div className="form_contact__input_wrapper">
         <input
+          className={kasei.className}
           ref={inputRef}
           spellCheck="false"
           onFocus={onFocusHandler}
@@ -50,9 +54,9 @@ const Input = ({ field }) => {
       </div>
       <div className="form_contact__field_message">
         {!field.error ? (
-          <p className="">{!focus && field.description}</p>
+          <p className={kasei.className}>{!focus && field.description}</p>
         ) : (
-          <p className="">{field.error}</p>
+          <p className={kasei.className}>{field.error}</p>
         )}
       </div>
     </div>

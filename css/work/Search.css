@@ -4,10 +4,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
-  position: absolute;
-  top: 80;
-  left: 0;
+  background-color: #ffffff;
+  padding-bottom: 10px;
+  position: relative;
+  z-index: 900;
 }
 .component_search__content {
   display: flex;
@@ -35,33 +35,62 @@
   margin-left: 0.5rem;
 }
 .select_container {
+  position: relative;
   width: 20rem;
 }
 .component__search__control {
+  box-shadow: none !important;
+  height: 40px !important;
   cursor: text !important;
   border-radius: 0 !important;
   background-color: hsl(0deg 0% 100% / 60%) !important;
+  border: none !important;
   border-color: hsl(0, 0%, 90%) !important;
-  border-top: none !important;
-  border-left: none !important;
-  border-right: none !important;
 }
 .component__search__placeholder {
   color: hsl(0deg 0% 75%) !important;
   font-weight: 300;
   letter-spacing: 1px;
 }
-.component__search__indicators {
+.component__search__indicator-separator {
   display: none !important;
+}
+.component__search__indicators {
+  position: relative !important;
   cursor: pointer !important;
+  background-color: #1aace7;
+  width: 42px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
 }
 .component__search__clear-indicator {
   display: none !important;
 }
-.component__search__value-container {
-  padding: 0.25rem !important;
+.component__search__indicator,
+.component__search__indicator:hover {
+  color: #ffffff !important;
 }
 
+.component__search__value-container {
+  position: relative;
+  background-color: #fcfcfc !important;
+  padding: 0.25rem !important;
+  border: none;
+  border-bottom: 1px solid #edededd8;
+}
+.component__search__menu {
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+.component__search__menu-list {
+  max-height: 200px !important;
+  padding: 0 !important;
+}
+.component__search__option {
+  cursor: pointer !important;
+}
 .display_button__icon {
   position: absolute;
   bottom: -3rem;

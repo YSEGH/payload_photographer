@@ -4,6 +4,7 @@ import { adminsAndUser } from "../../access/adminsAndUser";
 
 const Users: CollectionConfig = {
   slug: "users",
+  labels: { singular: "Utilisateur", plural: "Utilisateurs" },
   auth: {
     forgotPassword: {
       generateEmailHTML: ({ token, user }) => {
