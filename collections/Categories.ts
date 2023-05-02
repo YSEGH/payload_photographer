@@ -2,7 +2,7 @@ import { CollectionConfig } from "payload/types";
 import {
   backgroundColorField,
   textColorField,
-} from "../config/colorField/config";
+} from "../config/fields/colorField/config";
 
 const Categories: CollectionConfig = {
   slug: "categories",

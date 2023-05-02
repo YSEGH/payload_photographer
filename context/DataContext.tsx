@@ -4,8 +4,9 @@ import {
   getCategories,
   getPhotos,
   sendForm,
-  setFormValue,
+  setScrollPosition,
   setSelectedCategories,
+  updateFormErrors,
 } from "./Actions/DataActions";
 import {
   categoriesState,
@@ -21,14 +22,16 @@ import {
 export interface DataActions {
   getPhotos: Function;
   getCategories: Function;
+  setScrollPosition: Function;
   setSelectedCategories: Function;
   sendForm: Function;
-  setFormValue: Function;
+  updateFormError: Function;
 }
 export interface DataContext {
   actions: DataActions;
   state: any;
 }
+
 export const DataContext = React.createContext(null);
 const { Provider } = DataContext;
 
@@ -44,6 +47,9 @@ export const DataProvider = ({ children }) => {
     getPhotos(filters, reset, page, dispatchPhotos);
   };
 
+  const setScrollPositionHandler = (scrollPosition) => {
+    setScrollPosition(scrollPosition, dispatchPhotos);
+  };
   const getCategoriesHandler = () => {
     getCategories(dispatchCategories);
   };
@@ -56,8 +62,8 @@ export const DataProvider = ({ children }) => {
     sendForm(form, dispatchForm);
   };
 
-  const setFormValueHandler = (value, key) => {
-    setFormValue(value, key, dispatchForm);
+  const updateFormErrorHandler = (field) => {
+    updateFormErrors(field, dispatchForm);
   };
 
   const state: DataContext = {
@@ -65,6 +71,10 @@ export const DataProvider = ({ children }) => {
       photos: photos.photos,
       page: photos.page,
       form: form.fields,
+      loadingForm: form.loading,
+      formSuccess: form.success,
+      formError: form.error,
+      scrollPosition: photos.scrollPosition,
       hasNextPage: photos.hasNextPage,
       loadingGetPhotos: photos.loading,
       errorGetPhotos: photos.error,
@@ -77,13 +87,14 @@ export const DataProvider = ({ children }) => {
       getPhotos: (filters: filters, reset: boolean, page: number) =>
         getPhotosHandler(filters, reset, page),
       getCategories: () => getCategoriesHandler(),
+      setScrollPosition: (scrollPosition: number) =>
+        setScrollPositionHandler(scrollPosition),
       setSelectedCategories: (categories: []) =>
         setSelectedCategoriesHandler(categories),
       sendForm: (form) => sendFormHandler(form),
-      setFormValue: (value, key) => setFormValueHandler(value, key),
+      updateFormError: (field) => updateFormErrorHandler(field),
     },
   };
   const value = React.useMemo(() => state, [photos, categories, form]);
-
   return <Provider value={value}>{children}</Provider>;
 };

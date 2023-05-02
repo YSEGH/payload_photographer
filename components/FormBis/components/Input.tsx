@@ -1,18 +1,11 @@
 import React, { memo, useContext, useEffect, useRef, useState } from "react";
-import { DataContext } from "../../context/DataContext";
-import { kasei } from "../Layout/Layout";
+import { DataContext } from "../../../context/DataContext";
+import { kasei } from "../../Layout/Layout";
 
-const TextArea = ({ field, error, messageError }) => {
+const Input = ({ field, error, messageError }) => {
   const { actions, state } = useContext(DataContext);
-  const textAreaRef = useRef(null);
+  const inputRef = useRef(null);
   const [focus, setFocus] = useState(false);
-
-  const resizeTextArea = () => {
-    console.log(typeof textAreaRef.current);
-
-    textAreaRef.current.style.height = "auto";
-    textAreaRef.current.style.height = textAreaRef.current.scrollHeight + "px";
-  };
 
   const onFocusHandler = () => {
     setFocus(true);
@@ -28,8 +21,7 @@ const TextArea = ({ field, error, messageError }) => {
     if (error) {
       actions.updateFormError(field.name);
     }
-    resizeTextArea();
-    if (textAreaRef.current.value) {
+    if ((field.name, inputRef.current.value)) {
       setFocus(true);
       return;
     }
@@ -37,17 +29,11 @@ const TextArea = ({ field, error, messageError }) => {
   };
 
   useEffect(() => {
-    if (textAreaRef.current.value) {
+    if (inputRef.current.value) {
       setFocus(true);
     }
-    return () => {};
-  }, []);
-
-  useEffect(resizeTextArea, [field.value]);
-
-  useEffect(() => {
     if (state.formSuccess) {
-      textAreaRef.current.value = "";
+      inputRef.current.value = "";
       setFocus(false);
     }
     return () => {};
@@ -66,17 +52,16 @@ const TextArea = ({ field, error, messageError }) => {
           <span className="form_contact__field_required">*</span>
         )}
       </h4>
-      <div className="form_contact__input_wrapper form_contact__input_wrapper--textarea">
-        <textarea
+      <div className="form_contact__input_wrapper">
+        <input
           className={kasei.className}
+          ref={inputRef}
           spellCheck="false"
-          ref={textAreaRef}
           onFocus={onFocusHandler}
           onBlur={onBlurHandler}
           onChange={onChangeHandler}
+          type={field.blockType}
           name={field.name}
-          value={field.value}
-          rows={1}
         />
       </div>
       <div className="form_contact__field_message">
@@ -90,4 +75,4 @@ const TextArea = ({ field, error, messageError }) => {
   );
 };
 
-export default TextArea;
+export default memo(Input);

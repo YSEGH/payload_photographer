@@ -2,6 +2,7 @@ import { FileData } from "payload/dist/uploads/types";
 
 export interface PhotosState {
   photos: Doc[];
+  scrollPosition: number;
   hasNextPage: boolean;
   page: number;
   loading: Boolean;

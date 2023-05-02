@@ -23,7 +23,7 @@ const ButtonMore: React.FC = () => {
         <p className="button_more__text">Fin des résultats</p>
       ) : (
         <button className="button_more__button" onClick={onClickHandler}>
-          {state.loadingGetPhotos ? <Loader /> : "Voir plus"}
+          {state.loadingGetPhotos ? <Loader fill="#000000" /> : "Voir plus"}
         </button>
       )}
     </div>

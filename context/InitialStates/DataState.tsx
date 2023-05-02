@@ -7,6 +7,7 @@ import {
 
 const photosState: PhotosState = {
   photos: [],
+  scrollPosition: 0,
   hasNextPage: true,
   page: 1,
   loading: true,
@@ -72,8 +73,8 @@ const formState = {
     },
   },
   loading: false,
-  success: null,
-  error: null,
+  success: false,
+  error: [],
 };
 
 export { photosState, categoriesState, formState };

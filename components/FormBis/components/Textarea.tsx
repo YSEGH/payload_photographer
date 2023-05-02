@@ -1,18 +1,12 @@
 import React, { memo, useContext, useEffect, useRef, useState } from "react";
-import { DataContext } from "../../context/DataContext";
-import { kasei } from "../Layout/Layout";
+import { DataContext } from "../../../context/DataContext";
+import { kasei } from "../../Layout/Layout";
+import { resizeTextArea } from "../utils";
 
 const TextArea = ({ field, error, messageError }) => {
   const { actions, state } = useContext(DataContext);
   const textAreaRef = useRef(null);
   const [focus, setFocus] = useState(false);
-
-  const resizeTextArea = () => {
-    console.log(typeof textAreaRef.current);
-
-    textAreaRef.current.style.height = "auto";
-    textAreaRef.current.style.height = textAreaRef.current.scrollHeight + "px";
-  };
 
   const onFocusHandler = () => {
     setFocus(true);
@@ -28,7 +22,7 @@ const TextArea = ({ field, error, messageError }) => {
     if (error) {
       actions.updateFormError(field.name);
     }
-    resizeTextArea();
+    resizeTextArea(textAreaRef.current);
     if (textAreaRef.current.value) {
       setFocus(true);
       return;
@@ -40,12 +34,6 @@ const TextArea = ({ field, error, messageError }) => {
     if (textAreaRef.current.value) {
       setFocus(true);
     }
-    return () => {};
-  }, []);
-
-  useEffect(resizeTextArea, [field.value]);
-
-  useEffect(() => {
     if (state.formSuccess) {
       textAreaRef.current.value = "";
       setFocus(false);
@@ -90,4 +78,4 @@ const TextArea = ({ field, error, messageError }) => {
   );
 };
 
-export default TextArea;
+export default memo(TextArea);

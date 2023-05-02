@@ -2,26 +2,32 @@ import React, { memo, useContext, useEffect, useRef, useState } from "react";
 import { DataContext } from "../../context/DataContext";
 import { kasei } from "../Layout/Layout";
 
-const Input = ({ field }) => {
-  const { actions } = useContext(DataContext);
+const Input = ({ field, error, messageError }) => {
+  const { actions, state } = useContext(DataContext);
   const inputRef = useRef(null);
   const [focus, setFocus] = useState(false);
 
   const onFocusHandler = () => {
     setFocus(true);
   };
+
   const onBlurHandler = (e) => {
     if (!e.target.value) {
       setFocus(false);
     }
   };
-  const onChangeHandler = (e) => {
-    if (e.target.value) {
-      setFocus(true);
-    }
 
-    actions.setFormValue(e.target.value, field.name);
+  const onChangeHandler = () => {
+    if (error) {
+      actions.updateFormError(field.name);
+    }
+    if ((field.name, inputRef.current.value)) {
+      setFocus(true);
+      return;
+    }
+    setFocus(false);
   };
+
   useEffect(() => {
     if (inputRef.current.value) {
       setFocus(true);
@@ -29,15 +35,26 @@ const Input = ({ field }) => {
     return () => {};
   }, []);
 
+  useEffect(() => {
+    if (state.formSuccess) {
+      inputRef.current.value = "";
+      setFocus(false);
+    }
+    return () => {};
+  }, [state.formSuccess]);
+
   return (
     <div
       data-name={field.name}
       className={`form_contact__field_wrapper ${focus ? "is_active" : ""} ${
-        field.error ? "is_error" : ""
+        error ? "is_error" : ""
       }`}
     >
       <h4 className={`form_contact__field_title ${kasei.className}`}>
         {field.label}
+        {field.required && (
+          <span className="form_contact__field_required">*</span>
+        )}
       </h4>
       <div className="form_contact__input_wrapper">
         <input
@@ -47,20 +64,19 @@ const Input = ({ field }) => {
           onFocus={onFocusHandler}
           onBlur={onBlurHandler}
           onChange={onChangeHandler}
-          type={field.input_type}
+          type={field.blockType}
           name={field.name}
-          value={field.input_type === "file" ? undefined : field.value}
         />
       </div>
       <div className="form_contact__field_message">
-        {!field.error ? (
+        {!error ? (
           <p className={kasei.className}>{!focus && field.description}</p>
         ) : (
-          <p className={kasei.className}>{field.error}</p>
+          <p className={kasei.className}>{messageError}</p>
         )}
       </div>
     </div>
   );
 };
 
-export default memo(Input);
+export default Input;

@@ -3,8 +3,8 @@
   margin: auto;
   flex: auto;
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: flex-start;
   flex-wrap: wrap;
-  min-height: 300px;
+  min-height: 700px;
 }

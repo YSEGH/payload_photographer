@@ -16,8 +16,6 @@ interface Props {
 }
 
 const About: React.FC<Props> = ({ infos }) => {
-  console.log(infos.imageAbout);
-
   return (
     <div className="page_about__container container--medium">
       <div className="about__hero-bannier">

@@ -18,14 +18,10 @@ const Menu: React.FC<Props> = ({ display }) => {
         </Link>
       </li>
       <li className="nav--item">
-        <Link href={`/about`} scroll={false}>
-          About
-        </Link>
+        <Link href={`/about`} /* scroll={false} */>About</Link>
       </li>
       <li className="nav--item">
-        <Link href={`/contact`} scroll={false}>
-          Contact
-        </Link>
+        <Link href={`/contact`} /* scroll={false} */>Contact</Link>
       </li>
     </motion.ul>
   );

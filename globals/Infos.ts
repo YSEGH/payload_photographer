@@ -34,6 +34,21 @@ const Infos: GlobalConfig = {
               type: "email",
               required: true,
             },
+            {
+              name: "title",
+              label: "Titre de la page",
+              type: "text",
+              required: true,
+              defaultValue: "Let’s keep in touch",
+            },
+            {
+              name: "description",
+              label: "Texte informatif situé au dessus du formulaire",
+              type: "text",
+              required: true,
+              defaultValue:
+                "Send me a message, I will response soon as possible",
+            },
           ],
         },
         {

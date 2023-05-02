@@ -24,7 +24,7 @@
     "next.config.js",
     "pages/index.tsx.unused",
     "pages/[...slug].tsx.unused",
-    "config/colorField/components/InputBackgroundColor.unused",
+    "config/fields/colorField/components/InputBackgroundColor.unused",
     "pages/_app.tsx.text"
   ],
   "exclude": ["node_modules"],
