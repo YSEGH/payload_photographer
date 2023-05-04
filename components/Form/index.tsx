@@ -1,41 +1,19 @@
-import React, { memo, useContext, useEffect, useRef } from "react";
-import FieldWrapper from "./FieldWrapper";
+import React, { useContext, useEffect } from "react";
+import Col from "./components/Col";
 import { DataContext } from "../../context/DataContext";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 import Loader from "../Layout/Loader";
+import { getFormData } from "./utils";
+import { Field, Form } from "./types";
+import styles from "./style/index.module.css";
 
-interface Field {
-  id: string;
-  label: string;
-  name: string;
-}
-interface Form {
-  id: string;
-  fields: Field[];
-  confirmationMessage: any;
-  submitButtonLabel: string;
-}
 interface Props {
   form: Form;
 }
 
-const FormContact: React.FC<Props> = ({ form }) => {
-  console.log(form);
-
+const FormElement: React.FC<Props> = ({ form }) => {
   const { actions, state } = useContext(DataContext);
-
-  const getFormData = (fields: any[], formData: FormData) => {
-    let submissionData = [];
-    fields.forEach((field) => {
-      submissionData.push({
-        field: field.name,
-        value: formData.get(field.name),
-        title: field.label,
-      });
-    });
-    return submissionData;
-  };
 
   const submitFormHandler = (e) => {
     e.preventDefault();
@@ -67,8 +45,9 @@ const FormContact: React.FC<Props> = ({ form }) => {
   return (
     <>
       <form
-        autoComplete="false"
-        id="form_contact"
+        className={styles.form__contact}
+        autoComplete="off"
+        id="form__contact"
         noValidate
         onSubmit={submitFormHandler}
       >
@@ -83,7 +62,7 @@ const FormContact: React.FC<Props> = ({ form }) => {
             );
           }
           return (
-            <FieldWrapper
+            <Col
               key={field.id}
               field={field}
               error={error}
@@ -91,9 +70,9 @@ const FormContact: React.FC<Props> = ({ form }) => {
             />
           );
         })}
-        <div className="form_contact__submit">
+        <div className={styles.form__submit}>
           <button
-            form="form_contact"
+            form="form__contact"
             type="submit"
             disabled={state.loadingForm}
           >
@@ -110,4 +89,4 @@ const FormContact: React.FC<Props> = ({ form }) => {
   );
 };
 
-export default memo(FormContact);
+export default FormElement;

@@ -7,13 +7,10 @@
 @import url(./header/Logo.css);
 @import url(./pages/App.css);
 @import url(./pages/Contact.css);
-@import url(./form/Form.css);
-@import url(./form/FormContact.css);
 @import url(./Loader.css);
 @import url(./pages/Work.css);
 @import url(./pages/About.css);
-/* @import url(./Fonts.css);
- */
+
 html,
 body {
   font-family: system-ui, Segoe UI, Helvetica Neue, Arial;
@@ -32,9 +29,7 @@ main {
   --max-width-s: 640px;
   --max-width-m: 1024px;
   --max-width-l: 1440px;
-
   --baseline: 30px;
-
   --color-dark-gray: #212121;
 }
 

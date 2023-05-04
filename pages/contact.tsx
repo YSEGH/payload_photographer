@@ -1,6 +1,6 @@
 import payload from "payload";
 import React from "react";
-import FormElement from "../components/FormBis";
+import FormElement from "../components/Form";
 import { kasei } from "../components/Layout/Layout";
 import { DataProvider } from "../context/DataContext";
 
