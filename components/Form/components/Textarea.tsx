@@ -1,10 +1,8 @@
-import React, { memo, useContext, useEffect, useRef, useState } from "react";
-import { DataContext } from "../../../context/DataContext";
+import React, { memo, useEffect, useRef } from "react";
 import { kasei } from "../../Layout/Layout";
 import { resizeTextArea } from "../utils";
 
-const TextArea = ({ setFocus, field, error, messageError }) => {
-  const { actions, state } = useContext(DataContext);
+const TextArea = ({ setFocus, setError, field, success }) => {
   const textAreaRef = useRef(null);
 
   const onFocusHandler = () => {
@@ -18,9 +16,7 @@ const TextArea = ({ setFocus, field, error, messageError }) => {
   };
 
   const onChangeHandler = () => {
-    if (error) {
-      actions.updateFormError(field.name);
-    }
+    setError();
     resizeTextArea(textAreaRef.current);
     if (textAreaRef.current.value) {
       setFocus(true);
@@ -33,12 +29,12 @@ const TextArea = ({ setFocus, field, error, messageError }) => {
     if (textAreaRef.current.value) {
       setFocus(true);
     }
-    if (state.formSuccess) {
+    if (success) {
       textAreaRef.current.value = "";
       setFocus(false);
     }
     return () => {};
-  }, [state.formSuccess]);
+  }, [success]);
 
   return (
     <textarea
@@ -49,7 +45,6 @@ const TextArea = ({ setFocus, field, error, messageError }) => {
       onBlur={onBlurHandler}
       onChange={onChangeHandler}
       name={field.name}
-      value={field.value}
       rows={1}
     />
   );

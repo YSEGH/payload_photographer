@@ -1,25 +1,41 @@
-import React, { ReactElement, useState } from "react";
-import Input from "./Input";
-import Textarea from "./Textarea";
+import React, { useEffect, useState, useContext } from "react";
 import styles from "../style/index.module.css";
 import { kasei } from "../../Layout/Layout";
 import cx from "classnames";
+import { DataContext } from "../../../context/DataContext";
+import { getFieldComponent } from "../utils";
 
-const FieldWrapper = ({ field, error, messageError }) => {
-  const [focus, setFocus] = useState(false);
+const FieldWrapper = ({ field }) => {
   const type = `form__input_wrapper--${field.blockType}`;
+  const { actions, state } = useContext(DataContext);
+  const [focus, setFocus] = useState(false);
+  const [error, setError] = useState(null);
 
-  const getFieldComponent = (): ReactElement => {
-    switch (field.blockType) {
-      case "text":
-      case "email":
-        return <Input setFocus={setFocus} field={field} error={error} />;
-      case "textarea":
-        return <Textarea setFocus={setFocus} field={field} error={error} />;
-      default:
-        return <div></div>;
+  const updateFormError = () => {
+    if (error) {
+      actions.updateFormError(field.name);
     }
   };
+
+  const propsField = {
+    setFocus: setFocus,
+    setError: updateFormError,
+    field: field,
+    success: state.formSuccess,
+  };
+
+  useEffect(() => {
+    let fieldError: boolean = state.formError.find(
+      (error) => error.name === field.name
+    );
+
+    if (fieldError) {
+      setError(fieldError);
+    } else {
+      setError(null);
+    }
+    return () => {};
+  }, [state.formError]);
 
   return (
     <div data-name={field.name} className={cx(styles.form__field_wrapper)}>
@@ -41,7 +57,7 @@ const FieldWrapper = ({ field, error, messageError }) => {
           [styles.is_error]: error,
         })}
       >
-        {getFieldComponent()}
+        {getFieldComponent(field, propsField)}
       </div>
       <div
         className={cx(styles.form__field_message, {
@@ -51,7 +67,7 @@ const FieldWrapper = ({ field, error, messageError }) => {
         {!error ? (
           <p className={kasei.className}>{!focus && field.description}</p>
         ) : (
-          <p className={kasei.className}>{messageError}</p>
+          <p className={kasei.className}>{error.message}</p>
         )}
       </div>
     </div>

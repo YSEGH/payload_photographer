@@ -51,25 +51,9 @@ const FormElement: React.FC<Props> = ({ form }) => {
         noValidate
         onSubmit={submitFormHandler}
       >
-        {Object.entries(form.fields).map(([key, field]: [string, Field]) => {
-          let messageError = null;
-          let error: boolean = state.formError.some(
-            (error) => error.name === field.name
-          );
-          if (error) {
-            state.formError.map((error) =>
-              error.name === field.name ? (messageError = error.message) : error
-            );
-          }
-          return (
-            <Col
-              key={field.id}
-              field={field}
-              error={error}
-              messageError={messageError}
-            />
-          );
-        })}
+        {Object.entries(form.fields).map(([key, field]: [string, Field]) => (
+          <Col key={field.id} field={field} />
+        ))}
         <div className={styles.form__submit}>
           <button
             form="form__contact"

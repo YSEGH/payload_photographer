@@ -1,7 +1,7 @@
 .card_work {
   position: relative;
   width: 25%;
-  aspect-ratio: 1/1;
+  height: 350px;
   overflow: hidden;
 }
 .card_work__link {

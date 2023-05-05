@@ -1,9 +1,7 @@
-import React, { memo, useContext, useEffect, useRef, useState } from "react";
-import { DataContext } from "../../../context/DataContext";
+import React, { memo, useEffect, useRef } from "react";
 import { kasei } from "../../Layout/Layout";
 
-const Input = ({ setFocus, field, error }) => {
-  const { actions, state } = useContext(DataContext);
+const Input = ({ setFocus, setError, field, success }) => {
   const inputRef = useRef(null);
 
   const onFocusHandler = () => {
@@ -17,10 +15,8 @@ const Input = ({ setFocus, field, error }) => {
   };
 
   const onChangeHandler = () => {
-    if (error) {
-      actions.updateFormError(field.name);
-    }
-    if ((field.name, inputRef.current.value)) {
+    setError();
+    if (inputRef.current.value) {
       setFocus(true);
       return;
     }
@@ -31,12 +27,12 @@ const Input = ({ setFocus, field, error }) => {
     if (inputRef.current.value) {
       setFocus(true);
     }
-    if (state.formSuccess) {
+    if (success) {
       inputRef.current.value = "";
       setFocus(false);
     }
     return () => {};
-  }, [state.formSuccess]);
+  }, [success]);
 
   return (
     <input
