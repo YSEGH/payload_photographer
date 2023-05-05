@@ -11,12 +11,14 @@ const FieldWrapper = ({ field }) => {
   const [focus, setFocus] = useState(false);
   const [error, setError] = useState(null);
 
+  // Update fields error
   const updateFormError = () => {
     if (error) {
       actions.updateFormError(field.name);
     }
   };
 
+  // Props for fields component
   const propsField = {
     setFocus: setFocus,
     setError: updateFormError,

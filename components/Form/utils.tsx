@@ -18,13 +18,13 @@ export const resizeTextArea = (textArea: HTMLTextAreaElement) => {
   textArea.style.height = textArea.scrollHeight + "px";
 };
 
-export const getFieldComponent = (field, propsField) => {
+export const getFieldComponent = (field, props) => {
   switch (field.blockType) {
     case "text":
     case "email":
-      return <Input {...propsField} />;
+      return <Input {...props} />;
     case "textarea":
-      return <Textarea {...propsField} />;
+      return <Textarea {...props} />;
     default:
       return <div></div>;
   }
