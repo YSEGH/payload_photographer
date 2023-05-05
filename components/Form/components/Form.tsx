@@ -6,7 +6,7 @@ import Loader from "./Loader";
 import { FormContext } from "../context/context";
 import { sendForm } from "../context/actions";
 
-interface Props {}
+type Props = {};
 
 const Form: React.FC<Props> = () => {
   const state = useContext(FormContext);

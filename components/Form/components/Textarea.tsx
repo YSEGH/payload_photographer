@@ -1,8 +1,16 @@
 import React, { memo, useEffect, useRef } from "react";
 import { kasei } from "../../Layout/Layout";
 import { resizeTextArea } from "../utils";
+import { Field } from "../types";
 
-const TextArea = ({ setFocus, setError, field, success }) => {
+type Props = {
+  setFocus: Function;
+  setError: Function;
+  field: Field;
+  success: boolean;
+};
+
+const TextArea: React.FC<Props> = ({ setFocus, setError, field, success }) => {
   const textAreaRef = useRef(null);
 
   const onFocusHandler = () => {

@@ -5,10 +5,15 @@ import cx from "classnames";
 import { getFieldComponent } from "../utils";
 import { FormContext } from "../context/context";
 import { setFormError } from "../context/actions";
+import { Field } from "../types";
+
+type Props = {
+  field: Field;
+};
 
 const inputWrapperClass = "form__input_wrapper";
 
-const FieldWrapper = ({ field }) => {
+const FieldWrapper: React.FC<Props> = ({ field }) => {
   const type_class = `${inputWrapperClass}--${field.blockType}`;
   const state = useContext(FormContext);
   const [focus, setFocus] = useState(false);
@@ -68,11 +73,7 @@ const FieldWrapper = ({ field }) => {
           [styles.is_error]: error,
         })}
       >
-        {!error ? (
-          <p className={kasei.className}>{!focus && field.description}</p>
-        ) : (
-          <p className={kasei.className}>{error.message}</p>
-        )}
+        {error && <p className={kasei.className}>{error.message}</p>}
       </div>
     </div>
   );

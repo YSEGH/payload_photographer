@@ -1,7 +1,15 @@
 import React, { memo, useEffect, useRef } from "react";
 import { kasei } from "../../Layout/Layout";
+import { Field } from "../types";
 
-const Input = ({ setFocus, setError, field, success }) => {
+type Props = {
+  setFocus: Function;
+  setError: Function;
+  field: Field;
+  success: boolean;
+};
+
+const Input: React.FC<Props> = ({ setFocus, setError, field, success }) => {
   const inputRef = useRef(null);
 
   const onFocusHandler = () => {
