@@ -1,4 +1,5 @@
-.container_items {
+.container__cards,
+.container__photos {
   height: auto;
   margin: auto;
   flex: auto;

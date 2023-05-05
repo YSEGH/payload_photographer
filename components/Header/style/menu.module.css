@@ -6,16 +6,16 @@
   font-family: "Exo";
   font-weight: 400;
 }
-.nav .nav--item {
+.nav__item {
   list-style-type: none;
 }
-.nav .nav--item:not(:last-child) {
+.nav__item:not(:last-child) {
   margin-right: 1rem;
 }
-.nav .nav--item a {
+.nav__item a {
   text-decoration: none;
   color: black;
 }
-.nav .nav--item a.active {
+.nav__item a.active {
   text-decoration: underline;
 }

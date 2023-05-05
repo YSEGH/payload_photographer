@@ -1,16 +1,16 @@
-.card_work {
+.card {
   position: relative;
   width: 25%;
   height: 350px;
   overflow: hidden;
 }
-.card_work__link {
+.card__link {
   display: block;
   height: 100%;
   width: 100%;
 }
 /* HEADER */
-.card_work__header {
+.card__header {
   pointer-events: none;
   width: 100%;
   height: 100%;
@@ -26,10 +26,10 @@
   transition: 0.25s;
 }
 
-.card_work:hover .card_work__header {
+.card:hover .card__header {
   transform: translateY(-50%);
 }
-.card_work__header h6 {
+.card__header h6 {
   position: absolute;
   bottom: 0.5rem;
   left: 0.75rem;
@@ -44,7 +44,7 @@
 }
 
 /* BODY */
-.card_work__body {
+.card__body {
   display: flex;
   height: 100%;
   width: 100%;
@@ -54,7 +54,7 @@
   user-select: none;
   align-items: flex-end;
 }
-.card_work__body img {
+.card__body img {
   pointer-events: none;
   height: 100%;
   width: 100%;
@@ -62,7 +62,7 @@
   z-index: 1;
   transition: 0.5s;
 }
-.card_work__body:hover img {
+.card__body:hover img {
   transform: scale(1.2);
 }
 
@@ -95,7 +95,7 @@
   }
 }
 @media screen and (max-width: 992px) {
-  .card_work {
+  .card {
     width: 33.33%;
     height: 25rem;
   }
@@ -129,7 +129,7 @@
   }
 }
 @media screen and (max-width: 768px) {
-  .card_work {
+  .card {
     width: 50%;
     height: 25rem;
   }
@@ -163,7 +163,7 @@
   }
 }
 @media screen and (max-width: 576px) {
-  .card_work {
+  .card {
     width: 100%;
     height: 25rem;
   }

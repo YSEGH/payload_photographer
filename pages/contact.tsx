@@ -1,8 +1,8 @@
 import payload from "payload";
 import React from "react";
 import FormElement from "../components/Form";
-import { kasei } from "../components/Layout/Layout";
 import { FormState } from "../components/Form/types";
+import { kasei } from "../utilities/fonts";
 
 interface Contact {
   title: String;

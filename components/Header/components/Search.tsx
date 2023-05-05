@@ -1,9 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import Select from "react-select";
-import { DataContext } from "../../context/DataContext";
+import { DataContext } from "../../../context/DataContext";
 import { MdClear } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
 import crypto from "crypto";
+import styles from "../style/search.module.css";
+import global from "../../../css/global.module.css";
+import cx from "classnames";
 
 interface Props {
   display: boolean;
@@ -86,17 +89,17 @@ const Search: React.FC<Props> = ({ display }) => {
 
   return (
     <motion.div
-      className="component_search"
+      className={styles.searchbar}
       animate={display ? animateBar.show : animateBar.hidden}
       transition={{ delay: 0.1 }}
     >
-      <div className="component_search__content container--large">
-        <div className="filters_container">
+      <div className={cx(styles.searchbar__content, global.container__large)}>
+        <div className={styles.searchbar__filters}>
           <AnimatePresence>
             {values.map((value, i) => (
               <motion.div
                 key={value.label}
-                className="tag_item"
+                className={styles.filter__item}
                 initial={animateFilter.hidden}
                 animate={animateFilter.show}
                 exit={animateFilter.hidden}
@@ -112,13 +115,13 @@ const Search: React.FC<Props> = ({ display }) => {
             ))}
           </AnimatePresence>
         </div>
-        <div className="select_container">
+        <div className={styles.searchbar__select}>
           <Select
-            id={`select_search_${uuid}`}
-            instanceId={`select_search_${uuid}`}
-            className={`component_search__select`}
+            id={`searchbar__${uuid}`}
+            instanceId={`searchbar__${uuid}`}
+            className={styles.searchbar__select}
             controlShouldRenderValue={false}
-            classNamePrefix={`component__search`}
+            classNamePrefix={`searchbar`}
             placeholder="Rechercher"
             noOptionsMessage={() => "Aucune correspondance"}
             isMulti

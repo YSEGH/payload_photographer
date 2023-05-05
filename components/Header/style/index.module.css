@@ -1,8 +1,8 @@
-.component_header {
+.header {
   width: 100%;
   overflow: hidden;
 }
-.component_header__container {
+.header__container {
   width: 100%;
   position: fixed;
   top: 0;
@@ -11,7 +11,7 @@
   z-index: 1000;
   background-color: #ffffff;
 }
-.component_header__content {
+.header__content {
   max-height: 100%;
   display: flex;
   justify-content: space-between;

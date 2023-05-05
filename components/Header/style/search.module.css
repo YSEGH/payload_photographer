@@ -1,4 +1,4 @@
-.component_search {
+.searchbar {
   width: 100%;
   height: 60px;
   display: flex;
@@ -9,12 +9,13 @@
   position: relative;
   z-index: 900;
 }
-.component_search__content {
+.searchbar__content {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.filters_container {
+.searchbar__filters {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -23,22 +24,22 @@
   overflow-x: scroll;
   margin-right: 1rem;
 }
-.tag_item {
+.filter__item {
   margin-right: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.25rem 0.5rem;
 }
-.tag_item svg {
+.filter__item svg {
   cursor: pointer;
   margin-left: 0.5rem;
 }
-.select_container {
+.searchbar__select {
   position: relative;
   width: 20rem;
 }
-.component__search__control {
+.searchbar__select :global(.searchbar__control) {
   box-shadow: none !important;
   height: 40px !important;
   cursor: text !important;
@@ -47,15 +48,15 @@
   border: none !important;
   border-color: hsl(0, 0%, 90%) !important;
 }
-.component__search__placeholder {
+.searchbar__select :global(.searchbar__placeholder) {
   color: hsl(0deg 0% 75%) !important;
   font-weight: 300;
   letter-spacing: 1px;
 }
-.component__search__indicator-separator {
+.searchbar__select :global(.searchbar__indicator-separator) {
   display: none !important;
 }
-.component__search__indicators {
+.searchbar__select :global(.searchbar__indicators) {
   position: relative !important;
   cursor: pointer !important;
   background-color: #1aace7;
@@ -64,52 +65,30 @@
   align-items: center;
   justify-content: center;
 }
-.component__search__clear-indicator {
+.searchbar__select :global(.searchbar__clear-indicator) {
   display: none !important;
 }
-.component__search__indicator,
-.component__search__indicator:hover {
+.searchbar__select :global(.searchbar__indicator),
+.searchbar__select :global(.searchbar__indicator:hover) {
   color: #ffffff !important;
 }
 
-.component__search__value-container {
+.searchbar__select :global(.searchbar__value-container) {
   position: relative;
   background-color: #fcfcfc !important;
   padding: 0.25rem !important;
   border: none;
   border-bottom: 1px solid #edededd8;
 }
-.component__search__menu {
+.searchbar__select :global(.searchbar__menu) {
   padding: 0 !important;
   margin: 0 !important;
   border-radius: 0 !important;
 }
-.component__search__menu-list {
+.searchbar__select :global(.searchbar__menu-list) {
   max-height: 200px !important;
   padding: 0 !important;
 }
-.component__search__option {
+.searchbar__select :global(.searchbar__option) {
   cursor: pointer !important;
-}
-.display_button__icon {
-  position: absolute;
-  bottom: -3rem;
-  left: 0;
-  right: 0;
-  margin: auto;
-  height: 2rem;
-  width: 2rem;
-  display: flex;
-  background-color: #1aace7;
-  cursor: pointer;
-  fill: #ffffff;
-  justify-content: center;
-  align-items: center;
-  transition: 0.25s;
-}
-.display_button__icon:hover {
-  background-color: #08a4e1;
-}
-.display_button__icon svg {
-  fill: #ffffff;
 }

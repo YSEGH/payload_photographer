@@ -1,9 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import ButtonMore from "../components/Items/ButtonMore";
-import CardContainer from "../components/Items/CardContainer";
-import Search from "../components/Items/Search";
-
 import { DataContext } from "../context/DataContext";
+import CardContainer from "../components/Container/CardContainer";
 
 const Work: React.FC = () => {
   const { state, actions } = useContext(DataContext);

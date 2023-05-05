@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from "react";
 import styles from "../style/index.module.css";
-import { kasei } from "../../Layout/Layout";
 import cx from "classnames";
 import { getFieldComponent } from "../utils";
 import { FormContext } from "../context/context";
 import { setFormError } from "../context/actions";
 import { Field } from "../types";
+import { kasei } from "../../../utilities/fonts";
 
 type Props = {
   field: Field;

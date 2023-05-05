@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import styles from "../style/logo.module.css";
 
 const MAX = 1;
 const MIN = 0.8;
@@ -16,7 +17,7 @@ interface Props {
 const Logo: React.FC<Props> = ({ display }) => {
   return (
     <motion.div
-      className="component__logo"
+      className={styles.logo}
       initial={animate.show}
       animate={display ? animate.show : animate.hidden}
     >

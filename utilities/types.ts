@@ -1,5 +1,3 @@
-import { FileData } from "payload/dist/uploads/types";
-
 export interface PhotosState {
   photos: Doc[];
   scrollPosition: number;
@@ -40,14 +38,6 @@ export interface Doc {
   categories: [];
   createdAt: string;
   id: string;
-  slider: Slider[];
+  slider: any[];
   title: string;
-}
-
-export interface Slider {
-  id: string;
-  photo: File;
-}
-export interface File extends FileData {
-  url: string;
 }

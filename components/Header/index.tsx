@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Logo from "./Logo";
-import Menu from "./Menu";
+import Logo from "./components/Logo";
+import Menu from "./components/Menu";
 import { motion, useScroll } from "framer-motion";
 import { useRouter } from "next/router";
-import Search from "../Items/Search";
+import Search from "./components/Search";
 import { WORK_LINK } from "../../utilities/link";
+import styles from "./style/index.module.css";
+import global from "../../css/global.module.css";
+import cx from "classnames";
 
 const animate = {
   hidden: {
@@ -34,28 +37,24 @@ const Header: React.FC = () => {
     }
   });
 
-  const setHeaderSize = () => {
-    setHeaderHeight(pathname === WORK_LINK ? 140 : 80);
-  };
-
   useEffect(() => {
-    setHeaderSize();
+    setHeaderHeight(pathname === WORK_LINK ? 140 : 80);
   }, [pathname]);
 
   return (
-    <div className={`component_header`} style={{ height: `${headerHeight}px` }}>
+    <header className={styles.header} style={{ height: `${headerHeight}px` }}>
       <motion.div
         animate={headerStyle}
         initial={animate.show}
-        className="component_header__container"
+        className={styles.header__container}
       >
-        <div className="component_header__content container--large">
+        <div className={cx(styles.header__content, global.container__large)}>
           <Logo display={displayHeader} />
           <Menu display={displayHeader} />
         </div>
         {pathname === WORK_LINK && <Search display={displayHeader} />}
       </motion.div>
-    </div>
+    </header>
   );
 };
 

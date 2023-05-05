@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { DataContext } from "../../context/DataContext";
-import Loader from "../Layout/Loader";
+import Loader from "../Loader";
 
 const ButtonMore: React.FC = () => {
   const { actions, state } = useContext(DataContext);

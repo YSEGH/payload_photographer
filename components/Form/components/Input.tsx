@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useRef } from "react";
-import { kasei } from "../../Layout/Layout";
 import { Field } from "../types";
+import { kasei } from "../../../utilities/fonts";
 
 type Props = {
   setFocus: Function;

@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import { getFormData } from "../utils";
 import styles from "../style/index.module.css";
 import Col from "./Col";
-import Loader from "./Loader";
 import { FormContext } from "../context/context";
 import { sendForm } from "../context/actions";
+import Loader from "../../Loader";
 
 type Props = {};
 
