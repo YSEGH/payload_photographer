@@ -23,9 +23,9 @@ const sendForm = async (form, dispatch) => {
   }
 };
 
-const updateFormErrors = (field, dispatch) => {
+const setFormError = (field, dispatch) => {
   dispatch({
-    type: "UPDATE_FORM_ERROR",
+    type: "SET_FORM_ERROR",
     data: field,
   });
 };
@@ -36,4 +36,4 @@ const resetForm = (dispatch) => {
   });
 };
 
-export { sendForm, resetForm, updateFormErrors };
+export { sendForm, resetForm, setFormError };

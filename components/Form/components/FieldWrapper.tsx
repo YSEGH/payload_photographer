@@ -2,42 +2,44 @@ import React, { useEffect, useState, useContext } from "react";
 import styles from "../style/index.module.css";
 import { kasei } from "../../Layout/Layout";
 import cx from "classnames";
-import { DataContext } from "../../../context/DataContext";
 import { getFieldComponent } from "../utils";
+import { FormContext } from "../context/context";
+import { setFormError } from "../context/actions";
+
+const inputWrapperClass = "form__input_wrapper";
 
 const FieldWrapper = ({ field }) => {
-  const type = `form__input_wrapper--${field.blockType}`;
-  const { actions, state } = useContext(DataContext);
+  const type_class = `${inputWrapperClass}--${field.blockType}`;
+  const state = useContext(FormContext);
   const [focus, setFocus] = useState(false);
   const [error, setError] = useState(null);
 
   // Update fields error
-  const updateFormError = () => {
+  const setErrorHandler = () => {
     if (error) {
-      actions.updateFormError(field.name);
+      setFormError(field.name, state.dispatch);
     }
   };
 
   // Props for fields component
   const propsField = {
     setFocus: setFocus,
-    setError: updateFormError,
+    setError: setErrorHandler,
     field: field,
-    success: state.formSuccess,
+    success: state.success,
   };
 
   useEffect(() => {
-    let fieldError: boolean = state.formError.find(
+    let fieldError: boolean = state.errors.find(
       (error) => error.name === field.name
     );
-
     if (fieldError) {
       setError(fieldError);
     } else {
       setError(null);
     }
     return () => {};
-  }, [state.formError]);
+  }, [state.errors]);
 
   return (
     <div data-name={field.name} className={cx(styles.form__field_wrapper)}>
@@ -54,7 +56,7 @@ const FieldWrapper = ({ field }) => {
       </h4>
       <div
         className={cx(styles.form__input_wrapper, {
-          [styles[type]]: true,
+          [styles[type_class]]: true,
           [styles.is_active]: focus,
           [styles.is_error]: error,
         })}

@@ -2,7 +2,7 @@ import payload from "payload";
 import React from "react";
 import FormElement from "../components/Form";
 import { kasei } from "../components/Layout/Layout";
-import { DataProvider } from "../context/DataContext";
+import { FormState } from "../components/Form/types";
 
 interface Contact {
   title: String;
@@ -15,6 +15,13 @@ interface Props {
 }
 
 const contact: React.FC<Props> = ({ infos, form }) => {
+  const formState: FormState = {
+    ...form,
+    errors: [],
+    customClass: "form__contact",
+    confirmationMessage: form.confirmationMessage[0].children[0].text,
+  };
+
   return (
     <div className="page_contact__container container--large">
       <div className="page_contact__text">
@@ -26,9 +33,7 @@ const contact: React.FC<Props> = ({ infos, form }) => {
         </p>
       </div>
       <div className="page_contact__form">
-        <DataProvider>
-          <FormElement form={form} />
-        </DataProvider>
+        <FormElement form={formState} />
       </div>
     </div>
   );

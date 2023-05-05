@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "../style/index.module.css";
 import FieldWrapper from "./FieldWrapper";
 import cx from "classnames";
 
+const col_class = "form__col";
+
 const Col = ({ field }) => {
-  const [width, setWidth] = useState(`form__col--${field.width}`);
-  const [type, setType] = useState(`form__col--${field.blockType}`);
+  const width_class = `${col_class}--${field.width}`;
+  const type_class = `${col_class}--${field.blockType}`;
 
   return (
-    <div className={cx(styles.form__col, styles[width], styles[type])}>
+    <div
+      className={cx(styles.form__col, styles[width_class], styles[type_class])}
+    >
       <FieldWrapper field={field} />
     </div>
   );

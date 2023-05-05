@@ -3,17 +3,19 @@ const formReducer = (state, action) => {
     case "SEND_FORM_REQUEST":
       return { ...state, loading: true, success: false };
     case "SEND_FORM_SUCCESS":
-      return { ...state, loading: false, success: true, error: [] };
+      return { ...state, loading: false, success: true, errors: [] };
     case "SEND_FORM_ERROR":
       return {
         ...state,
         loading: false,
-        error: action.data,
+        errors: action.data,
         success: false,
       };
-    case "UPDATE_FORM_ERROR":
-      let errors = state.error.filter((error) => error.name !== action.data);
-      return { ...state, error: errors };
+    case "SET_FORM_ERROR":
+      let errors = state.errors.filter((error) => error.name !== action.data);
+      console.log(errors);
+
+      return { ...state, errors: errors };
     case "RESET_FORM":
       return { ...state, success: false };
     default:

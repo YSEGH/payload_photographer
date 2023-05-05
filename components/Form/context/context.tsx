@@ -13,7 +13,7 @@ type Props = {
 
 export const FormProvider: React.FC<Props> = ({ children, formState }) => {
   const [form, dispatch] = useReducer(formReducer, formState);
-
-  const value = React.useMemo(() => form, [form]);
+  const state = { ...form, dispatch: dispatch };
+  const value = React.useMemo(() => state, [form]);
   return <Provider value={value}>{children}</Provider>;
 };
