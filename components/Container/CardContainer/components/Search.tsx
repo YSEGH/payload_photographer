@@ -1,16 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import Select from "react-select";
-import { DataContext } from "../../../context/DataContext";
+import { DataContext } from "../../../../context/DataContext";
 import { MdClear } from "react-icons/md";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 import crypto from "crypto";
-import styles from "../style/search.module.css";
-import global from "../../../css/global.module.css";
+import styles from "../../style/search.module.css";
+import global from "../../../../css/global.module.css";
 import cx from "classnames";
+import {
+  getCategories,
+  getPhotos,
+  setSelectedCategories,
+} from "../../../../context/Actions/DataActions";
 
-interface Props {
-  display: boolean;
-}
+interface Props {}
 
 const animateFilter = {
   show: {
@@ -28,25 +31,19 @@ const animateBar = {
     transform: "translateY(0px)",
   },
   hidden: {
-    transform: "translateY(-60px)",
+    transform: "translateY(-80px)",
   },
 };
 
-const Search: React.FC<Props> = ({ display }) => {
-  const { state, actions } = useContext(DataContext);
+const Search: React.FC<Props> = () => {
+  const state = useContext(DataContext);
+  const { scrollY } = useScroll();
+  const [display, setDisplay] = useState(true);
   const [style, setStyle] = useState({});
   const [values, setValues] = useState(state.selectedCategories);
   const [uuid, setUuid] = useState(crypto.randomBytes(20).toString("hex"));
 
   const updateStyle = () => ({
-    control: (styles, state) => ({
-      ...styles,
-    }),
-    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-      return {
-        ...styles,
-      };
-    },
     multiValue: (styles, { data }) => {
       return {
         ...styles,
@@ -65,24 +62,34 @@ const Search: React.FC<Props> = ({ display }) => {
     }),
   });
 
+  scrollY.on("change", () => {
+    if (scrollY.get() === 0 || scrollY.get() < scrollY.getPrevious()) {
+      setDisplay(true);
+      return;
+    }
+    if (scrollY.get() > 140) {
+      setDisplay(false);
+    }
+  });
+
   const onChangeHandler = (values, action) => {
     if (!values) {
       values = [];
     }
     setValues(values);
-    actions.getPhotos({ categories: values }, true, 1);
-    actions.setSelectedCategories(values);
+    getPhotos({ categories: values }, true, 1, state.dispatchPhotos);
+    setSelectedCategories(values, state.dispatchCategories);
   };
 
   const onClickHandler = (value) => {
     let valuesUpdated = values.filter((x) => x.label !== value.label);
     setValues(valuesUpdated);
-    actions.setSelectedCategories(valuesUpdated);
-    actions.getPhotos({ categories: valuesUpdated }, true, 1);
+    setSelectedCategories(valuesUpdated, state.dispatchCategories);
+    getPhotos({ categories: valuesUpdated }, true, 1, state.dispatchPhotos);
   };
 
   useEffect(() => {
-    actions.getCategories();
+    getCategories(state.dispatchCategories);
     setStyle(updateStyle());
     return () => {};
   }, []);

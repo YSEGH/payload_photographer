@@ -1,19 +1,19 @@
 import React, { useContext, useEffect } from "react";
 import { DataContext } from "../../context/DataContext";
 import Loader from "../Loader";
+import { getPhotos } from "../../context/Actions/DataActions";
 
 const ButtonMore: React.FC = () => {
-  const { actions, state } = useContext(DataContext);
+  const state = useContext(DataContext);
 
   useEffect(() => {}, [state.hasNextPage]);
 
   const onClickHandler = () => {
-    console.log({ categories: state.selectedCategories }, false, state.page);
-
-    actions.getPhotos(
+    getPhotos(
       { categories: state.selectedCategories },
       false,
-      state.page
+      state.page,
+      state.dispatchPhotos
     );
   };
 

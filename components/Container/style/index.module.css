@@ -4,7 +4,7 @@
   margin: auto;
   flex: auto;
   display: flex;
-  align-items: stretch;
+  align-items: flex-start;
   justify-content: flex-start;
   flex-wrap: wrap;
   min-height: 700px;

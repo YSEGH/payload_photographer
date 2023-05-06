@@ -3,11 +3,10 @@ import Logo from "./components/Logo";
 import Menu from "./components/Menu";
 import { motion, useScroll } from "framer-motion";
 import { useRouter } from "next/router";
-import Search from "./components/Search";
-import { WORK_LINK } from "../../utilities/link";
 import styles from "./style/index.module.css";
 import global from "../../css/global.module.css";
 import cx from "classnames";
+import { setHeaderSize } from "./utils";
 
 const animate = {
   hidden: {
@@ -21,38 +20,39 @@ const animate = {
 const Header: React.FC = () => {
   const { pathname } = useRouter();
   const { scrollY } = useScroll();
-  const [headerHeight, setHeaderHeight] = useState(0);
-  const [displayHeader, setDisplayHeader] = useState(true);
-  const [headerStyle, setHeaderStyle] = useState(animate.show);
+  const [headerHeight, setHeaderHeight] = useState({});
+  const [display, setDisplay] = useState(true);
+  const [headerContainerHeight, setHeaderContainerHeight] = useState(
+    animate.show
+  );
 
   scrollY.on("change", () => {
     if (scrollY.get() === 0 || scrollY.get() < scrollY.getPrevious()) {
-      setDisplayHeader(true);
-      setHeaderStyle(animate.show);
+      setDisplay(true);
+      setHeaderContainerHeight(animate.show);
       return;
     }
     if (scrollY.get() > 140) {
-      setDisplayHeader(false);
-      setHeaderStyle(animate.hidden);
+      setDisplay(false);
+      setHeaderContainerHeight(animate.hidden);
     }
   });
 
   useEffect(() => {
-    setHeaderHeight(pathname === WORK_LINK ? 140 : 80);
+    setHeaderHeight(setHeaderSize(pathname));
   }, [pathname]);
 
   return (
-    <header className={styles.header} style={{ height: `${headerHeight}px` }}>
+    <header className={styles.header} style={headerHeight}>
       <motion.div
-        animate={headerStyle}
+        animate={headerContainerHeight}
         initial={animate.show}
         className={styles.header__container}
       >
         <div className={cx(styles.header__content, global.container__large)}>
-          <Logo display={displayHeader} />
-          <Menu display={displayHeader} />
+          <Logo display={display} />
+          <Menu display={display} />
         </div>
-        {pathname === WORK_LINK && <Search display={displayHeader} />}
       </motion.div>
     </header>
   );

@@ -2,11 +2,10 @@ import payload from "payload";
 import { RichTextCustomElement } from "payload/types";
 import React from "react";
 import RichText from "../components/RichText";
-import { File } from "../utilities/types";
 import { kasei } from "../utilities/fonts";
 
 interface About {
-  imageAbout: File;
+  imageAbout: any;
   sentenceAbout: String;
   contentAbout: RichTextCustomElement;
 }

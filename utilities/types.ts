@@ -15,7 +15,7 @@ export interface CategoriesState {
 }
 
 export interface filters {
-  title: string;
+  title?: string;
   categories: [];
 }
 

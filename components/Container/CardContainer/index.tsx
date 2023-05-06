@@ -6,12 +6,13 @@ import { DataContext } from "../../../context/DataContext";
 import styles from "../style/index.module.css";
 import global from "../../../css/global.module.css";
 import cx from "classnames";
+import { setScrollPosition } from "../../../context/Actions/DataActions";
 
 interface Props {
   items: Doc[];
 }
 const CardContainer: React.FC<Props> = ({ items }) => {
-  const { actions, state } = useContext(DataContext);
+  const state = useContext(DataContext);
   const { scrollY } = useScroll();
 
   useEffect(() => {
@@ -21,7 +22,7 @@ const CardContainer: React.FC<Props> = ({ items }) => {
       behavior: "smooth",
     });
     return () => {
-      actions.setScrollPosition(scrollY.get());
+      setScrollPosition(scrollY.get(), state.dispatchPhotos);
     };
   }, []);
 
