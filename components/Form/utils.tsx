@@ -8,12 +8,20 @@ export const getFormData = (fields: any[], formData: FormData) => {
       field: field.name,
       value: formData.get(field.name),
       title: field.label,
+      required: field.required,
     });
   });
   return submissionData;
 };
 
-export const resizeTextArea = (textArea: HTMLTextAreaElement) => {
+export const resizeTextArea = (
+  textArea: HTMLTextAreaElement,
+  reset: boolean = false
+) => {
+  if (reset) {
+    textArea.style.height = "30px";
+    return;
+  }
   textArea.style.height = "auto";
   textArea.style.height = textArea.scrollHeight + "px";
 };

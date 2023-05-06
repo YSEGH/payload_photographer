@@ -3,6 +3,7 @@ import { RichTextCustomElement } from "payload/types";
 import React from "react";
 import RichText from "../components/RichText";
 import { kasei } from "../utilities/fonts";
+import Breadcrumb from "../components/Breadcrumb";
 
 interface About {
   imageAbout: any;
@@ -20,6 +21,7 @@ const About: React.FC<Props> = ({ infos }) => {
       <div className="about__hero-bannier">
         <img src={infos.imageAbout.url} alt="" />
       </div>
+      <Breadcrumb />
       <div className="about__text-container">
         <div className="about__text-content about__text-content_1">
           <div className="about__catch-phrase">

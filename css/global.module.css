@@ -8,11 +8,13 @@
 }
 
 .container__large {
+  margin: auto;
   width: 80rem;
   max-width: 90%;
 }
 
 .container__medium {
+  margin: auto;
   width: 60rem;
   max-width: 90%;
 }

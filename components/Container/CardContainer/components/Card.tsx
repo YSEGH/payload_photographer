@@ -22,7 +22,10 @@ const Card: React.FC<{ item: Doc }> = ({ item }) => {
       exit={{ opacity: 0 }}
       className={styles.card}
     >
-      <Link className={styles.card__link} href={`/categorie/${item.title}`}>
+      <Link
+        className={styles.card__link}
+        href={`/work/${item.title.toLowerCase()}`}
+      >
         <div className={cx(styles.card__header)}>
           <h6 className={exo.className}>{item.title}</h6>
         </div>

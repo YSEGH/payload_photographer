@@ -62,6 +62,9 @@ const updateSubmissionDataField: Plugin = (incomingConfig: Config): Config => {
                   type: "text",
                   required: true,
                   validate: function (value, { siblingData }) {
+                    if (!siblingData.required && value === "") {
+                      return true;
+                    }
                     if (value !== "") {
                       if (
                         siblingData.field === "email" &&

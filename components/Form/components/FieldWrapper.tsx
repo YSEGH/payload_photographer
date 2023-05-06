@@ -5,7 +5,7 @@ import { getFieldComponent } from "../utils";
 import { FormContext } from "../context/context";
 import { setFormError } from "../context/actions";
 import { Field } from "../types";
-import { kasei } from "../../../utilities/fonts";
+import { exo } from "../../../utilities/fonts";
 
 type Props = {
   field: Field;
@@ -49,7 +49,7 @@ const FieldWrapper: React.FC<Props> = ({ field }) => {
   return (
     <div data-name={field.name} className={cx(styles.form__field_wrapper)}>
       <h4
-        className={cx(styles.form__field_title, kasei.className, {
+        className={cx(styles.form__field_title, exo.className, {
           [styles.is_active]: focus,
           [styles.is_error]: error,
         })}
@@ -73,7 +73,7 @@ const FieldWrapper: React.FC<Props> = ({ field }) => {
           [styles.is_error]: error,
         })}
       >
-        {error && <p className={kasei.className}>{error.message}</p>}
+        {error && <p className={exo.className}>{error.message}</p>}
       </div>
     </div>
   );

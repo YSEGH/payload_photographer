@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useRef } from "react";
 import { Field } from "../types";
-import { kasei } from "../../../utilities/fonts";
+import { exo } from "../../../utilities/fonts";
 
 type Props = {
   setFocus: Function;
@@ -44,7 +44,7 @@ const Input: React.FC<Props> = ({ setFocus, setError, field, success }) => {
 
   return (
     <input
-      className={kasei.className}
+      className={exo.className}
       ref={inputRef}
       spellCheck="false"
       onFocus={onFocusHandler}

@@ -1,0 +1,11 @@
+.crumb {
+  text-decoration: none;
+  color: black;
+  text-transform: capitalize;
+}
+.crumb.is_active {
+  text-decoration: underline;
+}
+.crumb span {
+  margin: 0 0.5rem;
+}

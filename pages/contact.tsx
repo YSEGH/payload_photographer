@@ -2,12 +2,11 @@ import payload from "payload";
 import React from "react";
 import FormElement from "../components/Form";
 import { FormState } from "../components/Form/types";
-import { kasei } from "../utilities/fonts";
+import { exo } from "../utilities/fonts";
 import styles from "../css/pages/contact.module.css";
-import global from "../css/global.module.css";
 import cx from "classnames";
-import Photo from "../components/Container/PhotoContainer/components/Photo";
 import Image from "next/image";
+import Breadcrumb from "../components/Breadcrumb";
 
 interface Infos {
   title: String;
@@ -38,20 +37,21 @@ const contact: React.FC<Props> = ({ infos, form }) => {
   };
   return (
     <div className={cx(styles.page__contact)}>
-      {/* <div className={styles.hero__bannier}>
+      <div className={styles.hero__bannier}>
         <Image
           alt="Chloé Butterfly"
           src={`http://localhost:3000/media/photo_1-1024x576.png`}
           width={1024}
           height={576}
         />
-      </div> */}
+      </div>
+      <Breadcrumb />
       <div className={styles.form__container}>
         <div className={styles.text__container}>
-          <h3 className={cx(styles.text__title, kasei.className)}>
+          <h3 className={cx(styles.text__title, exo.className)}>
             {infos.title}
           </h3>
-          <p className={cx(styles.text__description, kasei.className)}>
+          <p className={cx(styles.text__description, exo.className)}>
             {infos.description}
           </p>
         </div>

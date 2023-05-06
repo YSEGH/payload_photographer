@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useRef } from "react";
 import { resizeTextArea } from "../utils";
 import { Field } from "../types";
-import { kasei } from "../../../utilities/fonts";
+import { exo } from "../../../utilities/fonts";
 
 type Props = {
   setFocus: Function;
@@ -24,6 +24,8 @@ const TextArea: React.FC<Props> = ({ setFocus, setError, field, success }) => {
   };
 
   const onChangeHandler = () => {
+    console.log("on change");
+
     setError();
     resizeTextArea(textAreaRef.current);
     if (textAreaRef.current.value) {
@@ -39,6 +41,7 @@ const TextArea: React.FC<Props> = ({ setFocus, setError, field, success }) => {
     }
     if (success) {
       textAreaRef.current.value = "";
+      resizeTextArea(textAreaRef.current, true);
       setFocus(false);
     }
     return () => {};
@@ -46,7 +49,7 @@ const TextArea: React.FC<Props> = ({ setFocus, setError, field, success }) => {
 
   return (
     <textarea
-      className={kasei.className}
+      className={exo.className}
       spellCheck="false"
       ref={textAreaRef}
       onFocus={onFocusHandler}
