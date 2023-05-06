@@ -35,13 +35,14 @@ const animateBar = {
   },
 };
 
+const uuid = crypto.randomBytes(20).toString("hex");
+
 const Search: React.FC<Props> = () => {
   const state = useContext(DataContext);
   const { scrollY } = useScroll();
   const [display, setDisplay] = useState(true);
   const [style, setStyle] = useState({});
   const [values, setValues] = useState(state.selectedCategories);
-  const [uuid, setUuid] = useState(crypto.randomBytes(20).toString("hex"));
 
   const updateStyle = () => ({
     multiValue: (styles, { data }) => {
@@ -109,7 +110,6 @@ const Search: React.FC<Props> = () => {
             controlShouldRenderValue={false}
             classNamePrefix={`searchbar`}
             placeholder="Rechercher..."
-            menuIsOpen={true}
             noOptionsMessage={() => "Aucune correspondance"}
             isMulti
             options={state.categories}

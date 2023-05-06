@@ -4,6 +4,8 @@ import { Doc } from "../../../../utilities/types";
 import Link from "next/link";
 import Photo from "../../PhotoContainer/components/Photo";
 import styles from "../../style/card.module.css";
+import cx from "classnames";
+import { exo } from "../../../../utilities/fonts";
 
 const Card: React.FC<{ item: Doc }> = ({ item }) => {
   const url = item.slider[0].photo.sizes.card.url;
@@ -21,8 +23,8 @@ const Card: React.FC<{ item: Doc }> = ({ item }) => {
       className={styles.card}
     >
       <Link className={styles.card__link} href={`/categorie/${item.title}`}>
-        <div className={styles.card__header}>
-          <h6>{item.title}</h6>
+        <div className={cx(styles.card__header)}>
+          <h6 className={exo.className}>{item.title}</h6>
         </div>
         <div className={styles.card__body}>
           <Photo url={url} />

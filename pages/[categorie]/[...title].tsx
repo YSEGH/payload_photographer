@@ -1,10 +1,9 @@
 import payload from "payload";
 import React from "react";
-import { Slider } from "../../utilities/types";
-import PhotoContainer from "../../components/Items/PhotoContainer";
+import PhotoContainer from "../../components/Container/PhotoContainer";
 
 interface Props {
-  photos: Slider[];
+  photos: any[];
 }
 const Page: React.FC<Props> = ({ photos }) => {
   return (

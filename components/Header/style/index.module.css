@@ -10,6 +10,9 @@
   right: 0;
   z-index: 1000;
   background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 .header__content {
   max-height: 100%;

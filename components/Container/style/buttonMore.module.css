@@ -5,12 +5,10 @@
   padding: 3rem 0;
 }
 .button_more__text p {
-  font-family: "Exo";
   font-size: 16px;
   color: #000000;
 }
 .button_more__button {
-  font-family: "Exo";
   width: 10rem;
   height: 50px;
   border: 1px solid #000000;

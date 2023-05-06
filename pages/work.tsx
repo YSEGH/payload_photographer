@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import ButtonMore from "../components/Items/ButtonMore";
+import ButtonMore from "../components/Container/CardContainer/components/ButtonMore";
 import { DataContext } from "../context/DataContext";
 import CardContainer from "../components/Container/CardContainer";
 import { getPhotos } from "../context/Actions/DataActions";

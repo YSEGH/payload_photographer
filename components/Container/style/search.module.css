@@ -12,7 +12,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: --white;
   padding-bottom: 10px;
   position: fixed;
   top: 60px;
@@ -55,7 +55,6 @@
   height: 40px !important;
   cursor: text !important;
   border-radius: 0 !important;
-  background-color: #f8f8f8 !important;
   border: none !important;
 }
 .searchbar__select :global(.searchbar__placeholder) {
@@ -67,23 +66,11 @@
   display: none !important;
 }
 .searchbar__select :global(.searchbar__indicators) {
-  position: relative !important;
-  cursor: pointer !important;
-  background-color: #000000;
-  width: 42px;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
   display: none !important;
 }
 .searchbar__select :global(.searchbar__clear-indicator) {
   display: none !important;
 }
-.searchbar__select :global(.searchbar__indicator),
-.searchbar__select :global(.searchbar__indicator:hover) {
-  color: #ffffff !important;
-}
-
 .searchbar__select :global(.searchbar__value-container) {
   position: relative;
   background-color: --select-bg !important;
