@@ -30,8 +30,9 @@ const ButtonMore: React.FC = () => {
         <button
           className={cx(styles.button_more__button, exo.className)}
           onClick={onClickHandler}
+          disabled={state.loadingGetPhotos}
         >
-          {state.loadingGetPhotos ? <Loader fill="#000000" /> : "Voir plus"}
+          {state.loadingGetPhotos ? <Loader fill="#FFFFFF" /> : "Voir plus"}
         </button>
       )}
     </div>

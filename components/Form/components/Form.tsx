@@ -5,6 +5,7 @@ import Col from "./Col";
 import { FormContext } from "../context/context";
 import { sendForm } from "../context/actions";
 import Loader from "../../Loader";
+import { exo } from "../../../utilities/fonts";
 
 type Props = {};
 
@@ -32,7 +33,12 @@ const Form: React.FC<Props> = () => {
         <Col key={field.id} field={field} />
       ))}
       <div className={styles.form__submit}>
-        <button form={state.id} type="submit" disabled={state.loading}>
+        <button
+          className={exo.className}
+          form={state.id}
+          type="submit"
+          disabled={state.loading}
+        >
           {state.loading ? <Loader fill="#FFFFFF" /> : state.submitButtonLabel}
         </button>
       </div>

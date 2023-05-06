@@ -1,3 +1,12 @@
+/* VARIABLES */
+@value --white: #ffffff;
+@value --black: #000000;
+@value --blue: #1aace7;
+@value --red: #ff5a35;
+@value --light-grey: #d0d0d0;
+@value --font-grey: #333333;
+@value --font-lightgrey: #777771;
+
 .button_more__container {
   display: flex;
   align-items: center;
@@ -12,8 +21,8 @@
   width: 10rem;
   height: 50px;
   border: 1px solid #000000;
-  background-color: transparent;
-  color: #000000;
+  background-color: #000000;
+  color: --white;
   padding: 0.75rem 2rem;
   font-size: 16px;
   cursor: pointer;
@@ -23,9 +32,11 @@
   justify-content: center;
 }
 .button_more__button:hover {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: --blue;
+  border-color: --blue;
 }
-.button_more__button:hover svg {
-  fill: #ffffff;
+.button_more__button:disabled {
+  cursor: auto;
+  background-color: --light-grey;
+  border-color: --light-grey;
 }

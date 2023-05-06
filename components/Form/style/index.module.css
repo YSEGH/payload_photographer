@@ -9,7 +9,7 @@
 
 /* FORM CONTACT */
 .form__contact {
-  width: 375px;
+  width: 800px;
   max-width: 90vw;
   height: auto;
   display: flex;
@@ -195,7 +195,8 @@
   width: 100%;
 }
 .form__submit button {
-  width: 100%;
+  width: 50%;
+  min-width: 15rem;
   background-color: --black;
   color: --white;
   border: none;
@@ -205,10 +206,13 @@
   border: 1px solid --black;
   cursor: pointer;
   transition: 0.25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .form__submit button:hover {
-  background-color: --white;
-  color: --black;
+  background-color: --blue;
+  border-color: --blue;
 }
 .form__submit button:disabled {
   cursor: auto;

@@ -20,7 +20,6 @@
   z-index: 900;
 }
 .searchbar__content {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -45,6 +44,10 @@
 .filter__item svg {
   cursor: pointer;
   margin-left: 0.5rem;
+  transition: 0.25s;
+}
+.filter__item svg:hover {
+  transform: scale(1.1);
 }
 .searchbar__select {
   position: relative;
