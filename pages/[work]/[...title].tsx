@@ -2,6 +2,7 @@ import payload from "payload";
 import React from "react";
 import PhotoContainer from "../../components/Container/PhotoContainer";
 import global from "../../css/global.module.css";
+import Breadcrumb from "../../components/Breadcrumb";
 
 interface Props {
   title: string;
@@ -10,7 +11,8 @@ interface Props {
 
 const Page: React.FC<Props> = ({ title, photos }) => {
   return (
-    <div className={global.container__large}>
+    <div>
+      <Breadcrumb />
       <PhotoContainer photos={photos} />
     </div>
   );

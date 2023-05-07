@@ -11,18 +11,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3rem 0;
+  padding: 0 0 3rem;
 }
+/*  Fin des résultats */
 .button_more__text p {
   font-size: 16px;
   color: #000000;
 }
+/* Bouton */
 .button_more__button {
   width: 10rem;
   height: 50px;
-  border: 1px solid #000000;
-  background-color: #000000;
-  color: --white;
+  border: 1px solid --blue;
+  background-color: #ffffff;
+  color: --blue;
   padding: 0.75rem 2rem;
   font-size: 16px;
   cursor: pointer;
@@ -34,6 +36,7 @@
 .button_more__button:hover {
   background-color: --blue;
   border-color: --blue;
+  color: --white;
 }
 .button_more__button:disabled {
   cursor: auto;

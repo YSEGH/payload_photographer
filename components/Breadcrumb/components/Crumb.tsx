@@ -7,10 +7,12 @@ import { exo } from "../../../utilities/fonts";
 
 const Crumb = ({ text: defaultText, href, last = false }) => {
   const router = useRouter();
+  const active = router.pathname === href ? "active" : "";
+
   return (
     <Link
       className={cx(styles.crumb, exo.className, {
-        [styles.is_active]: router.pathname === href ? "active" : "",
+        [styles.is_active]: active,
       })}
       href={href}
     >

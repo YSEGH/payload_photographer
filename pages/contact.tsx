@@ -37,7 +37,7 @@ const contact: React.FC<Props> = ({ infos, form }) => {
   };
   return (
     <div className={cx(styles.page__contact)}>
-      <div className={styles.hero__bannier}>
+      <div className={styles.hero_bannier}>
         <Image
           alt="Chloé Butterfly"
           src={`http://localhost:3000/media/photo_1-1024x576.png`}

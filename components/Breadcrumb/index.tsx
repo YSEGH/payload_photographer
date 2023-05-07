@@ -11,8 +11,6 @@ const generatePaths = (path) => {
 
 const Breadcrumb = () => {
   const router = useRouter();
-  console.log(router);
-
   const breadcrumbs = React.useMemo(() => {
     const asPathWithoutQuery = router.asPath.split("?")[0];
     const asPathNestedRoutes = asPathWithoutQuery
@@ -21,7 +19,10 @@ const Breadcrumb = () => {
 
     const crumblist = asPathNestedRoutes.map((subpath, idx) => {
       const href = "/" + asPathNestedRoutes.slice(0, idx + 1).join("/");
-      return { href, text: subpath };
+      return {
+        href,
+        text: decodeURIComponent(subpath),
+      };
     });
 
     return [{ href: "/", text: "Accueil" }, ...crumblist];
