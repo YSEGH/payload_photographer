@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import RichText from "../../components/RichText";
 import styles from "./index.module.css";
 import cx from "classnames";
-import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import AnimatedImage from "../../components/AnimatedImage";
@@ -24,10 +23,12 @@ export type Props = {
 const imageVariants = {
   fadeIn: {
     opacity: 1,
+    y: 0,
     transition: { duration: 0.3, delay: 0.4 },
   },
   fadeOut: {
     opacity: 0,
+    y: 20,
   },
 };
 
@@ -58,7 +59,7 @@ export const Component: React.FC<Props> = (props) => {
   }, [inViewImage, inViewText]);
 
   return (
-    <div className={cx(styles.wrap, styles[order])}>
+    <div className={cx(styles.block__container, styles[order])}>
       <motion.div
         ref={refImage}
         variants={imageVariants}

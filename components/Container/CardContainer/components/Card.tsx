@@ -8,7 +8,7 @@ import cx from "classnames";
 import { exo } from "../../../../utilities/fonts";
 
 const Card: React.FC<{ item: Doc }> = ({ item }) => {
-  const url = item.slider[0].photo.sizes.card.url;
+  const url = item.slider[0].photo.url;
 
   if (!url) {
     return;

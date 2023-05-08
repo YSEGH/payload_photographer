@@ -9,10 +9,11 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: #ffffff;
+  background-color: #ffffffec;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  backdrop-filter: blur(10px);
 }
 .header__content {
   max-height: 100%;
@@ -22,5 +23,4 @@
   margin: auto;
   position: relative;
   z-index: 1000;
-  background-color: #ffffff;
 }

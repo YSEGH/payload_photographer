@@ -35,10 +35,9 @@ const AnimatedImage: React.FC<Props> = ({ image, size }) => {
 
   return (
     <div
-      className={styles.image__container}
+      className={styles.animated_image__container}
       style={{
         width: image?.sizes[size].width,
-        height: image?.sizes[size].height,
       }}
     >
       <motion.img
@@ -46,7 +45,7 @@ const AnimatedImage: React.FC<Props> = ({ image, size }) => {
         animate={scale}
         ref={ref}
         alt={image?.alt}
-        src={image?.sizes[size].url}
+        src={image?.url}
         width={image?.sizes[size].width}
         height={image?.sizes[size].height}
       />
