@@ -11,7 +11,7 @@ type Alignment = "left" | "center" | "right" | "justify";
 type Position = "left" | "center" | "right";
 
 export type Props = {
-  blockType: "aboutcontent";
+  blockType: "text";
   blockName?: string;
   content?: any;
   alignment?: Alignment;
@@ -30,17 +30,16 @@ const animations = {
 
 export const Component: React.FC<Props> = (props) => {
   const control = useAnimation();
-  const [refImage, inViewImage] = useInView();
   const [refText, inViewText] = useInView();
   const { content, position, alignment } = props;
 
   useEffect(() => {
-    if (inViewImage || inViewText) {
+    if (inViewText) {
       control.start("fadeIn");
     }
 
     return () => {};
-  }, [inViewImage, inViewText]);
+  }, [inViewText]);
 
   return (
     <div className={cx(styles.wrap, styles[position])}>

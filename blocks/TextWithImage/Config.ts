@@ -36,7 +36,7 @@ const TextWithImage: Block = {
         },
         {
           label: "Moyen",
-          value: "middle",
+          value: "medium",
         },
         {
           label: "Grand",

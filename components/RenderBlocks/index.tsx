@@ -20,7 +20,7 @@ const RenderBlocks: React.FC<Props> = ({ layout, className }) => (
         return (
           <section
             key={i}
-            className={cx(styles.block, global.container__medium)}
+            className={cx(styles.block, global.container__large)}
           >
             <Block {...block} />
           </section>
