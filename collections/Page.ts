@@ -2,6 +2,8 @@ import { CollectionConfig } from "payload/types";
 import { MediaType } from "./Media";
 import formatSlug from "../utilities/formatSlug";
 import TextWithImage from "../blocks/TextWithImage/Config";
+import Text from "../blocks/Text/Config";
+import { Image } from "../blocks/Image/Config";
 
 export type Type = {
   title: string;
@@ -21,7 +23,7 @@ export const Page: CollectionConfig = {
     useAsTitle: "title",
   },
   access: {
-    read: (): boolean => true, // Everyone can read Pages
+    read: (): boolean => true,
   },
   fields: [
     {
@@ -35,7 +37,7 @@ export const Page: CollectionConfig = {
       label: "Contenu de la page",
       type: "blocks",
       minRows: 1,
-      blocks: [TextWithImage],
+      blocks: [TextWithImage, Text, Image],
     },
     {
       name: "meta",
