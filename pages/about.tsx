@@ -2,7 +2,7 @@ import payload from "payload";
 import { RichTextCustomElement } from "payload/types";
 import React from "react";
 import RichText from "../components/RichText";
-import { kasei } from "../utilities/fonts";
+import { exo, kasei } from "../utilities/fonts";
 import Breadcrumb from "../components/Breadcrumb";
 import styles from "../css/pages/about.module.css";
 import global from "../css/global.module.css";
@@ -27,7 +27,7 @@ const About: React.FC<Props> = ({ infos }) => {
           <img src={infos.imageAbout.url} alt="" />
         </div>
         <div className={cx(styles.text__content)}>
-          <RichText className={kasei.className} content={infos.contentAbout} />
+          <RichText className={exo.className} content={infos.contentAbout} />
         </div>
       </div>
     </div>

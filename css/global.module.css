@@ -10,11 +10,11 @@
 .container__large {
   margin: auto;
   width: 80rem;
-  max-width: 90%;
+  max-width: 85%;
 }
 
 .container__medium {
   margin: auto;
-  width: 60rem;
-  max-width: 90%;
+  width: 70rem;
+  max-width: 85%;
 }

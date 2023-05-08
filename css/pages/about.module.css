@@ -2,11 +2,13 @@
   padding: 0 0 3rem;
 }
 .hero_bannier {
-  height: 30rem;
-  width: 100%;
+  height: 40rem;
+  width: 50%;
   overflow: hidden;
 }
 .hero_bannier img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
 }
@@ -14,7 +16,7 @@
 .text__container {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-around;
   margin-top: 2rem;
   position: relative;
 }

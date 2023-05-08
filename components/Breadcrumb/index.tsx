@@ -25,7 +25,7 @@ const Breadcrumb = () => {
       };
     });
 
-    return [{ href: "/", text: "Accueil" }, ...crumblist];
+    return crumblist;
   }, [router.asPath]);
 
   return (

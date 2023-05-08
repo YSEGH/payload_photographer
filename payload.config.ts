@@ -7,12 +7,13 @@ import Users from "./collections/Users/Users";
 import Infos from "./globals/Infos";
 import formBuilder from "@payloadcms/plugin-form-builder";
 import updateSubmissionDataField from "./config/plugins/Form";
+import Page from "./collections/Page";
 
 dotenv.config();
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-  collections: [Users, Media, Photo, Categories],
+  collections: [Users, Media, Photo, Categories, Page],
   plugins: [
     formBuilder({
       formOverrides: {

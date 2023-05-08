@@ -6,12 +6,17 @@ export type MediaType = {
   height: number;
   alt: string;
   sizes: {
-    card?: {
+    small?: {
       filename: string;
       width: number;
       height: number;
     };
-    feature?: {
+    medium?: {
+      filename: string;
+      width: number;
+      height: number;
+    };
+    large?: {
       filename: string;
       width: number;
       height: number;
@@ -25,17 +30,22 @@ const Media: CollectionConfig = {
     read: (): boolean => true, // Everyone can read Media
   },
   upload: {
-    adminThumbnail: "card",
+    adminThumbnail: "small",
     imageSizes: [
       {
-        name: "card",
-        width: 640,
-        height: 480,
+        name: "small",
+        width: 480,
+        height: 320,
       },
       {
-        name: "feature",
-        width: 1024,
-        height: 576,
+        name: "medium",
+        width: 800,
+        height: 600,
+      },
+      {
+        name: "large",
+        width: 1280,
+        height: 720,
       },
     ],
   },
