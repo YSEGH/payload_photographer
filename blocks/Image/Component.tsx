@@ -34,8 +34,6 @@ export const Component: React.FC<Type> = (props) => {
       .map((size) => `(max-width: ${size}px) ${size}px`)
       .join(", ");
 
-    console.log(container);
-
     return (
       <div
         className={cx({
