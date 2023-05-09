@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import RichText from "../../components/RichText";
 import styles from "./index.module.css";
+import global from "../../css/global.module.css";
 import cx from "classnames";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -59,25 +60,27 @@ export const Component: React.FC<Props> = (props) => {
   }, [inViewImage, inViewText]);
 
   return (
-    <div className={cx(styles.block__container, styles[order])}>
-      <motion.div
-        ref={refImage}
-        variants={imageVariants}
-        initial={"fadeOut"}
-        animate={control}
-        className={cx(styles.image__container)}
-      >
-        <AnimatedImage image={image} size={image_size} />
-      </motion.div>
-      <motion.div
-        ref={refText}
-        variants={textVariants}
-        initial={"fadeOut"}
-        animate={control}
-        className={cx(styles.text__container)}
-      >
-        <RichText content={content} className={styles.content} />
-      </motion.div>
+    <div className={global.container__large}>
+      <div className={cx(styles.block__container, styles[order])}>
+        <motion.div
+          ref={refImage}
+          variants={imageVariants}
+          initial={"fadeOut"}
+          animate={control}
+          className={cx(styles.image__container)}
+        >
+          <AnimatedImage image={image} size={image_size} />
+        </motion.div>
+        <motion.div
+          ref={refText}
+          variants={textVariants}
+          initial={"fadeOut"}
+          animate={control}
+          className={cx(styles.text__container)}
+        >
+          <RichText content={content} className={styles.content} />
+        </motion.div>
+      </div>
     </div>
   );
 };

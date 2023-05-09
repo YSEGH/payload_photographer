@@ -8,7 +8,7 @@ type Props = {
   size: string;
 };
 
-const scaleStep = 0.0002;
+const scaleStep = 0.0003;
 
 const AnimatedImage: React.FC<Props> = ({ image, size }) => {
   const [ref, inView] = useInView();

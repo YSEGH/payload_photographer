@@ -1,18 +1,18 @@
 .wrap {
-  margin: calc(var(--baseline) * 2) auto;
-}
-
-.small,
-.large {
-  padding: 0 var(--baseline);
 }
 
 .small {
+  height: auto;
   max-width: var(--max-width-s);
 }
 
-.large {
+.medium {
+  height: auto;
   max-width: var(--max-width-m);
+}
+.large {
+  height: auto;
+  max-width: var(--max-width-l);
 }
 
 .legend {

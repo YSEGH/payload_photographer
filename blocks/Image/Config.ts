@@ -1,3 +1,4 @@
+import { Label } from "payload/components/forms";
 import { Block } from "payload/types";
 
 export const Image: Block = {
@@ -37,6 +38,12 @@ export const Image: Block = {
       admin: {
         layout: "horizontal",
       },
+    },
+    {
+      name: "container",
+      label: "Marges latérales",
+      type: "checkbox",
+      defaultValue: true,
     },
     {
       name: "legend",

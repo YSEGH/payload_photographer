@@ -25,7 +25,7 @@ const Text: Block = {
     },
     {
       label: "Alignement du texte",
-      name: "alignment",
+      name: "textAlign",
       type: "radio",
       admin: {},
       options: [
@@ -74,6 +74,12 @@ const Text: Block = {
       admin: {},
       required: true,
       defaultValue: 500,
+    },
+    {
+      label: "Animation au scroll",
+      name: "scrollAnimation",
+      type: "checkbox",
+      defaultValue: false,
     },
   ],
 };
