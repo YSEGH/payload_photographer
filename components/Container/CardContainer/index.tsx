@@ -7,6 +7,8 @@ import styles from "../style/index.module.css";
 import global from "../../../css/global.module.css";
 import cx from "classnames";
 import { setScrollPosition } from "../../../context/Actions/DataActions";
+import Search from "./components/Search";
+import ButtonMore from "./components/ButtonMore";
 
 interface Props {
   items: Doc[];
@@ -27,16 +29,17 @@ const CardContainer: React.FC<Props> = ({ items }) => {
   }, []);
 
   return (
-    <motion.div
-      layout
-      className={cx(styles.container__cards, global.container__large)}
-    >
-      <AnimatePresence>
-        {items.map((item: Doc) => (
-          <Card key={item.id} item={item} />
-        ))}
-      </AnimatePresence>
-    </motion.div>
+    <div className={global.container__large}>
+      <Search />
+      <motion.div layout className={cx(styles.container__cards)}>
+        <AnimatePresence>
+          {items.map((item: Doc) => (
+            <Card key={item.id} item={item} />
+          ))}
+        </AnimatePresence>
+      </motion.div>
+      <ButtonMore />
+    </div>
   );
 };
 

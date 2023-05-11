@@ -22,10 +22,8 @@ const Work: React.FC = () => {
 
   return (
     <div className="page_work__container">
-      <Search />
       <Breadcrumb />
       <CardContainer items={state.photos} />
-      <ButtonMore />
     </div>
   );
 };

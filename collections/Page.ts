@@ -4,6 +4,7 @@ import formatSlug from "../utilities/formatSlug";
 import TextWithImage from "../blocks/TextWithImage/Config";
 import Text from "../blocks/Text/Config";
 import { Image } from "../blocks/Image/Config";
+import Spacer from "../blocks/Spacer/Config";
 
 export type Type = {
   title: string;
@@ -37,7 +38,7 @@ export const Page: CollectionConfig = {
       label: "Contenu de la page",
       type: "blocks",
       minRows: 1,
-      blocks: [TextWithImage, Text, Image],
+      blocks: [TextWithImage, Text, Image, Spacer],
     },
     {
       name: "meta",

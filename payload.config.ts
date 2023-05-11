@@ -8,6 +8,7 @@ import Infos from "./globals/Infos";
 import formBuilder from "@payloadcms/plugin-form-builder";
 import updateSubmissionDataField from "./config/plugins/Form";
 import Page from "./collections/Page";
+import Menu from "./globals/Menu";
 
 dotenv.config();
 
@@ -31,6 +32,6 @@ export default buildConfig({
     }),
     updateSubmissionDataField,
   ],
-  globals: [Infos],
+  globals: [Infos, Menu],
   csrf: ["http://localhost:3000"],
 });

@@ -5,7 +5,6 @@ import { MdClear } from "react-icons/md";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
 import crypto from "crypto";
 import styles from "../../style/search.module.css";
-import global from "../../../../css/global.module.css";
 import cx from "classnames";
 import {
   getCategories,
@@ -26,21 +25,11 @@ const animateFilter = {
     duration: 0.1,
   },
 };
-const animateBar = {
-  show: {
-    transform: "translateY(0px)",
-  },
-  hidden: {
-    transform: "translateY(-80px)",
-  },
-};
 
 const uuid = crypto.randomBytes(20).toString("hex");
 
 const Search: React.FC<Props> = () => {
   const state = useContext(DataContext);
-  const { scrollY } = useScroll();
-  const [display, setDisplay] = useState(true);
   const [style, setStyle] = useState({});
   const [values, setValues] = useState(state.selectedCategories);
 
@@ -61,16 +50,6 @@ const Search: React.FC<Props> = () => {
       cursor: "pointer",
       ":hover": {},
     }),
-  });
-
-  scrollY.on("change", () => {
-    if (scrollY.get() === 0 || scrollY.get() < scrollY.getPrevious()) {
-      setDisplay(true);
-      return;
-    }
-    if (scrollY.get() > 140) {
-      setDisplay(false);
-    }
   });
 
   const onChangeHandler = (values) => {
@@ -96,12 +75,8 @@ const Search: React.FC<Props> = () => {
   }, []);
 
   return (
-    <motion.div
-      className={styles.searchbar}
-      animate={display ? animateBar.show : animateBar.hidden}
-      transition={{ delay: 0.1 }}
-    >
-      <div className={cx(styles.searchbar__content, global.container__large)}>
+    <motion.div className={styles.searchbar}>
+      <div className={cx(styles.searchbar__content)}>
         <div className={styles.searchbar__select}>
           <Select
             id={`searchbar__${uuid}`}

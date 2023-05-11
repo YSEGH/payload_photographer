@@ -38,10 +38,6 @@ const Header: React.FC = () => {
     }
   });
 
-  useEffect(() => {
-    setHeaderHeight(setHeaderSize(pathname));
-  }, [pathname]);
-
   return (
     <header className={styles.header} style={headerHeight}>
       <motion.div

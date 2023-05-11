@@ -8,16 +8,7 @@
 /* SEARCHBAR */
 .searchbar {
   width: 100%;
-  height: 80px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  background-color: --white;
-  padding-bottom: 10px;
-  position: fixed;
-  top: 60px;
-  left: 0;
-  z-index: 900;
+  margin-bottom: 1rem;
 }
 .searchbar__content {
   display: flex;
@@ -84,6 +75,7 @@
   padding: 0 !important;
   margin: 0 !important;
   border-radius: 0 !important;
+  z-index: 1000;
 }
 .searchbar__select :global(.searchbar__menu-list) {
   max-height: 200px !important;
