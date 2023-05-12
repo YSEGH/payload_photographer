@@ -1,13 +1,17 @@
-export interface FormState {
+export interface Form {
   id: string;
   customClass: string;
   fields: Field[];
-  loading: boolean;
-  success: boolean;
-  errors: FieldError[];
   confirmationMessage: any;
   submitButtonLabel: string;
 }
+
+export interface FormState extends Form {
+  loading: boolean;
+  success: boolean;
+  errors: FieldError[];
+}
+
 export type Field = {
   blockName: string;
   blockType: string;
@@ -17,6 +21,7 @@ export type Field = {
   required: boolean;
   width: number;
 };
+
 export interface FieldError {
   name: string;
   message: string;

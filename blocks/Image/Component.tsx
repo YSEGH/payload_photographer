@@ -21,14 +21,13 @@ export const Component: React.FC<Type> = (props) => {
 
   if (typeof image === "object") {
     let filenameToRender = image.filename;
-    let { width } = image;
-    let { height } = image;
-
-    if (image.sizes[size]) {
+    let { width, height } = image;
+    console.log(image.sizes);
+    /* if (image.sizes[size]) {
       filenameToRender = image.sizes[size].filename;
       width = image.sizes[size].width;
       height = image.sizes[size].height;
-    }
+    } */
 
     const sizesToUse = sizes
       .map((size) => `(max-width: ${size}px) ${size}px`)

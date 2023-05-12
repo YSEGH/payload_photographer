@@ -5,7 +5,7 @@ import cx from "classnames";
 type Spacer = "small" | "medium" | "large" | "custom";
 
 export type Props = {
-  blockType: "text";
+  blockType: "spacer";
   blockName?: string;
   spacer: Spacer;
   height: number;
