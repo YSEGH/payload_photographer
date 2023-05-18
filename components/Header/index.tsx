@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Logo from "./components/Logo";
 import Menu from "./components/Menu";
 import { motion, useScroll } from "framer-motion";
-import { useRouter } from "next/router";
 import styles from "./style/index.module.css";
 import global from "../../css/global.module.css";
 import cx from "classnames";

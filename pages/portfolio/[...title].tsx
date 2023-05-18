@@ -8,8 +8,6 @@ interface Props {
 }
 
 const Page: React.FC<Props> = ({ title, photos }) => {
-  console.log(photos);
-
   return (
     <div>
       <PhotoContainer photos={photos} />

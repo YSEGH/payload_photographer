@@ -2,38 +2,30 @@ import React, { useContext, useEffect } from "react";
 import payload from "payload";
 import { GetServerSideProps } from "next";
 import getConfig from "next/config";
-import { Type as PageType } from "../collections/Page";
 import NotFound from "../components/NotFound";
 import Head from "../components/Head";
 import classes from "../css/page.module.css";
 import RenderBlocks from "../components/RenderBlocks";
+import { PAGES } from "../utils/pages";
 
 const {
   publicRuntimeConfig: { SERVER_URL },
 } = getConfig();
 
 export type Props = {
-  page?: PageType;
   statusCode: number;
+  page: any;
+  active: boolean;
 };
 
 const Page: React.FC<Props> = (props) => {
-  const { page } = props;
+  const { page, active } = props;
 
-  if (!page) {
+  if (!page || !active) {
     return <NotFound />;
   }
 
-  return (
-    <main className={classes.page}>
-      <Head
-        title={page.meta?.title || page.title}
-        description={page.meta?.description}
-        keywords={page.meta?.keywords}
-      />
-      <RenderBlocks layout={page.layout} />
-    </main>
-  );
+  return <main className={classes.page}>{page.navigation.title}</main>;
 };
 
 export default Page;
@@ -43,16 +35,18 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     ? (ctx.params.slug as string[]).join("/")
     : "home";
 
-  const pageQuery = await payload.find({
-    collection: "pages",
-    where: {
-      slug: {
-        equals: slug,
-      },
-    },
+  const pages = await payload.findGlobal({
+    slug: "pages",
   });
 
-  if (!pageQuery.docs[0]) {
+  let currentPage;
+  PAGES.forEach((page) => {
+    if (pages[page].navigation.slug === slug) {
+      currentPage = pages[page];
+    }
+  });
+
+  if (!currentPage) {
     ctx.res.statusCode = 404;
 
     return {
@@ -62,7 +56,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   return {
     props: {
-      page: pageQuery.docs[0],
+      statusCode: "",
+      page: currentPage,
+      active: currentPage.navigation.active,
     },
   };
 };

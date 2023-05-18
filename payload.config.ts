@@ -6,7 +6,6 @@ import Categories from "./collections/Categories";
 import Users from "./collections/Users/Users";
 import formBuilder from "@payloadcms/plugin-form-builder";
 import updateSubmissionDataField from "./config/plugins/Form";
-import Menu from "./globals/Menu";
 import Pages from "./globals/Pages";
 
 dotenv.config();
@@ -31,6 +30,6 @@ export default buildConfig({
     }),
     updateSubmissionDataField,
   ],
-  globals: [Pages, Menu],
+  globals: [Pages],
   csrf: ["http://localhost:3000"],
 });

@@ -1,12 +1,20 @@
 import axios from "axios";
+import { PAGES } from "../utils/pages";
 
 const setMenuLinks = async (dispatch) => {
+  let links = [];
   dispatch({ type: "GET_PAGES_REQUEST" });
   try {
     const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/menu`
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/pages`
     );
-    dispatch({ type: "GET_PAGES_SUCCESS", data: data.links ? data.links : [] });
+    PAGES.forEach((page) => {
+      if (data[page].navigation.active) {
+        links.push(data[page]);
+      }
+    });
+    links.sort((a, b) => (a.navigation.order > b.navigation.order ? 1 : -1));
+    dispatch({ type: "GET_PAGES_SUCCESS", data: links });
   } catch (error) {
     dispatch({ type: "GET_PAGES_ERROR", error: error.message });
   }
