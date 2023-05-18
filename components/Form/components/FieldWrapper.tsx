@@ -5,7 +5,7 @@ import { getFieldComponent } from "../utils";
 import { FormContext } from "../context/context";
 import { setFormError } from "../context/actions";
 import { Field } from "../types";
-import { exo } from "../../../utilities/fonts";
+import { exo } from "../../../utils/fonts";
 
 type Props = {
   field: Field;

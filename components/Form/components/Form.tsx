@@ -5,7 +5,7 @@ import Col from "./Col";
 import { FormContext } from "../context/context";
 import { sendForm } from "../context/actions";
 import Loader from "../../Loader";
-import { exo } from "../../../utilities/fonts";
+import { exo } from "../../../utils/fonts";
 
 type Props = {};
 

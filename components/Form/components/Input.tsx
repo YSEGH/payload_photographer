@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useRef } from "react";
 import { Field } from "../types";
-import { exo } from "../../../utilities/fonts";
+import { exo } from "../../../utils/fonts";
 
 type Props = {
   setFocus: Function;

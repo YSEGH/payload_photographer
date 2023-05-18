@@ -3,6 +3,9 @@ import { GlobalConfig } from "payload/types";
 const Menu: GlobalConfig = {
   slug: "menu",
   label: "Menu",
+  access: {
+    read: (): boolean => true,
+  },
   fields: [
     {
       name: "links",
@@ -20,20 +23,13 @@ const Menu: GlobalConfig = {
           label: "Page",
           type: "relationship",
           relationTo: ["pages"],
-          /* filterOptions: ({ relationTo, siblingData }) => {
-            // returns a Where query dynamically by the type of relationship
-            if (relationTo === "products") {
+          filterOptions: ({ relationTo, siblingData }) => {
+            if (relationTo === "pages") {
               return {
-                stock: { greater_than: siblingData.quantity },
+                status: { equals: true },
               };
             }
-
-            if (relationTo === "services") {
-              return {
-                isAvailable: { equals: true },
-              };
-            }
-          }, */
+          },
         },
       ],
       admin: {

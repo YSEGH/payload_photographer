@@ -1,13 +1,15 @@
-import { Component as textwithimage } from "./TextWithImage/Component";
-import { Component as text } from "./Text/Component";
-import { Component as image } from "./Image/Component";
-import { Component as spacer } from "./Spacer/Component";
-import { Component as formelement } from "./Form/Component";
+import { Component as textWithImageBlock } from "./TextWithImageBlock/Component";
+import { Component as textBlock } from "./TextBlock/Component";
+import { Component as imageBlock } from "./ImageBlock/Component";
+import { Component as spacerBlock } from "./SpacerBlock/Component";
+import { Component as formBlock } from "./FormBlock/Component";
+import { Component as galleryBlock } from "./GalleryBlock/Component";
 
 export const components = {
-  textwithimage,
-  text,
-  image,
-  spacer,
-  formelement,
+  textWithImageBlock,
+  textBlock,
+  imageBlock,
+  spacerBlock,
+  formBlock,
+  galleryBlock,
 };

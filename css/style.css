@@ -1,5 +1,6 @@
 @import url(./pages/App.css);
 @import url(./pages/Work.css);
+@import url(./components/carousel.css);
 
 html,
 body {
@@ -26,6 +27,10 @@ main {
 img {
   max-width: 100%;
   width: 100%;
+}
+
+form {
+  margin: auto;
 }
 
 * {

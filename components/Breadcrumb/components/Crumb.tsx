@@ -3,7 +3,7 @@ import React from "react";
 import styles from "../style/crumb.module.css";
 import { useRouter } from "next/router";
 import cx from "classnames";
-import { exo } from "../../../utilities/fonts";
+import { exo } from "../../../utils/fonts";
 
 const Crumb = ({ text: defaultText, href, last = false }) => {
   const router = useRouter();

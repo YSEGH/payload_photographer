@@ -7,8 +7,6 @@ import NotFound from "../components/NotFound";
 import Head from "../components/Head";
 import classes from "../css/page.module.css";
 import RenderBlocks from "../components/RenderBlocks";
-import { DataContext } from "../context/DataContext";
-import { setMenuLinks } from "../context/Actions/appActions";
 
 const {
   publicRuntimeConfig: { SERVER_URL },
@@ -16,18 +14,11 @@ const {
 
 export type Props = {
   page?: PageType;
-  menu: any[];
   statusCode: number;
 };
 
 const Page: React.FC<Props> = (props) => {
-  const state = useContext(DataContext);
-  const { page, menu } = props;
-
-  useEffect(() => {
-    setMenuLinks(menu, state.dispatchApp);
-    return () => {};
-  }, []);
+  const { page } = props;
 
   if (!page) {
     return <NotFound />;
@@ -61,10 +52,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     },
   });
 
-  const { links } = await payload.findGlobal({
-    slug: "menu",
-  });
-
   if (!pageQuery.docs[0]) {
     ctx.res.statusCode = 404;
 
@@ -76,7 +63,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   return {
     props: {
       page: pageQuery.docs[0],
-      menu: links,
     },
   };
 };

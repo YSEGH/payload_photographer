@@ -4,17 +4,16 @@ import Media from "./collections/Media";
 import Photo from "./collections/Photo";
 import Categories from "./collections/Categories";
 import Users from "./collections/Users/Users";
-import Infos from "./globals/Infos";
 import formBuilder from "@payloadcms/plugin-form-builder";
 import updateSubmissionDataField from "./config/plugins/Form";
-import Page from "./collections/Page";
 import Menu from "./globals/Menu";
+import Pages from "./globals/Pages";
 
 dotenv.config();
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
-  collections: [Users, Media, Photo, Categories, Page],
+  collections: [Users, Media, Photo, Categories],
   plugins: [
     formBuilder({
       formOverrides: {
@@ -32,6 +31,6 @@ export default buildConfig({
     }),
     updateSubmissionDataField,
   ],
-  globals: [Infos, Menu],
+  globals: [Pages, Menu],
   csrf: ["http://localhost:3000"],
 });

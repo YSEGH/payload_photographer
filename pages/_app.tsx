@@ -1,17 +1,20 @@
 import type { AppProps } from "next/app";
 import Layout from "../components/Layout";
-import { DataProvider } from "../context/DataContext";
+import { AppProvider } from "../context/context";
 import "../css/style.css";
+import { CardProvider } from "../components/Containers/CardContainer/context/context";
 
 export default function MyApp({
   Component,
   pageProps,
 }: AppProps): React.ReactElement {
   return (
-    <DataProvider>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </DataProvider>
+    <AppProvider>
+      <CardProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </CardProvider>
+    </AppProvider>
   );
 }

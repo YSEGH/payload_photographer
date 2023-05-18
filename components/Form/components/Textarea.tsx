@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useRef } from "react";
 import { resizeTextArea } from "../utils";
 import { Field } from "../types";
-import { exo } from "../../../utilities/fonts";
+import { exo } from "../../../utils/fonts";
 
 type Props = {
   setFocus: Function;

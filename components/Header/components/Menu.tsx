@@ -1,16 +1,16 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import styles from "../style/menu.module.css";
 import cx from "classnames";
-import { exo } from "../../../utilities/fonts";
-import { DataContext } from "../../../context/DataContext";
+import { exo } from "../../../utils/fonts";
+import { AppContext } from "../../../context/context";
 
 interface Props {
   display: boolean;
 }
 const Menu: React.FC<Props> = ({ display }) => {
-  const state = useContext(DataContext);
+  const state = useContext(AppContext);
 
   return (
     <motion.ul

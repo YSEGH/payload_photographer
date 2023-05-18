@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 import styles from "./style/index.module.css";
 import global from "../../css/global.module.css";
 import cx from "classnames";
-import { setHeaderSize } from "./utils";
 
 const animate = {
   hidden: {
@@ -18,7 +17,6 @@ const animate = {
 };
 
 const Header: React.FC = () => {
-  const { pathname } = useRouter();
   const { scrollY } = useScroll();
   const [headerHeight, setHeaderHeight] = useState({});
   const [display, setDisplay] = useState(true);

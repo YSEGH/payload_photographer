@@ -1,4 +1,4 @@
-import { WORK_LINK } from "../../utilities/link";
+import { WORK_LINK } from "../../utils/link";
 
 export const setHeaderSize = (pathname) => {
   if (pathname === WORK_LINK) {

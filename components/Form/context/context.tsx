@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import { formReducer } from "./reducer";
+import { formReducer } from "./reducers";
 import { Form, FormState } from "../types";
 
 export const FormContext = React.createContext(null);

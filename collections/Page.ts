@@ -1,11 +1,12 @@
 import { CollectionConfig } from "payload/types";
 import { MediaType } from "./Media";
-import formatSlug from "../utilities/formatSlug";
-import TextWithImage from "../blocks/TextWithImage/Config";
-import Text from "../blocks/Text/Config";
-import { Image } from "../blocks/Image/Config";
-import Spacer from "../blocks/Spacer/Config";
-import Form from "../blocks/Form/Config";
+import formatSlug from "../utils/formatSlug";
+import { TextWithImageBlock } from "../blocks/TextWithImageBlock/Config";
+import { TextBlock } from "../blocks/TextBlock/Config";
+import { ImageBlock } from "../blocks/ImageBlock/Config";
+import { SpacerBlock } from "../blocks/SpacerBlock/Config";
+import { FormBlock } from "../blocks/FormBlock/Config";
+import { GalleryBlock } from "../blocks/GalleryBlock/Config";
 
 export type Type = {
   title: string;
@@ -39,7 +40,14 @@ export const Page: CollectionConfig = {
       label: "Contenu de la page",
       type: "blocks",
       minRows: 1,
-      blocks: [TextWithImage, Text, Image, Spacer, Form],
+      blocks: [
+        TextWithImageBlock,
+        TextBlock,
+        ImageBlock,
+        SpacerBlock,
+        FormBlock,
+        GalleryBlock,
+      ],
     },
     {
       name: "meta",
@@ -73,6 +81,15 @@ export const Page: CollectionConfig = {
       hooks: {
         beforeValidate: [formatSlug("title")],
       },
+    },
+    {
+      name: "status",
+      label: "Publier",
+      type: "checkbox",
+      admin: {
+        position: "sidebar",
+      },
+      defaultValue: false,
     },
   ],
 };
