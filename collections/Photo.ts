@@ -1,5 +1,6 @@
 import { CollectionConfig } from "payload/types";
 import { admins } from "../access/admins";
+import { slugify } from "../components/Containers/CardContainer/utils";
 
 const Photo: CollectionConfig = {
   slug: "photo",
@@ -13,6 +14,21 @@ const Photo: CollectionConfig = {
     delete: admins,
   },
   fields: [
+    {
+      name: "slug",
+      label: "Slug",
+      type: "text",
+      admin: {
+        hidden: true,
+      },
+      hooks: {
+        beforeValidate: [
+          ({ data }) => {
+            return slugify(data.title);
+          },
+        ],
+      },
+    },
     {
       name: "title",
       label: "Titre",
@@ -43,6 +59,12 @@ const Photo: CollectionConfig = {
           label: "Photo",
           type: "upload",
           relationTo: "media",
+          required: true,
+        },
+        {
+          name: "legend",
+          label: "Légende",
+          type: "text",
           required: true,
         },
       ],

@@ -7,7 +7,7 @@ import styles from "../../style/card.module.css";
 import cx from "classnames";
 import { exo } from "../../../../utils/fonts";
 
-const Card: React.FC<{ item: Doc }> = ({ item }) => {
+const Card: React.FC<{ item: any }> = ({ item }) => {
   const url = item.slider[0].photo.sizes.small.url;
   const alt = item.slider[0].photo.alt;
   const width = item.slider[0].photo.sizes.small.width;
@@ -25,10 +25,7 @@ const Card: React.FC<{ item: Doc }> = ({ item }) => {
       exit={{ opacity: 0 }}
       className={styles.card}
     >
-      <Link
-        className={styles.card__link}
-        href={`/photos/${item.title.toLowerCase()}`}
-      >
+      <Link className={styles.card__link} href={`/portfolio/${item.slug}`}>
         <div className={cx(styles.card__header)}>
           <h6 className={exo.className}>{item.title}</h6>
         </div>

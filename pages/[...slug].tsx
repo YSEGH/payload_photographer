@@ -1,12 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import payload from "payload";
 import { GetServerSideProps } from "next";
 import getConfig from "next/config";
 import NotFound from "../components/NotFound";
-import Head from "../components/Head";
 import classes from "../css/page.module.css";
-import RenderBlocks from "../components/RenderBlocks";
 import { PAGES } from "../utils/pages";
+import { pages } from "../components/Pages";
 
 const {
   publicRuntimeConfig: { SERVER_URL },
@@ -25,7 +24,13 @@ const Page: React.FC<Props> = (props) => {
     return <NotFound />;
   }
 
-  return <main className={classes.page}>{page.navigation.title}</main>;
+  const CurrentPage: React.FC = pages[page.type];
+
+  return (
+    <main className={classes.page}>
+      <CurrentPage />
+    </main>
+  );
 };
 
 export default Page;

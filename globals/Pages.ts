@@ -17,6 +17,16 @@ const Pages: GlobalConfig = {
           label: "Portfolio",
           fields: [
             {
+              name: "type",
+              label: "Type de page",
+              type: "text",
+              defaultValue: "Portfolio",
+              admin: {
+                readOnly: true,
+                hidden: true,
+              },
+            },
+            {
               name: "itemNumber",
               label: "Nombre d'éléments par ligne",
               type: "number",
@@ -38,11 +48,12 @@ const Pages: GlobalConfig = {
                 },
                 {
                   name: "slug",
-                  label: "URL de page",
+                  label: "URL de la page",
                   type: "text",
                   required: true,
                   defaultValue: "portfolio",
                   admin: {
+                    readOnly: true,
                     condition: (data, siblingData) => {
                       if (siblingData.active === true) {
                         return true;
@@ -110,6 +121,16 @@ const Pages: GlobalConfig = {
           label: "A propos",
           fields: [
             {
+              name: "type",
+              label: "Type de page",
+              type: "text",
+              defaultValue: "About",
+              admin: {
+                readOnly: true,
+                hidden: true,
+              },
+            },
+            {
               name: "title",
               label: "Titre de la page",
               type: "text",
@@ -153,7 +174,7 @@ const Pages: GlobalConfig = {
                 },
                 {
                   name: "slug",
-                  label: "URL de page",
+                  label: "URL de la page",
                   type: "text",
                   required: true,
                   defaultValue: "about",
@@ -225,6 +246,16 @@ const Pages: GlobalConfig = {
           label: "Contact",
           fields: [
             {
+              name: "type",
+              label: "Type de page",
+              type: "text",
+              defaultValue: "Contact",
+              admin: {
+                readOnly: true,
+                hidden: true,
+              },
+            },
+            {
               name: "email",
               label: "Email de contact",
               type: "email",
@@ -274,7 +305,7 @@ const Pages: GlobalConfig = {
                 },
                 {
                   name: "slug",
-                  label: "URL de page",
+                  label: "URL de la page",
                   type: "text",
                   required: true,
                   defaultValue: "contact",
