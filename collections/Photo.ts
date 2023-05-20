@@ -7,6 +7,7 @@ const Photo: CollectionConfig = {
   admin: {
     useAsTitle: "title",
   },
+  
   access: {
     read: () => true,
     create: admins,
