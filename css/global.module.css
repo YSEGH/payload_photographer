@@ -8,13 +8,13 @@
 }
 
 .container__large {
-  margin: auto;
+  margin: 0 auto;
   width: 80rem;
   max-width: 85%;
 }
 
 .container__medium {
-  margin: auto;
+  margin: 0 auto;
   width: 70rem;
   max-width: 85%;
 }

@@ -21,10 +21,10 @@
   width: auto;
   padding: 16px;
   margin-top: -22px;
-  color: white;
+  color: #000000;
   font-weight: bold;
   font-size: 18px;
-  transition: 0.6s ease;
+  transition: 0.25s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
 }
@@ -40,6 +40,7 @@
 .prev:hover,
 .next:hover {
   background-color: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
 }
 
 /* Caption text */
@@ -109,12 +110,12 @@
   background-color: #717171;
 }
 
-.fade {
+/* .fade {
   -webkit-animation-name: fade;
   -webkit-animation-duration: 1.5s;
   animation-name: fade;
   animation-duration: 1.5s;
-}
+} */
 .pause-icon {
   position: absolute;
   /* top: 38%; */

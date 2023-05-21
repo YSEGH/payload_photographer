@@ -3,46 +3,34 @@ import {
   backgroundColorField,
   textColorField,
 } from "../config/fields/colorField/config";
-import { slugify } from "../components/Containers/CardContainer/utils";
+import { slugField } from "../config/fields/slugField/config";
+import { admins } from "../access/admins";
 
 const Categories: CollectionConfig = {
   slug: "categories",
   admin: {
-    useAsTitle: "name",
+    useAsTitle: "title",
+    disableDuplicate: true,
   },
   access: {
-    create: () => true,
     read: () => true,
-    delete: () => true,
-    update: () => true,
+    create: admins,
+    update: admins,
+    delete: admins,
   },
   fields: [
     {
-      name: "slug",
-      label: "Slug",
-      type: "text",
-      admin: {
-        hidden: true,
-      },
-      hooks: {
-        beforeValidate: [
-          ({ data }) => {
-            return slugify(data.name);
-          },
-        ],
-      },
-    },
-    {
-      name: "name",
-      label: "Nom",
+      name: "title",
+      label: "Titre",
       type: "text",
       required: true,
       unique: true,
     },
+    slugField,
     backgroundColorField,
     textColorField,
   ],
-  timestamps: false,
+  timestamps: true,
 };
 
 export default Categories;

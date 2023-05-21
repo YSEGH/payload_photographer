@@ -24,7 +24,6 @@ const TextArea: React.FC<Props> = ({ setFocus, setError, field, success }) => {
   };
 
   const onChangeHandler = () => {
-    console.log("on change");
 
     setError();
     resizeTextArea(textAreaRef.current);

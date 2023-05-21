@@ -13,7 +13,6 @@ const formReducer = (state, action) => {
       };
     case "SET_FORM_ERROR":
       let errors = state.errors.filter((error) => error.name !== action.data);
-      console.log(errors);
 
       return { ...state, errors: errors };
     case "RESET_FORM":

@@ -1,13 +1,14 @@
 import { CollectionConfig } from "payload/types";
 import { admins } from "../access/admins";
-import { slugify } from "../components/Containers/CardContainer/utils";
+import { slugField } from "../config/fields/slugField/config";
 
 const Photo: CollectionConfig = {
   slug: "photo",
   admin: {
     useAsTitle: "title",
+    disableDuplicate: true,
   },
-  
+
   access: {
     read: () => true,
     create: admins,
@@ -15,26 +16,12 @@ const Photo: CollectionConfig = {
     delete: admins,
   },
   fields: [
-    {
-      name: "slug",
-      label: "Slug",
-      type: "text",
-      admin: {
-        hidden: true,
-      },
-      hooks: {
-        beforeValidate: [
-          ({ data }) => {
-            return slugify(data.title);
-          },
-        ],
-      },
-    },
+    slugField,
     {
       name: "title",
       label: "Titre",
-      required: true,
       type: "text",
+      required: true,
       unique: true,
     },
     {

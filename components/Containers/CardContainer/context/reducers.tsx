@@ -34,8 +34,8 @@ const categoriesReducer = (state: CategoriesState, action) => {
     case "GET_CATEGORIES":
       let categories = action.data.map((category) => {
         return {
-          label: category.name,
-          value: category.name.toLowerCase(),
+          label: category.title,
+          value: category.title.toLowerCase(),
           bgColor: category.backgroundColor,
           textColor: category.textColor,
         };

@@ -61,7 +61,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   return {
     props: {
-      statusCode: "",
+      statusCode: 200,
       page: currentPage,
       active: currentPage.navigation.active,
     },

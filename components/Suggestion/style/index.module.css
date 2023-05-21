@@ -2,4 +2,49 @@
   width: 100%;
   height: 10rem;
   background-color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.suggestion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.suggestion a {
+  font-size: 25px;
+  color: #000000;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.suggestion a span {
+  pointer-events: all;
+}
+.suggestion a svg {
+  pointer-events: all;
+  transition: 0.25s;
+  position: relative;
+}
+.suggestion a svg path {
+  stroke: red;
+  position: absolute;
+  top: 0;
+}
+.suggestion a svg:hover {
+  scale: 1.1;
+}
+.suggestion__0 a span {
+  margin-left: 2rem;
+}
+.suggestion__1 a {
+  flex-direction: row-reverse;
+}
+.suggestion__1 a span {
+  margin-right: 2rem;
+}
+.suggestion__1 a svg {
+  transform: rotate(180deg);
 }
