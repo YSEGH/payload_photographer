@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Swipe from "react-easy-swipe";
+import cx from "classnames";
+import styles from "./style/index.module.css";
 
 function Carousel({
   title,
   data,
-  time,
   width,
   height,
   captionStyle,
@@ -13,10 +14,6 @@ function Carousel({
   slideNumber,
   style,
   captionPosition,
-  dots,
-  automatic,
-  pauseIconColor,
-  pauseIconSize,
   slideBackgroundColor,
   slideImageFit,
   thumbnails,
@@ -24,38 +21,16 @@ function Carousel({
   showNavBtn = true,
 }) {
   //Initialize States
-  const [slide, setSlide] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
+  const [slides, setSlides] = useState(data);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [change, setChange] = useState(false);
-  console.log("sliede", slide);
 
   //Function to change slide
-  const addSlide = (n) => {
-    if (slide + n >= data.length) setSlide(0);
-    else if (slide + n < 0) setSlide(data.length - 1);
-    else setSlide(slide + n);
+  const setSlideIndex = (n) => {
+    if (currentSlide + n >= data.length) return 0;
+    else if (currentSlide + n < 0) return slides.length - 1;
+    else return currentSlide + n;
   };
-
-  //Start the automatic change of slide
-  useEffect(() => {
-    if (automatic) {
-      var index = slide;
-      const interval = setInterval(
-        () => {
-          if (!isPaused) {
-            setSlide(index);
-            index++;
-            if (index >= data.length) index = 0;
-            if (index < 0) index = data.length - 1;
-          }
-        },
-        time ? time : 2000
-      );
-      return () => {
-        clearInterval(interval);
-      };
-    }
-  }, [isPaused, change]);
 
   function scrollTo(el) {
     const elLeft = el.offsetLeft + el.offsetWidth;
@@ -72,52 +47,38 @@ function Carousel({
     }
   }
 
-  //Listens to slide state changes
   useEffect(() => {
-    var slides = document.getElementsByClassName(
-      "carousel-item"
-    ) as HTMLCollectionOf<HTMLElement>;
+    setSlides(data);
+    setSlidesHandler(0, null, data);
+    return () => {};
+  }, [title]);
 
-    let slideExist = true;
-    if (!slides[slide]) {
-      slideExist = false;
-      setSlide(0);
+  const setSlidesHandler = (
+    index: number | null,
+    n: number | null,
+    data: any[] = slides
+  ) => {
+    for (let i = 0; i < data.length; i++) {
+      data[i].active = false;
     }
-    var dots = document.getElementsByClassName("dot");
+    let currentIndex = index;
+    if (index === null) {
+      currentIndex = setSlideIndex(n);
+    }
+    setCurrentSlide(currentIndex);
 
-    var slideIndex = slideExist ? slide : 0;
-    var i;
-    for (i = 0; i < data.length; i++) {
-      slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
-    //If thumbnails are enabled
     if (thumbnails) {
-      var thumbnailsArray = document.getElementsByClassName("thumbnail");
-      for (i = 0; i < thumbnailsArray.length; i++) {
-        thumbnailsArray[i].className = thumbnailsArray[i].className.replace(
-          " active-thumbnail",
-          ""
-        );
-      }
-      if (thumbnailsArray[slideIndex] !== undefined) {
-        thumbnailsArray[slideIndex].className += " active-thumbnail";
-      }
-      scrollTo(document.getElementById(`thumbnail-${slideIndex}`));
+      scrollTo(document.getElementById(`thumbnail-${currentIndex}`));
     }
 
-    if (slides[slideIndex] !== undefined) {
-      slides[slideIndex].style.display = "block";
+    if (data[currentIndex] !== undefined) {
+      data[currentIndex].active = true;
     }
-    if (dots[slideIndex] !== undefined) {
-      dots[slideIndex].className += " active";
-    }
-  }, [slide, isPaused, title]);
+    setSlides(data);
+  };
 
   return (
-    <div style={style} className="box">
+    <div style={style} className={cx(styles.box)}>
       <div
         style={{
           maxWidth: width ? width : "600px",
@@ -126,16 +87,16 @@ function Carousel({
       >
         <Swipe
           onSwipeRight={() => {
-            addSlide(-1);
+            setSlidesHandler(null, -1);
             setChange(!change);
           }}
           onSwipeLeft={() => {
-            addSlide(1);
+            setSlidesHandler(null, 1);
             setChange(!change);
           }}
         >
           <div
-            className="carousel-container"
+            className={cx(styles.carousel_container)}
             style={{
               maxWidth: width ? width : "600px",
               height: height ? height : "400px",
@@ -145,60 +106,43 @@ function Carousel({
               borderRadius: radius,
             }}
           >
-            {data.map((item, index) => {
+            {slides.map((item, index) => {
               return (
                 <div
-                  className="carousel-item fade"
+                  className={cx(styles.carousel_item, styles.fade)}
                   style={{
                     maxWidth: width ? width : "600px",
                     maxHeight: height ? height : "400px",
-                  }}
-                  onMouseDown={(e) => {
-                    automatic && setIsPaused(true);
-                  }}
-                  onMouseUp={(e) => {
-                    automatic && setIsPaused(false);
-                  }}
-                  onMouseLeave={(e) => {
-                    automatic && setIsPaused(false);
-                  }}
-                  onTouchStart={(e) => {
-                    automatic && setIsPaused(true);
-                  }}
-                  onTouchEnd={(e) => {
-                    automatic && setIsPaused(false);
+                    display: item.active ? "block" : "none",
                   }}
                   key={index}
                 >
                   {slideNumber && (
-                    <div className="slide-number" style={slideNumberStyle}>
+                    <div
+                      className={slides.slide_number}
+                      style={slideNumberStyle}
+                    >
                       {index + 1} / {data.length}
                     </div>
                   )}
                   <img
                     src={item.image}
                     alt={item.caption}
-                    className="carousel-image"
+                    className={cx(styles.carousel_image)}
                     style={{
                       borderRadius: radius,
                       objectFit: slideImageFit ? slideImageFit : "contain",
                     }}
                   />
-                  {isPaused && (
-                    <div
-                      className="pause-icon pause"
-                      style={{
-                        color: pauseIconColor ? pauseIconColor : "white",
-                        fontSize: pauseIconSize ? pauseIconSize : "40px",
-                      }}
-                    >
-                      II
-                    </div>
-                  )}
+
                   <div
-                    className={`carousel-caption-${
-                      captionPosition ? captionPosition : "bottom"
-                    }`}
+                    className={
+                      styles[
+                        `carousel-caption-${
+                          captionPosition ? captionPosition : "bottom"
+                        }`
+                      ]
+                    }
                     style={captionStyle}
                     dangerouslySetInnerHTML={{ __html: item.caption }}
                   ></div>
@@ -208,9 +152,9 @@ function Carousel({
 
             {showNavBtn && (
               <a
-                className="prev"
+                className={styles.prev}
                 onClick={(e) => {
-                  addSlide(-1);
+                  setSlidesHandler(null, -1);
                   setChange(!change);
                 }}
               >
@@ -219,51 +163,37 @@ function Carousel({
             )}
             {showNavBtn && (
               <a
-                className="next"
+                className={styles.next}
                 onClick={(e) => {
-                  addSlide(1);
+                  setSlidesHandler(null, 1);
                   setChange(!change);
                 }}
               >
                 &#10095;
               </a>
             )}
-            {dots && (
-              <div className="dots">
-                {data.map((item, index) => {
-                  return (
-                    <span
-                      className="dot"
-                      key={index}
-                      onClick={(e) => {
-                        setSlide(index);
-                        setChange(!change);
-                      }}
-                    ></span>
-                  );
-                })}
-              </div>
-            )}
           </div>
         </Swipe>
       </div>
       {thumbnails && (
         <div
-          className="thumbnails"
+          className={styles.thumbnails}
           id="thumbnail-div"
           style={{ maxWidth: width }}
         >
-          {data.map((item, index) => {
+          {slides.map((item, index) => {
             return (
               <img
                 width={thumbnailWidth ? thumbnailWidth : "100px"}
                 src={item.image}
                 alt={item.caption}
-                className="thumbnail"
+                className={cx(styles.thumbnail, {
+                  [styles.active_thumbnail]: item.active,
+                })}
                 id={`thumbnail-${index}`}
                 key={index}
                 onClick={(e) => {
-                  setSlide(index);
+                  setSlidesHandler(index, null);
                   setChange(!change);
                 }}
               />

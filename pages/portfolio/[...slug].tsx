@@ -52,13 +52,13 @@ const Page: React.FC<Props> = ({ statusCode, title, photos, suggestions }) => {
       </div>
       <Carousel
         title={title}
-        data={photos.map((photo) => {
+        data={photos.map((photo, i) => {
           return {
             image: photo.photo.url,
             caption: photo.legend,
+            active: i === 0 ? true : false,
           };
         })}
-        time={2000}
         width="850px"
         height="600px"
         captionStyle={captionStyle}
@@ -66,10 +66,6 @@ const Page: React.FC<Props> = ({ statusCode, title, photos, suggestions }) => {
         slideNumber={false}
         slideNumberStyle={slideNumberStyle}
         captionPosition="top"
-        automatic={false}
-        dots={false}
-        pauseIconColor="white"
-        pauseIconSize="40px"
         slideBackgroundColor="transparent"
         slideImageFit="contain"
         showNavBtn={true}
