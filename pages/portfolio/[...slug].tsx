@@ -7,30 +7,6 @@ import { josefin } from "../../utils/fonts";
 import Suggestion from "../../components/Suggestion";
 import NotFound from "../../components/NotFound";
 
-const carouselStyle = {
-  textAlign: "center",
-  maxWidth: "850px",
-  maxHeight: "600px",
-  margin: "40px auto 8rem",
-};
-
-const captionStyle = {
-  poition: "absolute",
-  top: -100,
-  left: 0,
-  right: 0,
-  margin: "auto",
-  color: "#000000",
-  fontSize: "18px",
-  fontWeight: 300,
-  textShadow: "none",
-};
-const slideNumberStyle = {
-  display: "none",
-  fontSize: "20px",
-  fontWeight: "bold",
-};
-
 interface Props {
   statusCode: number;
   title?: string;
@@ -59,19 +35,14 @@ const Page: React.FC<Props> = ({ statusCode, title, photos, suggestions }) => {
             active: i === 0 ? true : false,
           };
         })}
-        width="850px"
-        height="600px"
-        captionStyle={captionStyle}
         radius="0"
         slideNumber={false}
-        slideNumberStyle={slideNumberStyle}
         captionPosition="top"
         slideBackgroundColor="transparent"
         slideImageFit="contain"
         showNavBtn={true}
         thumbnails={true}
         thumbnailWidth="100px"
-        style={carouselStyle}
       />
       {suggestions.length > 0 && <Suggestion suggestions={suggestions} />}
     </div>

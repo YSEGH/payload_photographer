@@ -1,3 +1,10 @@
+.box {
+  text-align: center;
+  max-width: 850px;
+  max-height: 600px;
+  margin: 40px auto 8rem;
+}
+
 .carousel_image {
   vertical-align: middle;
   width: 100%;
@@ -44,8 +51,8 @@
 }
 
 /* Caption text */
-.carousel-caption-bottom {
-  color: #f2f2f2;
+
+.carousel_caption_bottom {
   font-size: 15px;
   padding: 8px 0;
   width: 100%;
@@ -55,8 +62,7 @@
   text-align: center;
   text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
 }
-.carousel-caption-center {
-  color: #f2f2f2;
+.carousel_caption_center {
   font-size: 15px;
   padding: 8px 0;
   width: 100%;
@@ -68,8 +74,7 @@
   text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
 }
 
-.carousel-caption-top {
-  color: #f2f2f2;
+.carousel_caption_top {
   font-size: 15px;
   padding: 8px 0;
   width: 100%;
@@ -79,6 +84,18 @@
   text-align: center;
   text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
 }
+.carousel_caption {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: #000000;
+  font-size: 18px;
+  font-weight: 300;
+  text-shadow: none;
+}
+
 .dots {
   margin-top: 10px;
   text-align: center;
@@ -92,6 +109,9 @@
   padding: 8px 12px;
   position: absolute;
   top: 0;
+  display: none;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .dot {
@@ -202,23 +222,23 @@
 @media only screen and (max-width: 500px) {
   .prev,
   .next,
-  .carousel-caption-bottom,
-  .carousel-caption-center,
-  .carousel-caption-top,
-  .slide-number {
+  .carousel_caption_bottom,
+  .carousel_caption_center,
+  .carousel_caption_top,
+  .slide_number {
     font-size: 20px !important;
   }
   .dot {
     height: 4px;
     width: 4px;
   }
-  .carousel-container {
+  .carousel_container {
     max-height: 250px !important;
   }
   .thumbnail {
     max-width: 70px;
   }
-  .carousel-caption-bottom {
+  .carousel_caption_bottom {
     bottom: 25px;
   }
 }

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Swipe from "react-easy-swipe";
 import cx from "classnames";
 import styles from "./style/index.module.css";
@@ -6,13 +6,10 @@ import styles from "./style/index.module.css";
 function Carousel({
   title,
   data,
-  width,
-  height,
-  captionStyle,
-  slideNumberStyle,
+  width = "850px",
+  height = "600px",
   radius,
   slideNumber,
-  style,
   captionPosition,
   slideBackgroundColor,
   slideImageFit,
@@ -78,7 +75,7 @@ function Carousel({
   };
 
   return (
-    <div style={style} className={cx(styles.box)}>
+    <div className={cx(styles.box)}>
       <div
         style={{
           maxWidth: width ? width : "600px",
@@ -118,10 +115,7 @@ function Carousel({
                   key={index}
                 >
                   {slideNumber && (
-                    <div
-                      className={slides.slide_number}
-                      style={slideNumberStyle}
-                    >
+                    <div className={slides.slide_number}>
                       {index + 1} / {data.length}
                     </div>
                   )}
@@ -136,14 +130,14 @@ function Carousel({
                   />
 
                   <div
-                    className={
+                    className={cx(
+                      styles.carousel_caption,
                       styles[
-                        `carousel-caption-${
+                        `carousel_caption_${
                           captionPosition ? captionPosition : "bottom"
                         }`
                       ]
-                    }
-                    style={captionStyle}
+                    )}
                     dangerouslySetInnerHTML={{ __html: item.caption }}
                   ></div>
                 </div>
