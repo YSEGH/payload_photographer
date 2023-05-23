@@ -2,8 +2,8 @@ import React from "react";
 import style from "./style/index.module.css";
 import cx from "classnames";
 import Link from "next/link";
-import LinkSVG from "./components/LinkSVG";
 import { josefin } from "../../utils/fonts";
+import LinkSVG from "./components/LinkSVG";
 
 type Props = {
   suggestions: any;
@@ -22,7 +22,7 @@ const Suggestion: React.FC<Props> = ({ suggestions }) => {
           )}
         >
           <Link href={`/portfolio/${suggestion.docs[0].slug}`} scroll={false}>
-            <LinkSVG />
+            <LinkSVG index={i} />
             <span>{suggestion.docs[0].title}</span>
           </Link>
         </div>

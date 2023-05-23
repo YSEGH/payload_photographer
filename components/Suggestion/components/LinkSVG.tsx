@@ -1,21 +1,39 @@
-import React from "react";
+import React, { useRef } from "react";
+import style from "../style/linksvg.module.css";
+import RoundSVG from "./RoundSVG";
+import ArrowSVG from "./ArrowSVG";
 
-const LinkSVG = () => {
+const LinkSVG = ({ index }) => {
+  const btn = useRef(null);
+  const onMouseMoveHandler = (e) => {
+    const position = btn.current.getBoundingClientRect();
+    //Get the correct position of cursor when hover to the button
+    const x = e.pageX - position.left - position.width / 2;
+    const y = e.pageY - window.scrollY - position.top - position.height / 2;
+
+    //Set the button position
+    btn.current.children[0].style.transform = `translate(${x * 0.2}px, ${
+      y * 0.2
+    }px)`;
+    btn.current.children[1].style.transform = `translate(${x * 0.25}px, ${
+      y * 0.3
+    }px)`;
+  };
+
+  const onMouseOutHandler = (e) => {
+    btn.current.children[0].style.transform = "translate(0px, 0px)";
+    btn.current.children[1].style.transform = "translate(0px, 0px)";
+  };
   return (
-    <svg
-      width="115"
-      height="69"
-      viewBox="0 0 115 69"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+    <div
+      ref={btn}
+      onMouseMove={onMouseMoveHandler}
+      onMouseOut={onMouseOutHandler}
+      className={style.link_svg}
     >
-      <circle cx="80.5" cy="34.5" r="34" stroke="black" />
-      <path
-        d="M0.646446 34.6465C0.451187 34.8417 0.451187 35.1583 0.646446 35.3536L3.82843 38.5355C4.02369 38.7308 4.34027 38.7308 4.53554 38.5355C4.7308 38.3403 4.7308 38.0237 4.53554 37.8284L1.70711 35L4.53554 32.1716C4.7308 31.9763 4.7308 31.6597 4.53554 31.4645C4.34027 31.2692 4.02369 31.2692 3.82843 31.4645L0.646446 34.6465ZM81 34.5L1 34.5L1 35.5L81 35.5L81 34.5Z"
-        fill="black"
-      />
-    </svg>
+      <RoundSVG index={index} />
+      <ArrowSVG index={index} />
+    </div>
   );
 };
-
 export default LinkSVG;

@@ -1,4 +1,5 @@
-.portfolio_item {
+.page {
+  padding: 0;
 }
 .title {
   font-size: 50px;

@@ -11,7 +11,7 @@ export const setQueryParams = (filters) => {
   }
   filters.categories.forEach((category, i) => {
     query.push({
-      "categories.name": {
+      "categories.title": {
         equals: category.label,
       },
     });

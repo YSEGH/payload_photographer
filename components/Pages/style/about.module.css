@@ -1,0 +1,24 @@
+.page__about {
+  padding-bottom: 5rem;
+}
+
+.page__bannier {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page__bannier img {
+  width: 35rem;
+  height: 35rem;
+  max-width: 90vw;
+  max-height: 90vw;
+  object-fit: cover;
+}
+
+.page__body {
+  width: 35rem;
+  max-width: 100%;
+  margin: 4rem auto;
+  text-align: center;
+}

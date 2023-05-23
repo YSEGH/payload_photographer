@@ -1,0 +1,48 @@
+.link_svg {
+  height: 7rem;
+  width: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+  position: relative;
+  cursor: pointer;
+}
+
+.round {
+  position: relative;
+  width: 4rem;
+  transition: transform 0.2s linear;
+}
+.round circle {
+  pointer-events: none;
+  transition: transform 0.2s linear;
+}
+
+.round_0 {
+}
+
+.arrow {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  transition: transform 0.2s linear;
+}
+.arrow_0 {
+  right: 3rem;
+}
+.arrow_1 {
+  left: 3rem;
+}
+
+.btn_span {
+  display: block;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  pointer-events: none;
+  transition: transform 0.2s linear;
+}

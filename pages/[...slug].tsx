@@ -3,7 +3,6 @@ import payload from "payload";
 import { GetServerSideProps } from "next";
 import getConfig from "next/config";
 import NotFound from "../components/NotFound";
-import classes from "../css/page.module.css";
 import { PAGES } from "../utils/pages";
 import { pages } from "../components/Pages";
 
@@ -27,8 +26,8 @@ const Page: React.FC<Props> = (props) => {
   const CurrentPage: React.FC = pages[page.type];
 
   return (
-    <main className={classes.page}>
-      <CurrentPage />
+    <main className={``}>
+      <CurrentPage {...page} />
     </main>
   );
 };

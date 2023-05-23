@@ -1,7 +1,13 @@
 import React from "react";
 import { components } from "../../../blocks";
 
-const Portfolio: React.FC = () => {
+type Props = {
+  page: any;
+};
+
+const Portfolio: React.FC<Props> = (props) => {
+  console.log(props);
+
   const blockType = "galleryBlock";
   const Gallery = components[blockType];
 

@@ -1,6 +1,5 @@
 import payload from "payload";
 import React from "react";
-import style from "../../css/pages/[...title].module.css";
 import cx from "classnames";
 import Carousel from "../../components/Carousel";
 import { josefin } from "../../utils/fonts";
@@ -20,11 +19,9 @@ const Page: React.FC<Props> = ({ statusCode, title, photos, suggestions }) => {
   }
 
   return (
-    <div className={style.portfolio_item}>
+    <div className={``}>
       <div className={cx()}>
-        <h2 className={cx(style.title, josefin.className)}>
-          {title ? title : ""}
-        </h2>
+        <h2 className={cx(josefin.className)}>{title ? title : ""}</h2>
       </div>
       <Carousel
         title={title}
