@@ -1,11 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Doc } from "../../../../utils/types";
 import Link from "next/link";
-import Photo from "../../PhotoContainer/components/Photo";
-import styles from "../../style/card.module.css";
+import Photo from "./Photo";
+import styles from "../style/card.module.css";
 import cx from "classnames";
-import { exo } from "../../../../utils/fonts";
+import { exo } from "../../../utils/fonts";
 
 const Card: React.FC<{ item: any }> = ({ item }) => {
   const url = item.slider[0].photo.sizes.small.url;

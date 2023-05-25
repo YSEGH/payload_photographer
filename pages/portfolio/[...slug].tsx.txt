@@ -1,10 +1,11 @@
 import payload from "payload";
 import React from "react";
+import cx from "classnames";
+import Carousel from "../../components/Carousel";
 import global from "../../css/global.module.css";
 import { josefin } from "../../utils/fonts";
 import Suggestion from "../../components/Suggestion";
 import NotFound from "../../components/NotFound";
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 interface Props {
   statusCode: number;
@@ -19,29 +20,36 @@ const Page: React.FC<Props> = ({ statusCode, title, photos, suggestions }) => {
   }
 
   return (
-    <div className={global.container__large}>
-      <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
-        <Masonry columnsCount={3}>
-          {photos.map((photo, i) => {
-            console.log(photo);
-
-            return (
-              <img
-                key={i}
-                src={photo.photo.url}
-                alt={photo.photo.alt}
-                style={{ width: "100%", display: "block" }}
-              />
-            );
-          })}
-        </Masonry>
-      </ResponsiveMasonry>
+    <div className={global.page}>
+      <div className={cx()}>
+        <h2 className={cx(josefin.className)}>{title ? title : ""}</h2>
+      </div>
+      <Carousel
+        title={title}
+        data={photos.map((photo, i) => {
+          return {
+            image: photo.photo.url,
+            caption: photo.legend,
+            active: i === 0 ? true : false,
+          };
+        })}
+        radius="0"
+        slideNumber={false}
+        captionPosition="top"
+        slideBackgroundColor="transparent"
+        slideImageFit="contain"
+        showNavBtn={true}
+        thumbnails={true}
+        thumbnailWidth="100px"
+      />
+      {suggestions.length > 0 && <Suggestion suggestions={suggestions} />}
     </div>
   );
 };
 
 export async function getServerSideProps(context) {
   const { slug } = context.params;
+  console.log(slug);
 
   const items = await payload.find({
     collection: "photo",

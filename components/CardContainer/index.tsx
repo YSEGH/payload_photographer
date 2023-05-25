@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
-import { Doc } from "../../../utils/types";
+import { Doc } from "../../utils/types";
 import Card from "./components/Card";
-import styles from "../style/index.module.css";
+import styles from "./style/index.module.css";
 import cx from "classnames";
 import Search from "./components/Search";
 import ButtonMore from "./components/ButtonMore";

@@ -76,12 +76,7 @@ function Carousel({
 
   return (
     <div className={cx(styles.box)}>
-      <div
-        style={{
-          maxWidth: width ? width : "600px",
-          maxHeight: height ? height : "400px",
-        }}
-      >
+      <div style={{}}>
         <Swipe
           onSwipeRight={() => {
             setSlidesHandler(null, -1);
@@ -110,7 +105,7 @@ function Carousel({
                   style={{
                     maxWidth: width ? width : "600px",
                     maxHeight: height ? height : "400px",
-                    display: item.active ? "block" : "none",
+                    display: item.active ? "flex" : "none",
                   }}
                   key={index}
                 >

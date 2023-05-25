@@ -18,6 +18,8 @@
 .carousel_item {
   width: 100%;
   height: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .prev,
@@ -86,7 +88,7 @@
 }
 .carousel_caption {
   position: absolute;
-  top: -100px;
+  top: -70px;
   left: 0;
   right: 0;
   margin: auto;
@@ -168,7 +170,7 @@
 
 .thumbnails {
   display: flex;
-  margin-top: 10px;
+  margin-top: 25px;
   align-items: center;
   overflow: scroll;
 }
@@ -220,6 +222,11 @@
 }
 
 @media only screen and (max-width: 500px) {
+  .box {
+    height: auto;
+    max-height: none;
+    max-width: 95vw;
+  }
   .prev,
   .next,
   .carousel_caption_bottom,
@@ -228,15 +235,32 @@
   .slide_number {
     font-size: 20px !important;
   }
+  .prev,
+  .next {
+    display: none;
+  }
   .dot {
     height: 4px;
     width: 4px;
   }
   .carousel_container {
-    max-height: 250px !important;
+    max-height: none;
+    max-width: 100vw;
+    height: auto !important;
+  }
+  .carousel_item {
+    max-height: none !important;
+    height: 500px !important;
+    margin: auto;
+  }
+  .carousel_image {
+    max-height: 500px !important;
   }
   .thumbnail {
-    max-width: 70px;
+    height: 58px;
+  }
+  .carousel_caption {
+    top: -70px;
   }
   .carousel_caption_bottom {
     bottom: 25px;

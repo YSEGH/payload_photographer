@@ -32,3 +32,12 @@
 .suggestion__1 a span {
   margin-right: 2rem;
 }
+
+@media (max-width: 768px) {
+  .suggestions_container {
+    flex-direction: column;
+  }
+  .suggestion svg {
+    display: none;
+  }
+}

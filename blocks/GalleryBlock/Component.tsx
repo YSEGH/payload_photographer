@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import global from "../../css/global.module.css";
 import cx from "classnames";
-import CardContainer from "../../components/Containers/CardContainer";
-import { CardContext } from "../../components/Containers/CardContainer/context/context";
-import { getPhotos } from "../../components/Containers/CardContainer/context/actions";
+import CardContainer from "../../components/CardContainer";
+import { CardContext } from "../../components/CardContainer/context/context";
+import { getPhotos } from "../../components/CardContainer/context/actions";
 
 export type Props = {
   blockType: "galleryBlock";

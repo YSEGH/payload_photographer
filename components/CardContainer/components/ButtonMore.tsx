@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import Loader from "../../../Loader";
-import styles from "../../style/buttonMore.module.css";
+import Loader from "../../Loader";
+import styles from "../style/buttonMore.module.css";
 import cx from "classnames";
-import { exo } from "../../../../utils/fonts";
+import { exo } from "../../../utils/fonts";
 import { CardContext } from "../context/context";
 import { getPhotos } from "../context/actions";
 

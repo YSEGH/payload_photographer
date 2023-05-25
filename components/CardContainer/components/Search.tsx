@@ -3,7 +3,7 @@ import Select from "react-select";
 import { MdClear } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
 import crypto from "crypto";
-import styles from "../../style/search.module.css";
+import styles from "../style/search.module.css";
 import cx from "classnames";
 import { CardContext } from "../context/context";
 import {

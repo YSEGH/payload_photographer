@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Text, useField, useFormFields } from "payload/components/forms";
 import { Label } from "payload/components/forms";
 import { Props } from "payload/components/fields/Text";
-import { slugify } from "../../../../components/Containers/CardContainer/utils";
+import { slugify } from "../../../../components/CardContainer/utils";
 
 const Slug: React.FC<Props> = (props) => {
   const { path, label, required, unique } = props;
