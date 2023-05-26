@@ -1,4 +1,5 @@
 .suggestions_container {
+  margin-top: 4rem;
   width: 100%;
   height: 10rem;
   background-color: #f8f8f8;
@@ -7,29 +8,21 @@
   justify-content: space-evenly;
 }
 .suggestion {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.suggestion a {
-  font-size: 25px;
+  font-size: 22px;
   color: #000000;
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
 }
-.suggestion a span {
-  pointer-events: all;
-}
-.suggestion__0 a span {
+
+.suggestion__0 span {
   margin-left: 2rem;
 }
-.suggestion__1 a {
+.suggestion__1 {
   flex-direction: row-reverse;
 }
-.suggestion__1 a span {
+.suggestion__1 span {
   margin-right: 2rem;
 }
 

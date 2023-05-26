@@ -2,6 +2,7 @@ import payload from "payload";
 import React from "react";
 import global from "../../css/global.module.css";
 import { josefin } from "../../utils/fonts";
+import cx from "classnames";
 import Suggestion from "../../components/Suggestion";
 import NotFound from "../../components/NotFound";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
@@ -20,6 +21,9 @@ const Page: React.FC<Props> = ({ statusCode, title, photos, suggestions }) => {
 
   return (
     <div className={global.container__large}>
+      <div className={cx()}>
+        <h3 className={cx(josefin.className)}>{title ? title : ""}</h3>
+      </div>
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
         <Masonry columnsCount={3}>
           {photos.map((photo, i) => {
@@ -36,6 +40,7 @@ const Page: React.FC<Props> = ({ statusCode, title, photos, suggestions }) => {
           })}
         </Masonry>
       </ResponsiveMasonry>
+      {suggestions.length > 0 && <Suggestion suggestions={suggestions} />}
     </div>
   );
 };

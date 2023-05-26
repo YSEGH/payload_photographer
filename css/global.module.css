@@ -9,8 +9,8 @@
 
 .container__large {
   margin: 0 auto;
-  width: 80rem;
-  max-width: 85%;
+  width: 1200px;
+  max-width: 90%;
 }
 
 .container__medium {

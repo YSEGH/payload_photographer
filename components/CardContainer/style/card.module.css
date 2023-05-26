@@ -57,8 +57,9 @@
 .card__body img {
   pointer-events: none;
   height: 100%;
-  width: 100%;
+  width: auto;
   object-fit: cover;
+  object-position: center top;
   z-index: 1;
   transition: 0.5s;
   transform: scale(1.05);
@@ -66,131 +67,19 @@
 .card__body:hover img {
   transform: scale(1.2);
 }
-/* 
-@keyframes hide_card {
-  0% {
-    width: 25%;
-    opacity: 1;
-  }
-  25% {
-    width: 25%;
-    opacity: 0;
-  }
-  100% {
-    width: 0;
-    opacity: 0;
-  }
-}
-@keyframes show_card {
-  0% {
-    width: 0;
-    opacity: 0;
-  }
-  75% {
-    width: 25%;
-    opacity: 0;
-  }
-  100% {
-    width: 25%;
-    opacity: 1;
-  }
-} */
+
 @media screen and (max-width: 992px) {
   .card {
     width: 33.33%;
   }
-  /*   @keyframes hide_card {
-    0% {
-      width: 33.33%;
-      opacity: 1;
-    }
-    25% {
-      width: 33.33%;
-      opacity: 0;
-    }
-    100% {
-      width: 0;
-      opacity: 0;
-    }
-  }
-  @keyframes show_card {
-    0% {
-      width: 0;
-      opacity: 0;
-    }
-    75% {
-      width: 33.33%;
-      opacity: 0;
-    }
-    100% {
-      width: 33.33%;
-      opacity: 1;
-    }
-  } */
 }
 @media screen and (max-width: 768px) {
   .card {
     width: 50%;
   }
-  /*   @keyframes hide_card {
-    0% {
-      width: 50%;
-      opacity: 1;
-    }
-    25% {
-      width: 50%;
-      opacity: 0;
-    }
-    100% {
-      width: 0;
-      opacity: 0;
-    }
-  }
-  @keyframes show_card {
-    0% {
-      width: 0;
-      opacity: 0;
-    }
-    75% {
-      width: 50%;
-      opacity: 0;
-    }
-    100% {
-      width: 50%;
-      opacity: 1;
-    }
-  } */
 }
 @media screen and (max-width: 576px) {
   .card {
     width: 100%;
   }
-  /* @keyframes hide_card {
-    0% {
-      width: 100%;
-      opacity: 1;
-    }
-    50% {
-      width: 100%;
-      opacity: 0;
-    }
-    100% {
-      width: 0;
-      opacity: 0;
-    }
-  }
-  @keyframes show_card {
-    0% {
-      width: 0;
-      opacity: 0;
-    }
-    50% {
-      width: 100%;
-      opacity: 0;
-    }
-    100% {
-      width: 100%;
-      opacity: 1;
-    }
-  } */
 }
