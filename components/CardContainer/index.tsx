@@ -8,6 +8,8 @@ import Search from "./components/Search";
 import ButtonMore from "./components/ButtonMore";
 import { CardContext } from "./context/context";
 import { setScrollPosition } from "./context/actions";
+import { Filters } from "./components/Filters";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 interface Props {
   items: unknown[];
@@ -28,18 +30,35 @@ const CardContainer: React.FC<Props> = ({ items }) => {
   }, []);
 
   return (
-    <div>
+    <div className={``}>
       <Search />
-      <motion.div layout className={cx(styles.container__cards)}>
-        <AnimatePresence>
-          {items.map((item: Doc) => (
-            <Card key={item.id} item={item} />
-          ))}
-        </AnimatePresence>
-      </motion.div>
+
+      <Filters />
+      <div className={styles.container__gallery}>
+        <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
+          <Masonry columnsCount={3}>
+            {items.map((item: Doc) => (
+              <Card key={item.id} item={item} />
+            ))}
+          </Masonry>
+        </ResponsiveMasonry>
+      </div>
+
       <ButtonMore />
     </div>
   );
 };
 
 export default CardContainer;
+
+/* 
+
+<motion.div layout className={cx(styles.container__cards)}>
+  <AnimatePresence>
+    {items.map((item: Doc) => (
+      <Card key={item.id} item={item} />
+    ))}
+  </AnimatePresence>
+</motion.div>
+      
+*/

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Select from "react-select";
-import { MdClear } from "react-icons/md";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import crypto from "crypto";
 import styles from "../style/search.module.css";
 import cx from "classnames";
@@ -11,6 +10,7 @@ import {
   getPhotos,
   setSelectedCategories,
 } from "../context/actions";
+import { josefin } from "../../../utils/fonts";
 
 interface Props {}
 
@@ -61,18 +61,18 @@ const Search: React.FC<Props> = () => {
     setSelectedCategories(values, state.dispatchCategories);
   };
 
-  const onClickHandler = (value) => {
-    let valuesUpdated = values.filter((x) => x.label !== value.label);
-    setValues(valuesUpdated);
-    setSelectedCategories(valuesUpdated, state.dispatchCategories);
-    getPhotos({ categories: valuesUpdated }, true, 1, state.dispatchPhotos);
-  };
-
   useEffect(() => {
-    getCategories(state.dispatchCategories);
+    if (state.categories.length === 0) {
+      getCategories(state.dispatchCategories);
+    }
     setStyle(updateStyle());
     return () => {};
   }, []);
+
+  useEffect(() => {
+    setValues(state.selectedCategories);
+    return () => {};
+  }, [state.selectedCategories.length]);
 
   return (
     <motion.div className={styles.searchbar}>
@@ -81,7 +81,7 @@ const Search: React.FC<Props> = () => {
           <Select
             id={`searchbar__${uuid}`}
             instanceId={`searchbar__${uuid}`}
-            className={styles.searchbar__select}
+            className={cx(styles.searchbar__select, josefin.className)}
             controlShouldRenderValue={false}
             classNamePrefix={`searchbar`}
             placeholder="Rechercher..."
@@ -95,27 +95,6 @@ const Search: React.FC<Props> = () => {
             onChange={onChangeHandler}
             defaultValue={state.selectedCategories}
           />
-        </div>
-        <div className={styles.searchbar__filters}>
-          <AnimatePresence>
-            {values.map((value, i) => (
-              <motion.div
-                key={value.label}
-                className={styles.filter__item}
-                initial={animateFilter.hidden}
-                animate={animateFilter.show}
-                exit={animateFilter.hidden}
-                transition={animateFilter.transition}
-                style={{
-                  backgroundColor: value.bgColor,
-                  color: value.textColor,
-                }}
-              >
-                {value.label}
-                <MdClear onClick={() => onClickHandler(value)} />
-              </motion.div>
-            ))}
-          </AnimatePresence>
         </div>
       </div>
     </motion.div>

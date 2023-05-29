@@ -11,6 +11,8 @@
   margin: 2rem 0 1rem;
 }
 .searchbar__content {
+  width: 25%;
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -42,8 +44,7 @@
 }
 .searchbar__select {
   position: relative;
-  width: 20rem;
-  max-width: 100%;
+  width: 100%;
 }
 .searchbar__select :global(.searchbar__control) {
   box-shadow: none !important;

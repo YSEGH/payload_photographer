@@ -9,3 +9,7 @@
   flex-wrap: wrap;
   padding: 0.5rem 0 3rem;
 }
+
+.container__gallery {
+  margin: 1rem 0 3rem;
+}

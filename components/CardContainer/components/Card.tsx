@@ -7,10 +7,10 @@ import cx from "classnames";
 import { exo } from "../../../utils/fonts";
 
 const Card: React.FC<{ item: any }> = ({ item }) => {
-  const url = item.slider[0].photo.sizes.small.url;
+  const url = item.slider[0].photo.url;
   const alt = item.slider[0].photo.alt;
-  const width = item.slider[0].photo.sizes.small.width;
-  const height = item.slider[0].photo.sizes.small.height;
+  const width = item.slider[0].photo.width;
+  const height = item.slider[0].photo.height;
 
   if (!url) {
     return;

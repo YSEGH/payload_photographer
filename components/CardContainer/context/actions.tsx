@@ -43,6 +43,7 @@ const getCategories = async (dispatch) => {
 };
 const setSelectedCategories = (categories, dispatch) => {
   dispatch({ type: "SET_SELECTED_CATEGORIES", data: categories });
+  dispatch({ type: "ORDER_SELECTED_CATEGORIES" });
 };
 
 export { getPhotos, getCategories, setSelectedCategories, setScrollPosition };

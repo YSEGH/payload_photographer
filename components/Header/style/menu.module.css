@@ -14,6 +14,7 @@
 .nav__item a {
   text-decoration: none;
   color: black;
+  font-size: 18px;
 }
 .nav__item a.active {
   text-decoration: underline;

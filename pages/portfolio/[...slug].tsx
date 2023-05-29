@@ -40,7 +40,7 @@ const Page: React.FC<Props> = ({ statusCode, title, photos, suggestions }) => {
           })}
         </Masonry>
       </ResponsiveMasonry>
-      {suggestions.length > 0 && <Suggestion suggestions={suggestions} />}
+      {/* {suggestions.length > 0 && <Suggestion suggestions={suggestions} />} */}
     </div>
   );
 };

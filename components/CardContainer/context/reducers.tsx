@@ -28,21 +28,56 @@ const photosReducer = (state: PhotosState, action) => {
 };
 
 const categoriesReducer = (state: CategoriesState, action) => {
+  let categories;
   switch (action.type) {
     case "GET_CATEGORIES_REQUEST":
       return { ...state, loading: true, error: null };
     case "GET_CATEGORIES":
-      let categories = action.data.map((category) => {
+      console.log("GET_CATEGORIES");
+
+      categories = action.data.map((category) => {
         return {
           label: category.title,
           value: category.title.toLowerCase(),
           bgColor: category.backgroundColor,
           textColor: category.textColor,
+          isActive: false,
         };
       });
       return { ...state, loading: false, categories: categories };
     case "SET_SELECTED_CATEGORIES":
-      return { ...state, selectedCategories: action.data };
+      console.log("SET_SELECTED_CATEGORIES");
+
+      categories = state.categories.map((category: any) => {
+        const isSelected = action.data.some(
+          (selectedCategory) => category.label === selectedCategory.label
+        );
+        if (isSelected) {
+          return { ...category, isActive: true };
+        }
+        return { ...category, isActive: false };
+      });
+      return {
+        ...state,
+        selectedCategories: action.data,
+        categories: categories,
+      };
+    case "ORDER_SELECTED_CATEGORIES":
+      console.log("ORDER_SELECTED_CATEGORIES");
+
+      categories = state.categories.sort((a: any, b: any) => {
+        let isActiveOrder = Number(b.isActive) - Number(a.isActive);
+        let alphabeticalOrder = a.label.localeCompare(b.label);
+        if (!a.isActive && !b.isActive) {
+          return alphabeticalOrder;
+        }
+        if (!b.isActive) {
+          return isActiveOrder;
+        }
+        return isActiveOrder + alphabeticalOrder;
+      });
+
+      return { ...state, categories: categories };
     case "GET_CATEGORIES_ERROR":
       return { ...state, loading: false, error: action.error };
     default:
