@@ -1,8 +1,12 @@
+@value --blue: #1aace7;
+
 .filter {
   height: 40px;
   width: fit-content;
+  white-space: nowrap;
   padding: 0 2rem;
-  border: 1px solid black;
+  border: 1px solid #000000;
+  color: #000000;
   border-radius: 30px;
   display: flex;
   align-items: center;

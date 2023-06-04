@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import { AppProvider } from "../context/context";
 import "../css/style.css";
 import { CardProvider } from "../components/CardContainer/context/context";
+import ScrollToTop from "../components/ScrollToTop";
 
 export default function MyApp({
   Component,
@@ -13,6 +14,7 @@ export default function MyApp({
       <CardProvider>
         <Layout>
           <Component {...pageProps} />
+          <ScrollToTop />
         </Layout>
       </CardProvider>
     </AppProvider>

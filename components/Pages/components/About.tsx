@@ -13,8 +13,6 @@ type Props = {
 
 const About: React.FC<Props> = (props) => {
   const { image, title, content } = props;
-  console.log(props);
-
   return (
     <div className={cx(style.page__about, global.container__large)}>
       <div className={cx(style.page__header)}>

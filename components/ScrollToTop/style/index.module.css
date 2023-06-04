@@ -1,0 +1,17 @@
+@value --blue: #1aace7;
+
+.scroll_to_top {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 2000;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: --blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}

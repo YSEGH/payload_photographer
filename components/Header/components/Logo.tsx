@@ -1,31 +1,18 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useContext } from "react";
 import styles from "../style/logo.module.css";
-import { exo } from "../../../utils/fonts";
+import { AppContext } from "../../../context/context";
 
-const MAX = 1;
-const MIN = 0.8;
+interface Props {}
 
-const animate = {
-  hidden: { scale: MIN },
-  show: { scale: MAX },
-};
+const Logo: React.FC<Props> = ({}) => {
+  const state = useContext(AppContext);
 
-interface Props {
-  display: boolean;
-}
+  console.log(state.logo);
 
-const Logo: React.FC<Props> = ({ display }) => {
   return (
-    <motion.div
-      className={styles.logo}
-      initial={animate.show}
-      animate={display ? animate.show : animate.hidden}
-    >
-      <h2 className={exo.className}>
-        Chléo<span>Butterfly</span>
-      </h2>
-    </motion.div>
+    <div className={styles.logo}>
+      <img src={state.logo} alt="Logo" />
+    </div>
   );
 };
 

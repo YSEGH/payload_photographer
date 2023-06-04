@@ -87,6 +87,7 @@ const Search: React.FC<Props> = () => {
             placeholder="Rechercher..."
             noOptionsMessage={() => "Aucune correspondance"}
             isMulti
+            /* defaultMenuIsOpen={true} */
             openMenuOnClick={false}
             options={state.categories}
             closeMenuOnScroll={() => true}

@@ -24,8 +24,6 @@ export const Filter = ({ filter }) => {
   };
 
   useEffect(() => {
-    console.log(filter);
-
     return () => {};
   }, [filter.isActive]);
 

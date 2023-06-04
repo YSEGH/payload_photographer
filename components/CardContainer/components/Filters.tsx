@@ -8,8 +8,6 @@ export const Filters = () => {
   const state = useContext(CardContext);
 
   useEffect(() => {
-    console.log(state.categories.length);
-
     if (state.categories.length === 0) {
       getCategories(state.dispatchCategories);
     }

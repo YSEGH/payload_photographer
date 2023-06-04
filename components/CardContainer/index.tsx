@@ -10,6 +10,7 @@ import { CardContext } from "./context/context";
 import { setScrollPosition } from "./context/actions";
 import { Filters } from "./components/Filters";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import SearchBar from "./components/SearchBar";
 
 interface Props {
   items: unknown[];
@@ -31,9 +32,7 @@ const CardContainer: React.FC<Props> = ({ items }) => {
 
   return (
     <div className={``}>
-      <Search />
-
-      <Filters />
+      <SearchBar />
       <div className={styles.container__gallery}>
         <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
           <Masonry columnsCount={3}>

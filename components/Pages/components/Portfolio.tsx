@@ -6,8 +6,6 @@ type Props = {
 };
 
 const Portfolio: React.FC<Props> = (props) => {
-  console.log(props);
-
   const blockType = "galleryBlock";
   const Gallery = components[blockType];
 

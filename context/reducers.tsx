@@ -6,6 +6,14 @@ const appReducer = (state, action) => {
       return { ...state, menu: action.data };
     case "GET_PAGES_ERROR":
       return { ...state, error: action.error };
+    case "GET_LOGO_REQUEST":
+      return { ...state };
+    case "GET_LOGO_SUCCESS":
+      console.log(action.data);
+
+      return { ...state, logo: action.data };
+    case "GET_LOGO_ERROR":
+      return { ...state, error: action.error };
     default:
       return state;
   }

@@ -20,4 +20,16 @@ const setMenuLinks = async (dispatch) => {
   }
 };
 
-export { setMenuLinks };
+const getLogo = async (dispatch) => {
+  dispatch({ type: "GET_LOGO_REQUEST" });
+  try {
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/globals/settings`
+    );
+    dispatch({ type: "GET_LOGO_SUCCESS", data: data.logo.url });
+  } catch (error) {
+    dispatch({ type: "GET_LOGO_ERROR", error: error.message });
+  }
+};
+
+export { setMenuLinks, getLogo };

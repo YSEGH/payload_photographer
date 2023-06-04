@@ -6,6 +6,7 @@ import cx from "classnames";
 import Suggestion from "../../components/Suggestion";
 import NotFound from "../../components/NotFound";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+import ImageWithBG from "../../components/ImageWithBG";
 
 interface Props {
   statusCode: number;
@@ -27,20 +28,11 @@ const Page: React.FC<Props> = ({ statusCode, title, photos, suggestions }) => {
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}>
         <Masonry columnsCount={3}>
           {photos.map((photo, i) => {
-            console.log(photo);
-
-            return (
-              <img
-                key={i}
-                src={photo.photo.url}
-                alt={photo.photo.alt}
-                style={{ width: "100%", display: "block" }}
-              />
-            );
+            return <ImageWithBG key={photo.id} photo={photo} />;
           })}
         </Masonry>
       </ResponsiveMasonry>
-      {/* {suggestions.length > 0 && <Suggestion suggestions={suggestions} />} */}
+      {suggestions.length > 0 && <Suggestion suggestions={suggestions} />}
     </div>
   );
 };

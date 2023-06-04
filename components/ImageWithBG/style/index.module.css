@@ -1,0 +1,98 @@
+.overlay {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.overlay--active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  height: 100vh;
+  width: 100vw;
+  background-color: #000000b3;
+  backdrop-filter: blur(10px);
+  padding: 1rem 0;
+}
+
+.close {
+  display: none;
+  cursor: pointer;
+}
+.close svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  pointer-events: none;
+}
+.close--active {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+}
+
+.infos {
+  display: none;
+}
+.infos svg {
+  pointer-events: none;
+}
+.infos--active {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  cursor: pointer;
+}
+
+.imgWithBg {
+  height: auto;
+  width: 100%;
+  object-fit: contain;
+  user-select: none;
+}
+.imgWithBg--active {
+  height: 100%;
+  width: auto;
+  max-width: 95%;
+  cursor: auto !important;
+}
+
+.caption {
+  display: none;
+  pointer-events: none;
+  position: absolute;
+  bottom: 2rem;
+  margin: 1rem 0 0;
+  font-weight: 300;
+  background-color: black;
+  padding: 0 2rem;
+  user-select: none;
+  max-width: 95%;
+}
+.caption--active {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #ffffff;
+}
+.caption--active svg {
+  width: 24px;
+  height: 24px;
+  margin-right: 0.5rem;
+}
+
+@media screen and (max-width: 576px) {
+  .caption {
+    bottom: 4rem;
+    padding: 0 1rem;
+  }
+  .caption--active {
+    justify-content: center;
+  }
+  .caption svg {
+    display: none;
+  }
+}

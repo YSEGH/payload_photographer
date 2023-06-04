@@ -33,8 +33,6 @@ const categoriesReducer = (state: CategoriesState, action) => {
     case "GET_CATEGORIES_REQUEST":
       return { ...state, loading: true, error: null };
     case "GET_CATEGORIES":
-      console.log("GET_CATEGORIES");
-
       categories = action.data.map((category) => {
         return {
           label: category.title,
@@ -46,8 +44,6 @@ const categoriesReducer = (state: CategoriesState, action) => {
       });
       return { ...state, loading: false, categories: categories };
     case "SET_SELECTED_CATEGORIES":
-      console.log("SET_SELECTED_CATEGORIES");
-
       categories = state.categories.map((category: any) => {
         const isSelected = action.data.some(
           (selectedCategory) => category.label === selectedCategory.label
@@ -63,8 +59,6 @@ const categoriesReducer = (state: CategoriesState, action) => {
         categories: categories,
       };
     case "ORDER_SELECTED_CATEGORIES":
-      console.log("ORDER_SELECTED_CATEGORIES");
-
       categories = state.categories.sort((a: any, b: any) => {
         let isActiveOrder = Number(b.isActive) - Number(a.isActive);
         let alphabeticalOrder = a.label.localeCompare(b.label);
