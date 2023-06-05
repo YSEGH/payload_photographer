@@ -1,18 +1,20 @@
-.page {
+.page__contact {
+  padding-bottom: 5rem;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .page__bannier {
-  padding: 5rem 0;
   width: 50%;
+  height: fit-content;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .page__bannier img {
-  height: 100%;
   width: 100%;
+  aspect-ratio: 1/1;
   object-fit: cover;
 }
 .page__body {
@@ -24,8 +26,12 @@
   justify-content: center;
   align-items: center;
 }
-.page__body h2 {
+.page__body h2,
+.page__body p {
+  width: 100%;
   text-align: left;
+}
+.page__body h2 {
   margin: 0;
 }
 .page form {
@@ -34,22 +40,18 @@
 }
 
 @media (max-width: 768px) {
-  .page {
+  .page__contact {
     flex-direction: column;
-    padding-bottom: 5rem;
+    padding-bottom: 3rem;
   }
 
   .page__bannier {
     width: 100%;
+    margin-bottom: 5rem;
   }
 
   .page__body {
     padding: 0;
     width: 100%;
-    text-align: center;
-  }
-
-  .page__body h2 {
-    text-align: center;
   }
 }

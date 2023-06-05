@@ -15,13 +15,10 @@ const About: React.FC<Props> = (props) => {
   const { image, title, content } = props;
   return (
     <div className={cx(style.page__about, global.container__large)}>
-      <div className={cx(style.page__header)}>
-        <h2 className={cx(josefin.className)}>{title ? title : ""}</h2>
-      </div>
       <div className={cx(style.page__bannier)}>
         <img src={image.url} alt={image.alt} />
       </div>
-      <div className={cx(style.page__body, exo.className)}>
+      <div className={cx(style.page__body)}>
         <RichText content={content} />
       </div>
     </div>

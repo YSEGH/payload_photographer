@@ -10,7 +10,7 @@
 /* FORM CONTACT */
 .form__contact {
   width: 800px;
-  max-width: 90vw;
+  max-width: 100%;
   height: auto;
   display: flex;
   align-items: center;

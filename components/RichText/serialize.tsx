@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import escapeHTML from "escape-html";
 import { Text } from "slate";
+import { exo, josefin } from "../../utils/fonts";
 
 type Children = Leaf[];
 
@@ -59,34 +60,74 @@ const serialize = (children: Children): React.ReactElement[] =>
 
     switch (node.type) {
       case "h1":
-        return <h1 key={i}>{serialize(node.children)}</h1>;
+        return (
+          <h1 className={josefin.className} key={i}>
+            {serialize(node.children)}
+          </h1>
+        );
       case "h2":
-        return <h2 key={i}>{serialize(node.children)}</h2>;
+        return (
+          <h2 className={josefin.className} key={i}>
+            {serialize(node.children)}
+          </h2>
+        );
       case "h3":
-        return <h3 key={i}>{serialize(node.children)}</h3>;
+        return (
+          <h3 className={josefin.className} key={i}>
+            {serialize(node.children)}
+          </h3>
+        );
       case "h4":
-        return <h4 key={i}>{serialize(node.children)}</h4>;
+        return (
+          <h4 className={josefin.className} key={i}>
+            {serialize(node.children)}
+          </h4>
+        );
       case "h5":
-        return <h5 key={i}>{serialize(node.children)}</h5>;
+        return (
+          <h5 className={josefin.className} key={i}>
+            {serialize(node.children)}
+          </h5>
+        );
       case "h6":
-        return <h6 key={i}>{serialize(node.children)}</h6>;
+        return (
+          <h6 className={josefin.className} key={i}>
+            {serialize(node.children)}
+          </h6>
+        );
       case "quote":
         return <blockquote key={i}>{serialize(node.children)}</blockquote>;
       case "ul":
-        return <ul key={i}>{serialize(node.children)}</ul>;
+        return (
+          <ul className={exo.className} key={i}>
+            {serialize(node.children)}
+          </ul>
+        );
       case "ol":
-        return <ol key={i}>{serialize(node.children)}</ol>;
+        return (
+          <ol className={exo.className} key={i}>
+            {serialize(node.children)}
+          </ol>
+        );
       case "li":
-        return <li key={i}>{serialize(node.children)}</li>;
+        return (
+          <li className={exo.className} key={i}>
+            {serialize(node.children)}
+          </li>
+        );
       case "link":
         return (
-          <a href={escapeHTML(node.url)} key={i}>
+          <a className={exo.className} href={escapeHTML(node.url)} key={i}>
             {serialize(node.children)}
           </a>
         );
 
       default:
-        return <p key={i}>{serialize(node.children)}</p>;
+        return (
+          <p className={exo.className} key={i}>
+            {serialize(node.children)}
+          </p>
+        );
     }
   });
 

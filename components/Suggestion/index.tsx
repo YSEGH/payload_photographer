@@ -3,7 +3,6 @@ import style from "./style/index.module.css";
 import cx from "classnames";
 import Link from "next/link";
 import { josefin } from "../../utils/fonts";
-import ArrowSVG from "./components/ArrowSVG";
 
 type Props = {
   suggestions: any;

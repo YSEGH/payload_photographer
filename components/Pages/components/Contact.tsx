@@ -18,7 +18,7 @@ const Contact: React.FC<Props> = (props) => {
   const { image, content, formulaire, title } = props;
   const Form = components[blockType];
   return (
-    <div className={cx(style.page, global.container__large)}>
+    <div className={cx(style.page__contact, global.container__large)}>
       <div className={cx(style.page__bannier)}>
         <img src={image.url} alt="" />
       </div>
